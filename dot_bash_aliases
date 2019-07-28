@@ -1,0 +1,165 @@
+# keychain
+# eval `keychain --eval --lockwait 45 --quick \
+# ~/Documents/bunker/pwet
+
+# kubectl bash_completion
+# source <(kubectl completion bash)
+
+# govc / vsphere
+#. ~/Documents/bunker/.govc
+
+# tmux
+# If not running interactively, do not do anything
+#[[ $- != *i* ]] && return
+#[[ -z "$TMUX" ]] && exec tmux -2 -u
+
+# tilix vte
+if [[ "$TILIX_ID" ]] || [[ "$VTE_VERSION" ]]; then
+  source /etc/profile.d/vte.sh
+fi
+
+# -------------------------------------------------
+
+# aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias myip='curl -s https://api.ipify.org;echo'
+alias skynet='ansible-playbook'
+alias kubelog='stern'
+alias kubelogs='kubelog'
+alias pingtcp='nping'
+alias meteo='curl -s https://wttr.in/Lyon'
+alias dot='chezmoi'
+
+# -------------------------------------------------
+
+# functions
+amqt() { curl -s https://amp.cloudflare.com/q/${1} | jq; }
+genecdsa() { openssl ecparam -name prime256v1 -genkey -out $1; }
+# for csr subjects
+# optional subjectAltName if needed
+# -subj "/C=US/ST=NY/L=NYC/O=MAZEN USA/OU=MAZEN/CN=*.mazen-app.com/subjectAltName=DNS.1=mazen-app.com/emailAddress=infra@mazen-app.com"
+# -subj "/C=FR/ST=Rhône Alpes/L=Lyon/O=Vente-Privee/OU=Logistics Sites/CN=easylog.prod.ls.vpgrp.io/subjectAltName=DNS.1=easylog.preprod.ls.vpgrp.io/emailAddress=it_ls_sre@vente-privee.com"
+gencsr() { openssl req -new -nodes -sha256 -key $1.key -out $2.csr; }
+gencrt() {
+ genecdsa selfkey.pem &&\
+ openssl req -x509 -days 1095 -nodes -sha256 -new -key selfkey.pem -out selfcert.pem;
+ # for self-signed certificate # -subj "/C=FR/O=OptimizMe/OU=MAZEN/CN=localhost/emailAddress=infra@optimiz.me";
+}
+infocsr() { openssl req -noout -text -in $1; }
+infoeck() { openssl ec -in $1 -text -noout; }
+infocrt() { openssl x509 -in $1 -noout -text; }
+tvdl() { youtube-dl $1 -f '[width=?640]' --max-filesize 1536M --referer "http://www.arte.tv" --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.166 Safari/537.36 OPR/20.0.1396.73172"; }
+hubicmount() { hubicfuse /mnt/hubic -o noauto_cache,sync_read,noatime,nodev,noexec; }
+hubicsync() {
+ if [[ -d /mnt/hubic ]]; then
+  rsync -avhc --max-size=100M --inplace "${1}" "${2}"
+ else
+  echo "hubicfuse unmounted. rsync impossible."
+  exit 1
+ fi
+}
+goskynet() {
+ if [[ -n "${1}" ]]; then
+  echo -e "\n...Starting Ansible play : ${1}\nChecking the syntax\n";
+  skynet -vv --syntax-check "${1}";
+  echo -e "\nPress a key to continue...\n";
+  read;
+  echo -e "Running Ansible play : ${1}";
+  skynet -Dv "${1}";
+  echo -e "\nDone.\n";
+ fi
+}
+testskynet() {
+ if [[ -n "${1}" ]]; then
+  echo -e "\n...Starting Ansible play : ${1}\nChecking the syntax\n";
+  skynet -vv --syntax-check "${1}";
+  echo -e "\nPress a key to continue...\n";
+  read;
+  echo -e "Show Ansible play diff (check mode) : ${1}";
+  skynet -CD "${1}";
+  echo -e "\nDone.\n";
+ fi
+}
+wgvpnup() {
+# client
+crts_path="~/Documents/bunker/certs"
+if [[ ! -e ${crts_path}/wgd-private-key ]]; then
+ wg genkey>${crts_path}/wgd-private-key
+ echo "Get the pre-shared keys (wgd-preshared-key) on the server side"
+fi
+sudo bash -c "
+ crts_path="/home/p00/Documents/bunker/certs"
+ ip link add dev wg0 type wireguard
+ ip address add 192.168.150.2/24 dev wg0
+ wg set wg0 listen-port 57932 private-key "${crts_path}/wgd-private-key"
+ wg set wg0 peer "uberBase64"\
+   preshared-key "${crts_path}/wgd-preshared-key"\
+   allowed-ips "0.0.0.0/0"\
+   endpoint "1.2.3.4:57932"\
+   persistent-keepalive 120
+ ip link set up dev wg0
+ # use the true default route to access wireguard server
+ gw=$(ip route | grep -oP 'default\Wvia.*wlp58s0' | sed 's/default/1.2.3.4/g')
+ ip route add ${gw}
+ # route all the trafic through wireguard int
+ ip route add 0.0.0.0/0 via 192.168.150.1 dev wg0
+"
+}
+wgvpndn() {
+sudo ip link delete wg0
+sudo ip route del 0.0.0.0/0 via 192.168.150.1 dev wg0
+}
+pulsevpnup () {
+  PATH=${PATH}:/usr/local/pulse
+  vpnEndpoint="rad.oredis.fr"
+  pulsesvc -h ${vpnEndpoint} -u ladenis -r AUTHENT_TOKEN_PYOTP -U ${vpnEndpoint}/myvp
+}
+pulsevpndn () {
+  PATH=${PATH}:/usr/local/pulse
+  pulsesvc -K
+}
+vmwareSearchByIp () {
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (IP) allowed'; return; }
+  govc vm.info -vm.ip ${1}
+}
+
+vmwareSearchByName () {
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (DNS) allowed'; return; }
+  govc vm.info -vm.dns ${1}
+}
+
+backupTilixConfig () {
+  type tilix &>/dev/null || { echo 'Tilix not installed, quitting'; return; }
+  dconf dump /com/gexperts/Tilix/ > ~/.config/tilix/tilix.conf
+}
+
+restoreTilixConfig () {
+  type tilix &>/dev/null || { echo 'Tilix not installed, quitting'; return; }
+  dconf load /com/gexperts/Tilix/ < ~/.config/tilix/tilix.conf
+}
+
+gpgExport () {
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (key ID) allowed'; return; }
+  gpg --list-key && echo
+  gpg --armor --export ${1}
+}
+
+qemuRun () {
+  local _ARCH="x86_64"
+  local _ACCEL="kvm:tcg"
+  local _RAM="1G"
+  local _DRIVE="${1}"
+  local _KEYMAP="en-us"
+  local _DISPLAY="gtk"
+
+  sudo qemu-system-${_ARCH} \
+    -boot once="d",menu=on,splash-time=10000 \
+    -drive file=${_DRIVE},if=virtio,cache=writeback,discard=ignore,format=qcow2,detect-zeroes=off \
+    -accel "${_ACCEL} \
+    -m "${_RAM} \
+    -k ${_KEYMAP} \
+    -display ${_DISPLAY} \
+    -name "QEMU-${_DRIVE}"
+}
