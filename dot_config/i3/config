@@ -46,7 +46,11 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # lock desktop
-bindsym $modAlt+l exec i3lock -ti "/home/p00/Pictures/wallpapers/1347539817419.png"
+bindsym $modAlt+l exec i3lock -ti "${HOME}/Pictures/wallpapers/1347539817419.png"
+
+# switch x11 keymap layout
+bindsym $modAlt+u exec setxkbmap -v 0 us
+bindsym $modAlt+f exec setxkbmap -v 0 fr
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
