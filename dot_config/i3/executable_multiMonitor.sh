@@ -27,6 +27,10 @@ setDpi () {
   echo -e "Monitor ${1} DPI set to ${2}"
 }
 
+setScale() {
+  /usr/bin/xrandr --output ${1} --scale 1.2x1.2
+}
+
 isHdmiPresent() {
   local PATTERN_HDMI='\s+\+(\*)?HDMI\-2\s'
   if [[ $(getCurrentMonitor | grep -coE "${PATTERN_HDMI}") == 1 ]]; then
@@ -49,6 +53,7 @@ isFullHd() {
 if [[ isHdmiPresent ]]; then
   echo "HDMI monitor detected, setting it as primary..."
   setPrimary "HDMI-2"
+  setDpi "HDMI-2" "180"
 else
   echo plap
 fi
