@@ -1,11 +1,12 @@
 Xft.autohint: 0
 ! What degree of hinting to use (hintnone, hintslight, hintmedium, or hintfull)
-Xft.hintstyle: hintfull
+Xft.hintstyle: hintslight
 Xft.hinting: 1
 Xft.antialias: 1
 ! Type of subpixel antialiasing (none, rgb, bgr, vrgb or vbgr)
 Xft.rgba: rgb
 ! Default 120
-Xft.dpi: 120
+Xft.dpi: 125
+Xft.lcdfilter: lcddefault
 Xcursor.theme: Numix
 Xcursor.size: 16
