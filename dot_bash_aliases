@@ -30,7 +30,8 @@ alias kubelog='stern'
 alias kubelogs='kubelog'
 alias pingtcp='nping'
 alias meteo='curl -s https://wttr.in/Lyon'
-alias dot='chezmoi'
+alias dotadd='chezmoi add'
+alias dotdir='cd ~/.local/share/chezmoi'
 
 # -------------------------------------------------
 
