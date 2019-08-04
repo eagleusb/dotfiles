@@ -1,6 +1,6 @@
 let g:airline_theme='minimalist'
 syntax enable
-filetype indent on
+filetype plugin indent on
 
 set nu
 set paste
@@ -8,7 +8,7 @@ set showmatch
 set showmode
 set showcmd
 set list
-set spell
+set nospell
 
 set autoread
 
