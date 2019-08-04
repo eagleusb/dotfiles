@@ -1,0 +1,54 @@
+[user]
+	email 	= fromgithubwithlove@morningopenstack.org
+	name 	= gooodmorningopenstack
+	#signingkey = 887EB7103D3D3DEC8E193124C135E0C1371B0A6A
+[alias]
+	ad 	= add --all
+	br 	= branch -a
+	ca 	= commit -a
+	cm 	= commit -m
+	co 	= checkout
+	dc 	= diff --cached
+	di 	= difftool
+	ds 	= diff --staged
+	lg 	= log --oneline --graph --decorate
+	ls 	= ls-files
+	lsi 	= ls-files --others --i --exclude-standard
+	rb 	= rebase
+	rba 	= rebase --abort
+	rbc 	= rebase --continue
+	st 	= status
+  	hist 	= log --graph --abbrev-commit --date=auto:human --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  	remotes = remote -v
+	branches = branch -a
+	added 	= difftool --cached
+        subinit = submodule update --init --recursive
+        subpull = submodule foreach git pull
+[help]
+	browser = chromium-browser
+	format 	= man
+[color]
+	ui 	= always
+[core]
+	editor 	= vim
+
+[diff]
+	tool 	= icdiff
+[difftool]
+	prompt 	= false
+[difftool "icdiff"]
+	cmd 	= icdiff --no-bold --line-numbers --highlight $LOCAL $REMOTE
+[pager]
+	difftool = true
+[icdiff]
+	options = --highlight --line-numbers --no-bold
+[rebase]
+	autosquash = true
+	stat = true
+[filter "lfs"]
+	clean 	= git-lfs clean -- %f
+	smudge 	= git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	gpgSign = false
