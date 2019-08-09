@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/env bash
 
-# Terminate already running bar instances
 killall -q polybar
 
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+while pgrep -x polybar>/dev/null; do sleep 1; done
 
-# Launch bar1 and bar2
-polybar -q p00 &
+if type "xrandr">/dev/null; then
+  echo "Lanching polybar for each screen"
+  xrandr --listactivemonitors | grep -oP '(HDMI\-\d+$|eDP\-\d+$)' | xargs -P1 -I{} bash -c "MONITOR={} polybar -q -r p00 &"
+fi
 
