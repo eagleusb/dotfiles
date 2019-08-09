@@ -150,3 +150,5 @@ export PATH="${PATH}:${HOME}/.local/bin:${HOME}/go/bin:${HOME}/.krew/bin:${HOME}
 export EDITOR="vim"
 export VISUAL="code"
 
+### freetype
+export FREETYPE_PROPERTIES="truetype:interpreter-version=38"
