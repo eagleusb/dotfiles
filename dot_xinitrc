@@ -1,1 +1,2 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+export QT_QPA_PLATFORMTHEME="gtk3"
