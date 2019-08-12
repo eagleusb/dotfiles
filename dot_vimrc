@@ -1,18 +1,26 @@
 let g:airline_theme='minimalist'
 syntax enable
+filetype on
 filetype plugin indent on
 
+set encoding=utf-8
+set title
+set ttyfast
 set nu
 set paste
 set showmatch
 set showmode
 set showcmd
 set list
+set listchars=eol:¤,tab:¬¬,trail:·,extends:»,precedes:«
 set nospell
 
 set autoread
 
 set cursorline
+set colorcolumn=100
+
+set mouse=a
 
 set shiftwidth=2
 set softtabstop=2
