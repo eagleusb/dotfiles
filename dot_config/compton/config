@@ -57,7 +57,7 @@ mark-wmwin-focused = true;
 use-ewmh-active-win = true;
 
 # glx backend
-glx-no-rebind-pixmap = true;
+glx-no-rebind-pixmap = false;
 glx-no-stencil = true;
 use-damage = true;
 
