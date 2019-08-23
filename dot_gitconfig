@@ -1,54 +1,66 @@
 [user]
-	email 	= fromgithubwithlove@morningopenstack.org
-	name 	= gooodmorningopenstack
-	#signingkey = 887EB7103D3D3DEC8E193124C135E0C1371B0A6A
+	email = git@eagleusb.com
+	name = eagleusb
+	signingKey = 6F9A1930AF62A5828032775A65BBB1D6E9DACBD4
 [alias]
-	ad 	= add --all
-	br 	= branch -a
-	ca 	= commit -a
-	cm 	= commit -m
-	co 	= checkout
-	dc 	= diff --cached
-	di 	= difftool
-	ds 	= diff --staged
-	lg 	= log --oneline --graph --decorate
-	ls 	= ls-files
-	lsi 	= ls-files --others --i --exclude-standard
-	rb 	= rebase
-	rba 	= rebase --abort
-	rbc 	= rebase --continue
-	st 	= status
-  	hist 	= log --graph --abbrev-commit --date=auto:human --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-  	remotes = remote -v
-	branches = branch -a
-	added 	= difftool --cached
-        subinit = submodule update --init --recursive
-        subpull = submodule foreach git pull
+	ad				= add --all
+	added			= difftool --cached
+	author		= commit --amend --author
+	br				= branch -a
+	branches	= branch -a
+	ca				= commit -a
+	cm				= commit -m
+	co				= checkout
+	dc				= difftool --cached
+	di				= difftool
+	ds				= difftool --staged
+	hist			= log --graph --abbrev-commit --date=auto:human --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	lg				= log --oneline --graph --decorate
+	ls				= ls-files
+	lsi				= ls-files --others --i --exclude-standard
+	rb				= rebase
+	rbi				= rebase -i
+	rba				= rebase --abort
+	rbc				= rebase --continue
+	remotes		= remote -v
+	st				= status
+	subinit		= submodule update --init --recursive
+	subpull		= submodule foreach git pull
+
 [help]
-	browser = chromium-browser
-	format 	= man
+	browser	= firefox
+	format	= man
+
 [color]
-	ui 	= always
+	ui	= always
+
 [core]
-	editor 	= vim
+	editor	= vim
 
 [diff]
-	tool 	= icdiff
+	tool	= icdiff
+
 [difftool]
-	prompt 	= false
+	prompt	= false
+
 [difftool "icdiff"]
 	cmd 	= icdiff --no-bold --line-numbers --highlight $LOCAL $REMOTE
+
 [pager]
-	difftool = true
+	difftool	= true
+
 [icdiff]
-	options = --highlight --line-numbers --no-bold
+	options	= --highlight --line-numbers --no-bold
+
 [rebase]
-	autosquash = true
-	stat = true
+	autosquash	= true
+	stat				= true
+
 [filter "lfs"]
-	clean 	= git-lfs clean -- %f
-	smudge 	= git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+	clean			= git-lfs clean -- %f
+	smudge		= git-lfs smudge -- %f
+	process		= git-lfs filter-process
+	required	= true
+
 [commit]
-	gpgSign = false
+	gpgSign = true
