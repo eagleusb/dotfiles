@@ -1,22 +1,24 @@
-set $mod Mod1
-set $modAlt Mod4
-
-font pango:Iosevka 8
-
 title_align center
 default_border normal 0
 default_floating_border normal 2
-
 focus_follows_mouse no
+font pango:Iosevka 8
 
 # variables
+set $mod        Mod1
+set $modAlt     Mod4
 set $terminal   "1"
 set $browser    "2"
 set $code       "3"
 set $screens    "HDMI-2 eDP-1"
-set $locker     "i3lock -ti ${HOME}/Pictures/wallpapers/1347539817419.png"
-set $suspend    "i3lock -ti ${HOME}/Pictures/wallpapers/1347539817419.png && systemctl suspend"
-set $wallpaper  "${HOME}/Pictures/wallpapers/view-from-koreatown-los-angeles-by-shawn-lipowski.jpg"
+set $locker     "i3lock -efti ${HOME}/.config/wallpapers/triangle-1920x1080.png"
+set $suspend    "i3lock -efti ${HOME}/.config/wallpapers/triangle-1920x1080.png && systemctl suspend"
+set $wallpaper  "${HOME}/.config/wallpapers/porsche.jpg"
+set $ws1        "1"
+set $ws2        "2"
+set $ws3        "3"
+set $ws4        "4"
+set $ws5        "5"
 
 # workspace
 workspace_layout    tabbed
@@ -24,8 +26,11 @@ workspace $terminal output $screens
 workspace $browser  output $screens
 workspace $code     output $screens
 
-assign [class="^Firefox$"]  → $browser
-assign [class="^Code$"]     → $code
+assign [class="(?i)^firefox$"]        → $browser
+assign [class="(?i)^code$"]           → $code
+assign [class="^kitty$"]              → $terminal
+assign [class="(?i)^tilix$"]          → $terminal
+assign [class="(?i)^boostnote$"]      → $code
 
 for_window [class=".*"]                 title_format "%class - %title"
 for_window [urgent=latest]              focus
@@ -40,11 +45,8 @@ for_window [class="(?i)keepassxc"]      floating enable
 floating_modifier $mod
 
 # Set colors from Xresources
-# Change 'color7' and 'color2' to whatever colors you want i3 to use
-# from the generated scheme.
 set_from_resource $fg i3wm.color7 #f0f0f0
 set_from_resource $bg i3wm.color2 #f0f0f0
-
 # class                 border  backgr. text indicator child_border
 client.focused          $bg     $bg     $fg  $bg       $bg
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
@@ -92,26 +94,24 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $modAlt+r exec rofi -show run
+bindsym $modAlt+s exec rofi -show ssh
+bindsym $modAlt+w exec rofi -show window
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
-
-# alternatively, you can use the cursor keys:
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
-
-# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -143,62 +143,55 @@ bindsym $mod+q focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
-
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1
 bindsym $mod+eacute workspace $ws2
 bindsym $mod+quotedbl workspace $ws3
 bindsym $mod+apostrophe workspace $ws4
 bindsym $mod+parenleft workspace $ws5
-bindsym $mod+minus workspace $ws6
-bindsym $mod+egrave workspace $ws7
-bindsym $mod+underscore workspace $ws8
-bindsym $mod+ccedilla workspace $ws9
-bindsym $mod+agrave workspace $ws10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+# bindsym $mod+minus workspace $ws6
+# bindsym $mod+egrave workspace $ws7
+# bindsym $mod+underscore workspace $ws8
+# bindsym $mod+ccedilla workspace $ws9
+# bindsym $mod+agrave workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+ampersand move container to workspace $ws1
-bindsym $mod+Shift+eacute move container to workspace $ws2
-bindsym $mod+Shift+quotedbl move container to workspace $ws3
-bindsym $mod+Shift+apostrophe move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+minus move container to workspace $ws6
-bindsym $mod+Shift+egrave move container to workspace $ws7
-bindsym $mod+Shift+underscore move container to workspace $ws8
-bindsym $mod+Shift+ccedilla move container to workspace $ws9
-bindsym $mod+Shift+agrave move container to workspace $ws10
+bindsym $modAlt+ampersand move container to workspace $ws1
+bindsym $modAlt+eacute move container to workspace $ws2
+bindsym $modAlt+quotedbl move container to workspace $ws3
+bindsym $modAlt+apostrophe move container to workspace $ws4
+bindsym $modAlt+parenleft move container to workspace $ws5
+bindsym $modAlt+1 move container to workspace $ws1
+bindsym $modAlt+2 move container to workspace $ws2
+bindsym $modAlt+3 move container to workspace $ws3
+bindsym $modAlt+4 move container to workspace $ws4
+bindsym $modAlt+5 move container to workspace $ws5
+# bindsym $mod+Shift+minus move container to workspace $ws6
+# bindsym $mod+Shift+egrave move container to workspace $ws7
+# bindsym $mod+Shift+underscore move container to workspace $ws8
+# bindsym $mod+Shift+ccedilla move container to workspace $ws9
+# bindsym $mod+Shift+agrave move container to workspace $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym m resize grow width 10 px or 10 ppt
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
@@ -212,7 +205,6 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $suspend, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+r mode "default"
@@ -235,8 +227,8 @@ exec --no-startup-id ${HOME}/.config/i3/multiMonitor.sh
 exec --no-startup-id ${HOME}/.config/polybar/launch.sh
 exec --no-startup-id compton --daemon --config ${HOME}/.config/compton/config
 exec --no-startup-id wal --theme sexy-gotham -q
-exec --no-startup-id feh --bg-fill $wallpaper
-exec --no-startup-id redshift -l 45.73:4.90 -t 6500K:4000K
+exec --no-startup-id xrdb -merge ${HOME}/.Xresources ${HOME}/.cache/wal/colors.Xresources
+exec --no-startup-id feh --bg-fill $wallpaper --no-fehbg --bg-fill
+exec --no-startup-id ${HOME}/.config/redshift/launch.sh
 exec --no-startup-id xset dpms 300
 exec --no-startup-id xautolock -time 5 -locker $locker
-exec_always --no-startup-id xrdb -merge ${HOME}/.Xresources ${HOME}/.cache/wal/colors.Xresources
