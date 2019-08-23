@@ -29,6 +29,7 @@ alias ll='ls -alF'
 alias meteo='curl -s https://wttr.in/Lyon'
 alias myip='curl -s https://api.ipify.org; echo;'
 alias pingtcp='nping'
+alias pip='pip3'
 alias skynet='ansible-playbook'
 
 # functions

@@ -103,6 +103,11 @@ fi
 
 # Custom
 
+## load user bash-completion scripts
+for completion in ~/.bash_completion.d/*; do
+  [[ -f "${completion}" ]] && . ${completion}
+done
+
 ## pywal load
 cat ~/.cache/wal/sequences
 
