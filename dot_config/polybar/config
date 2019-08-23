@@ -71,7 +71,7 @@ label-unmounted-foreground = ${colors.foreground}
 
 [module/i3]
 type = internal/i3
-format = <label-state>
+format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 pin-workspaces = true
@@ -165,7 +165,7 @@ interface = wlp3s0
 interval = 10
 format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
-label-connected = "%essid:0:5:...% ( %downspeed%  %upspeed%)"
+label-connected = "%essid:0:5:...% ( %downspeed:6%  %upspeed:6%)"
 format-disconnected =
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
