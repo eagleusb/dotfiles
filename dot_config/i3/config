@@ -7,9 +7,10 @@ font pango:Iosevka 8
 # variables
 set $mod        Mod1
 set $modAlt     Mod4
-set $terminal   "1"
-set $browser    "2"
-set $code       "3"
+set $laptop     "1
+set $terminal   "2"
+set $browser    "3"
+set $code       "4"
 set $screens    "HDMI-2 eDP-1"
 set $locker     "i3lock -efti ${HOME}/.config/wallpapers/triangle-1920x1080.png"
 set $suspend    "i3lock -efti ${HOME}/.config/wallpapers/triangle-1920x1080.png && systemctl suspend"
@@ -98,20 +99,12 @@ bindsym $modAlt+s exec rofi -show ssh
 bindsym $modAlt+w exec rofi -show window
 
 # change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
