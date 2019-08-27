@@ -7,7 +7,7 @@
     "files.trimTrailingWhitespace": true,
     "editor.cursorSmoothCaretAnimation": true,
     "editor.cursorStyle": "block",
-    "editor.fontFamily": "'Fira Code Retina', 'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "Fira Code Retina, Fira Code",
     "editor.fontLigatures": true,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
@@ -43,8 +43,7 @@
     "projectManager.groupList": true,
     "terminal.external.linuxExec": "tilix",
     "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.fontFamily": "Fira Code Retina",
-    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontFamily": "Fira Code Retina, Fira Code",
     "terminal.explorerKind": "external",
     "git.autofetch": true,
     "git.autofetchPeriod": 300,
@@ -73,4 +72,13 @@
         "**/*.yml": "ansible",
     },
     "window.zoomLevel": -1,
+    "python.linting.banditEnabled": true,
+    "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ub, 'Droid Sans Mono', 'monospace, 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'', monospace, 'Droid Sans Fallback'untu', 'Droid Sans', sans-serif",
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length 100"
+    ],
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }
