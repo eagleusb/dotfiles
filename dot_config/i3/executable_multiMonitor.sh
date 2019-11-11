@@ -34,6 +34,10 @@ setRightOf() {
   /usr/bin/xrandr --output ${1} --right-of ${2}
 }
 
+setLeftOf() {
+  /usr/bin/xrandr --output ${1} --left-of ${2}
+}
+
 isHdmiPresent() {
   local PATTERN_HDMI='\s+\+(\*)?HDMI\-2\s'
   if [[ $(getCurrentMonitor | grep -coE "${PATTERN_HDMI}") == 1 ]]; then
@@ -56,7 +60,7 @@ isFullHd() {
 if [[ isHdmiPresent ]]; then
   echo "HDMI monitor detected, setting it as primary..."
   setPrimary "HDMI-2"
-  setRightOf "HDMI-2" "eDP-1"
+  setLeftOf "HDMI-2" "eDP-1"
   setDpi "HDMI-2" "180"
 else
   echo plap

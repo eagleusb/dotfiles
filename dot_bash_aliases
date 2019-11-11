@@ -217,3 +217,18 @@ extract () {
     echo "'$1' is not a valid file"
   fi
 }
+
+# nmcli wifi
+nmcliWifiList () {
+  nmcli device wifi rescan
+  nmcli device wifi list
+}
+
+nmcliWifiConnect () {
+  nmcli con add con-name "${1}" ifname wlp3s0 type wifi ssid "${1}" \
+    autoconnect yes ipv4.dns "9.9.9.9,1.1.1.1"
+  nmcli con modify ${1} wifi-sec.key-mgmt wpa-psk
+  nmcli con modify ${1} wifi-sec.psk ${2}
+  nmcli con show
+  nmcli con up ${1}
+}

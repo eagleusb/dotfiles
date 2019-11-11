@@ -1,4 +1,4 @@
-{
+    {
     "breadcrumbs.enabled": true,
     "files.autoSave": "onFocusChange",
     "files.defaultLanguage": "Markdown",
@@ -39,7 +39,6 @@
     "projectManager.git.baseFolders": [
         "/home/p00/Documents/code",
     ],
-    "projectManager.git.maxDepthRecursion": 2,
     "projectManager.groupList": true,
     "terminal.external.linuxExec": "tilix",
     "terminal.integrated.cursorBlinking": true,
@@ -81,4 +80,5 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "projectManager.git.maxDepthRecursion": 8,
 }
