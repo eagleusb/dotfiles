@@ -19,12 +19,14 @@ if [[ "$TILIX_ID" ]] || [[ "$VTE_VERSION" ]]; then
 fi
 
 # aliases
+alias cat='bat --plain --paging never'
 alias dotadd='chezmoi add'
 alias dotdir='cd ~/.local/share/chezmoi'
 alias kubelog='stern'
 alias kubelogs='kubelog'
 alias l='ls -CF'
 alias la='ls -A'
+alias less='bat --color always --decorations always'
 alias ll='ls -alF'
 alias meteo='curl -s https://wttr.in/Lyon'
 alias myip='curl -s https://api.ipify.org; echo;'
