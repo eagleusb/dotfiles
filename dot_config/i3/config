@@ -7,7 +7,7 @@ font pango:Iosevka 8
 # variables
 set $mod        Mod1
 set $modAlt     Mod4
-set $laptop     "1
+set $laptop     "1"
 set $terminal   "2"
 set $browser    "3"
 set $code       "4"
