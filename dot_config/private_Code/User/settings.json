@@ -81,4 +81,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "projectManager.git.maxDepthRecursion": 8,
+    "go.autocompleteUnimportedPackages": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
 }
