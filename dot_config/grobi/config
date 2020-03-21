@@ -1,0 +1,21 @@
+# vim:ft=yaml
+
+execute_after:
+  - setxkbmap -v 0 us
+
+rules:
+  - name: Home
+    outputs_connected: [HDMI-2]
+    outputs_present: [eDP-1]
+    # configure_single: HDMI-2
+    configure_row:
+        - HDMI-2
+        - eDP-1
+    atomic: true
+    primary: HDMI-2
+    execute_after:
+      - xrandr --output HDMI-2 --dpi 192 --rate 120
+
+  - name: Fallback
+    configure_single: eDP-1
+

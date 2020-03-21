@@ -64,6 +64,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -216,7 +217,8 @@ bindsym $mod+shift+p mode "$mode_system"
   #}
 #}
 
-exec --no-startup-id ${HOME}/.config/i3/multiMonitor.sh
+#exec --no-startup-id ${HOME}/.config/i3/multiMonitor.sh
+exec --no-startup-id grobi --config ${HOME}/.config/grobi/config --interval 30 watch
 exec --no-startup-id ${HOME}/.config/polybar/launch.sh
 exec --no-startup-id compton --daemon --config ${HOME}/.config/compton/config
 exec --no-startup-id dunst -config ${HOME}/.config/dunst/dunstrc
