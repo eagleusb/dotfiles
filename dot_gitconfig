@@ -1,7 +1,8 @@
 [user]
-	email = git@eagleusb.com
-	name = eagleusb
-	signingKey = 6F9A1930AF62A5828032775A65BBB1D6E9DACBD4
+	email 			= git@eagleusb.com
+	name 				= eagleusb
+	signingKey 	= 6F9A1930AF62A5828032775A65BBB1D6E9DACBD4
+
 [alias]
 	ad				= add --all
 	added			= difftool --cached
@@ -19,38 +20,39 @@
 	ls				= ls-files
 	lsi				= ls-files --others --i --exclude-standard
 	rb				= rebase
-	rbi				= rebase -i
 	rba				= rebase --abort
 	rbc				= rebase --continue
+	rbi				= rebase -i
 	remotes		= remote -v
 	st				= status
 	subinit		= submodule update --init --recursive
 	subpull		= submodule foreach git pull
+	tags			= tag -l
 
 [help]
-	browser	= firefox
-	format	= man
+	browser		= firefox
+	format		= man
 
 [color]
-	ui	= always
+	ui				= always
 
 [core]
-	editor	= vim
+	editor		= vim
 
 [diff]
-	tool	= icdiff
+	tool			= icdiff
 
 [difftool]
-	prompt	= false
+	prompt		= false
 
 [difftool "icdiff"]
-	cmd 	= icdiff --no-bold --line-numbers --highlight $LOCAL $REMOTE
+	cmd				= icdiff --no-bold --line-numbers --highlight $LOCAL $REMOTE
 
 [pager]
 	difftool	= true
 
 [icdiff]
-	options	= --highlight --line-numbers --no-bold
+	options		= --highlight --line-numbers --no-bold
 
 [rebase]
 	autosquash	= true
@@ -63,4 +65,4 @@
 	required	= true
 
 [commit]
-	gpgSign = true
+	gpgSign		= true
