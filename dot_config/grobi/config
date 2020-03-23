@@ -16,6 +16,18 @@ rules:
     execute_after:
       - xrandr --output HDMI-2 --dpi 192 --rate 120
 
+  - name: Work
+    outputs_connected: [HDMI-1]
+    outputs_present: [eDP-1]
+    # configure_single: HDMI-2
+    configure_row:
+        - HDMI-1
+        - eDP-1
+    atomic: true
+    primary: HDMI-1
+    execute_after:
+      - xrandr --output HDMI-1 --dpi 192 --rate 120
+
   - name: Fallback
     configure_single: eDP-1
 
