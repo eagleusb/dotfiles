@@ -1,0 +1,6 @@
+[sourceVCS]
+  autoCommit = false
+  autoPush = false
+
+[data]
+#  email = "john@home.org"
