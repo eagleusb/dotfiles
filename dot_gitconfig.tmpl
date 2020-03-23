@@ -1,7 +1,14 @@
+{{- if eq .chezmoi.hostname "eagleusb" -}}
 [user]
 	email 			= git@eagleusb.com
 	name 				= eagleusb
-	signingKey 	= 6F9A1930AF62A5828032775A65BBB1D6E9DACBD4
+	signingKey 	= 80C6E14796CB503AD2DB9A373DE89DB94DA87B35
+{{- else -}}
+[user]
+	email 			= git@eagleusb.com
+	name 				= eagleusb
+	signingKey	= 6F9A1930AF62A5828032775A65BBB1D6E9DACBD4
+{{- end }}
 
 [alias]
 	ad				= add --all
@@ -66,3 +73,6 @@
 
 [commit]
 	gpgSign		= true
+
+[protocol]
+	version		= 2
