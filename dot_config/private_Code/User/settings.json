@@ -26,7 +26,7 @@
     "explorer.autoReveal": false,
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
-    "workbench.colorTheme": "Dracula",
+    "workbench.colorTheme": "SynthWave '84",
     "workbench.editor.tabSizing": "shrink",
     "workbench.iconTheme": "vscode-icons",
     "workbench.startupEditor": "newUntitledFile",
@@ -40,23 +40,22 @@
         "/home/p00/Documents/code",
     ],
     "projectManager.groupList": true,
-    "terminal.external.linuxExec": "tilix",
+    "terminal.external.linuxExec": "kitty",
     "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.fontFamily": "Fira Code Retina, Fira Code",
+    "terminal.integrated.fontFamily": "Fira Code, Fira Code Retina",
     "terminal.explorerKind": "external",
     "git.autofetch": true,
     "git.autofetchPeriod": 300,
     "git.enableCommitSigning": true,
     "git.showPushSuccessNotification": true,
     "git.detectSubmodulesLimit": 30,
-    "git.promptToSaveFilesBeforeCommit": true,
+    "git.promptToSaveFilesBeforeCommit": "always",
     "[git-commit]": {
         "editor.rulers": [
             72
         ]
     },
     "prettier.singleQuote": true,
-    "prettier.eslintIntegration": true,
     "prettier.printWidth": 100,
     "prettier.trailingComma": "es5",
     "npm.enableScriptExplorer": true,
@@ -65,22 +64,41 @@
     "javascript.preferences.importModuleSpecifier": "relative",
     "python.autoComplete.addBrackets": true,
     "python.jediEnabled": false,
-    "search.usePCRE2": true,
-    "yaml.format.enable": true,
-    "files.associations": {
-        "**/*.yml": "ansible",
-    },
-    "window.zoomLevel": -1,
-    "python.linting.banditEnabled": true,
-    "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ub, 'Droid Sans Mono', 'monospace, 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'', monospace, 'Droid Sans Fallback'untu', 'Droid Sans', sans-serif",
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
         "--line-length 100"
     ],
+    "python.linting.banditEnabled": true,
+    "yaml.format.enable": true,
+    "files.associations": {
+        "**/*.yml": "ansible",
+    },
+    "markdown.preview.fontFamily": "Fira Code Retina",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "projectManager.git.maxDepthRecursion": 8,
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.lintConfig": ".tflint.hcl",
+    "terraform.languageServer": {
+        "enabled": true,
+        "args": []
+    },
+    "terraform.telemetry.enabled": false,
     "go.autocompleteUnimportedPackages": true,
     "go.useCodeSnippetsOnFunctionSuggest": true,
+    "go.useLanguageServer": true,
+    "go.toolsGopath": "/home/groot/go",
+    "update.mode": "none",
+    "extensions.showRecommendationsOnlyOnDemand": true,
+    "editor.fontSize": 12,
+
 }

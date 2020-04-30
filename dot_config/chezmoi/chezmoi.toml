@@ -1,6 +1,8 @@
+verbose = true
+
 [sourceVCS]
   autoCommit = false
-  autoPush = false
+  autoPush   = false
 
 [data]
 #  email = "john@home.org"
