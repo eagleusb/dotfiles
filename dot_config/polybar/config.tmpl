@@ -30,7 +30,11 @@ font-2 = Font Awesome 5 Free Solid:pixelsize=12:antialias=true;1
 font-3 = Font Awesome 5 Brands:size=12:antialias=true;1
 modules-left = i3 pulseaudio backlight-acpi xkeyboard
 modules-center = date
+{{- if eq .chezmoi.hostname "eagleusb" }}
 modules-right = cpu memory temperature battery-0 battery-1 wlan
+{{- else }}
+modules-right = cpu memory temperature battery-0 wlan
+{{- end }}
 ;tray-position = right
 ;tray-padding = 0
 ;tray-background = #0063ff
@@ -86,7 +90,7 @@ label-mode-background = ${colors.background}
 label-mode-foreground = ${colors.foreground}
 label-mode-padding = 2
 
-label-separator = ""
+;label-separator =
 
 label-focused = %icon%
 label-focused-background = ${colors.secondary}

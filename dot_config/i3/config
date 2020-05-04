@@ -222,7 +222,7 @@ exec --no-startup-id grobi --config ${HOME}/.config/grobi/config --interval 30 w
 exec --no-startup-id ${HOME}/.config/polybar/launch.sh
 exec --no-startup-id compton --daemon --config ${HOME}/.config/compton/config
 exec --no-startup-id dunst -config ${HOME}/.config/dunst/dunstrc
-exec --no-startup-id wal --theme sexy-gotham -q
+exec --no-startup-id wal --theme sexy-rasi -q
 exec --no-startup-id xrdb -merge ${HOME}/.Xresources ${HOME}/.cache/wal/colors.Xresources
 exec --no-startup-id feh --bg-fill $wallpaper --no-fehbg --bg-fill
 exec --no-startup-id ${HOME}/.config/redshift/launch.sh

@@ -3,7 +3,7 @@
 set -e
 
 # specs:
-# xrandr --listactivemonitors 
+# xrandr --listactivemonitors
 # Monitors: 2
 #  0: +*HDMI-2 1920/531x1080/298+1366+0  HDMI-2
 #  1: +eDP-1 1366/277x768/156+0+0  eDP-1
@@ -30,6 +30,7 @@ setDpi () {
 setScale() {
   /usr/bin/xrandr --output ${1} --scale 1.2x1.2
 }
+
 setRightOf() {
   /usr/bin/xrandr --output ${1} --right-of ${2}
 }
@@ -47,7 +48,11 @@ isHdmiPresent() {
 }
 
 isEdpPresent() {
-  PATTERN_EDP='\s+\+(\*)?eDP\-1\s'
+  local PATTERN_EDP='\s+\+(\*)?eDP\-1\s'
+  if [[ $(getCurrentMonitor | grep -coE "${PATTERN_EDP}") == 1 ]]; then
+    return true
+  fi
+  return false
 }
 
 isFullHd() {
@@ -61,8 +66,7 @@ if [[ isHdmiPresent ]]; then
   echo "HDMI monitor detected, setting it as primary..."
   setPrimary "HDMI-2"
   setLeftOf "HDMI-2" "eDP-1"
-  setDpi "HDMI-2" "180"
+  setDpi "HDMI-2" "181"
 else
   echo plap
 fi
-
