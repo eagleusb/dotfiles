@@ -1,12 +1,12 @@
 {{- if eq .chezmoi.hostname "eagleusb" -}}
 [user]
 	email 			= git@eagleusb.com
-	name 				= eagleusb
-	signingKey 	= 261A9BBA20205A3EFDEBAF26A293DEC498A799F3
+	name				= eagleusb
+	signingKey	= 261A9BBA20205A3EFDEBAF26A293DEC498A799F3
 {{- else -}}
 [user]
-	email 			= git@eagleusb.com
-	name 				= eagleusb
+	email				= git@eagleusb.com
+	name				= eagleusb
 	signingKey	= 261A9BBA20205A3EFDEBAF26A293DEC498A799F3
 {{- end }}
 
@@ -76,3 +76,7 @@
 
 [protocol]
 	version		= 2
+
+[pull]
+	rebase		= false
+	ff				= only
