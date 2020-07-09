@@ -234,3 +234,11 @@ nmcliWifiConnect () {
   nmcli con show
   nmcli con up ${1}
 }
+
+ecrLogin() {
+  $(aws ecr get-login \
+    --no-include-email \
+    --region eu-west-1 \
+    --profile common
+   )
+}
