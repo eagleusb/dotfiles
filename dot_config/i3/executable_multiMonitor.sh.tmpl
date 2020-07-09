@@ -65,9 +65,9 @@ isFullHd() {
 if [[ isHdmiPresent ]]; then
   echo "HDMI monitor detected, setting it as primary..."
 {{- if eq .chezmoi.hostname "FR-VI-190802-01" }}
-  setPrimary "HDMI-2"
-  setLeftOf "HDMI-2" "eDP-1"
-  setDpi "HDMI-2" "181"
+  setPrimary "HDMI-1"
+  setLeftOf "HDMI-1" "eDP-1"
+  setDpi "HDMI-1" "181"
 {{- else }}
   setPrimary "HDMI-1"
   setLeftOf "HDMI-1" "eDP-1"
