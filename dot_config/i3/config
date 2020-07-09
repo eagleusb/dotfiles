@@ -217,8 +217,8 @@ bindsym $mod+shift+p mode "$mode_system"
   #}
 #}
 
-#exec --no-startup-id ${HOME}/.config/i3/multiMonitor.sh
-exec --no-startup-id grobi --config ${HOME}/.config/grobi/config --interval 30 watch
+exec --no-startup-id ${HOME}/.config/i3/multiMonitor.sh
+#exec --no-startup-id grobi --config ${HOME}/.config/grobi/config --interval 30 watch
 exec --no-startup-id ${HOME}/.config/polybar/launch.sh
 exec --no-startup-id compton --daemon --config ${HOME}/.config/compton/config
 exec --no-startup-id dunst -config ${HOME}/.config/dunst/dunstrc
