@@ -1,4 +1,4 @@
-    {
+{
     "breadcrumbs.enabled": true,
     "files.autoSave": "onFocusChange",
     "files.defaultLanguage": "Markdown",
@@ -9,6 +9,7 @@
     "editor.cursorStyle": "block",
     "editor.fontFamily": "Fira Code Retina, Fira Code",
     "editor.fontLigatures": true,
+    "editor.fontSize": 12,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
     "editor.minimap.enabled": true,
@@ -36,10 +37,24 @@
     "workbench.colorCustomizations": {
         "editorIndentGuide.activeBackground": "#a6ff00"
     },
+    "projectManager.git.maxDepthRecursion": 8,
+{{- if eq .chezmoi.hostname "FR-VI-190802-01" }}
     "projectManager.git.baseFolders": [
-        "/home/p00/Documents/code",
+        "/home/groot/Documents/code/navya",
     ],
+{{- else }}
+    "projectManager.git.baseFolders": [
+        "/home/groot/Documents/code",
+    ],
+{{- end }}
     "projectManager.groupList": true,
+    "projectManager.any.ignoredFolders": [
+        "node_modules",
+        "out",
+        "test",
+        "tests",
+        ".terraform",
+    ],
     "terminal.external.linuxExec": "kitty",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontFamily": "Fira Code, Fira Code Retina",
@@ -51,9 +66,7 @@
     "git.detectSubmodulesLimit": 30,
     "git.promptToSaveFilesBeforeCommit": "always",
     "[git-commit]": {
-        "editor.rulers": [
-            72
-        ]
+        "editor.rulers": [72]
     },
     "prettier.singleQuote": true,
     "prettier.printWidth": 100,
@@ -70,35 +83,34 @@
     ],
     "python.linting.banditEnabled": true,
     "yaml.format.enable": true,
+    "yaml.schemas": {},
     "files.associations": {
-        "**/*.yml": "ansible",
+        "**/defaults/*.yml": "ansible",
+        "**/handlers/*.yml": "ansible",
+        "**/meta/*.yml": "ansible",
+        "**/tasks/*.yml": "ansible",
+        "**/test*/*.yml": "ansible",
+        "**/vars/*.yml": "ansible",
     },
     "markdown.preview.fontFamily": "Fira Code Retina",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "projectManager.git.maxDepthRecursion": 8,
-    "terraform.indexing": {
-        "enabled": false,
-        "liveIndexing": false,
-        "delay": 500,
-        "exclude": [
-            ".terraform/**/*",
-            "**/.terraform/**/*"
+    "terraform.languageServer": {
+        "external": true,
+        "args": [
+            "serve"
         ]
     },
-    "terraform.lintConfig": ".tflint.hcl",
-    "terraform.languageServer": {
-        "enabled": true,
-        "args": []
-    },
-    "terraform.telemetry.enabled": false,
     "go.autocompleteUnimportedPackages": true,
     "go.useCodeSnippetsOnFunctionSuggest": true,
     "go.useLanguageServer": true,
+{{- if eq .chezmoi.hostname "FR-VI-190802-01" }}
     "go.toolsGopath": "/home/groot/go",
+{{- end }}
     "update.mode": "none",
     "extensions.showRecommendationsOnlyOnDemand": true,
-    "editor.fontSize": 12,
-
+    "vs-kubernetes": {
+        "vs-kubernetes.minikube-path.linux": "/home/groot/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
 }
