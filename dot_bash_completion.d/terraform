@@ -1,0 +1,1 @@
+complete -C /home/groot/.local/bin/terraform terraform
