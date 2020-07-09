@@ -137,6 +137,7 @@ PATH="${PATH}:${HOME}/go/bin"
 PATH="${PATH}:${HOME}/.krew/bin"
 PATH="${PATH}:${HOME}/.gem/ruby/2.5.0/bin"
 PATH="${PATH}:${HOME}/.gem/ruby/2.6.0/bin"
+PATH="${PATH}:${HOME}/.gem/ruby/2.7.0/bin"
 PATH="${PATH}:/usr/lib/go/bin"
 
 export PATH="${PATH}"
