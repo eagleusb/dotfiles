@@ -1,3 +1,5 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I${HOME} ~/.Xresources
+xinput set-prop 9 'libinput Accel Profile Enabled' 0 1
+xset m 1/2 0
 export QT_QPA_PLATFORMTHEME="gtk3"
 export FREETYPE_PROPERTIES="truetype:interpreter-version=38"
