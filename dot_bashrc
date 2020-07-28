@@ -111,7 +111,22 @@ done
 ## pywal load
 cat ~/.cache/wal/sequences
 
+## globstar
+shopt -s globstar
+
 ## environment variables
+
+### fzf
+export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
+
+### man
+export LESS_TERMCAP_mb=$'\e[1;32m' \
+  LESS_TERMCAP_md=$'\e[1;32m' \
+  LESS_TERMCAP_me=$'\e[0m' \
+  LESS_TERMCAP_se=$'\e[0m' \
+  LESS_TERMCAP_so=$'\e[01;33m' \
+  LESS_TERMCAP_ue=$'\e[0m' \
+  LESS_TERMCAP_us=$'\e[1;4;31m'
 
 ### Ansible
 export ANSIBLE_COLOR_CHANGED="yellow" \

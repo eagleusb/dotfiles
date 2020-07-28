@@ -33,6 +33,7 @@ alias myip='curl -s https://api.ipify.org; echo;'
 alias pingtcp='nping'
 alias pip='pip3'
 alias skynet='ansible-playbook'
+alias pgrep='pgrep -laf'
 
 # functions
 amqt() {
@@ -241,4 +242,25 @@ ecrLogin() {
     --region eu-west-1 \
     --profile common
    )
+}
+
+syncEbooks() {
+  local _backend=gdrive:documentation/Calibre/
+  local _source=~/Documents/ebook/Calibre/
+  local _bwlimit=80k
+
+  rclone --fast-list copy --progress \
+    ${_source} ${_backend} --dry-run
+
+  read -ep "Launch the copy ? [Y/n]"
+
+  case ${REPLY:-Y} in
+    ("y"|"Y")
+    rclone --bwlimit ${_bwlimit} --fast-list --transfers 4 --update \
+      copy --progress ${_source} ${_backend};;
+    ("n"|"N")
+    echo "canceling, doing nothing...";;
+    (*)
+    echo "invalid choice, must be yY or nN";;
+  esac
 }
