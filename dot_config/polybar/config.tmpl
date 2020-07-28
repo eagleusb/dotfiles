@@ -181,7 +181,11 @@ ramp-signal-foreground = ${colors.foreground}
 
 [module/eth]
 type = internal/network
+{{- if eq .chezmoi.hostname "eagleusb" }}
 interface = enp0s31f6
+{{- else }}
+interface = enp2s0
+{{- end }}
 interval = 10
 format-connected-underline = #55aa55
 format-connected-prefix = " "
