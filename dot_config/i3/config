@@ -2,7 +2,7 @@ title_align center
 default_border normal 0
 default_floating_border normal 2
 focus_follows_mouse no
-font pango:Iosevka 8
+font pango:Fira Code 8
 
 # variables
 set $mod        Mod1
@@ -46,15 +46,22 @@ for_window [class="(?i)keepassxc"]      floating enable
 floating_modifier $mod
 
 # Set colors from Xresources
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color2 #f0f0f0
-# class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
-client.background       $bg
+set_from_resource $color0 i3wm.color0 #f0f0f0
+set_from_resource $color1 i3wm.color1 #f0f0f0
+set_from_resource $color2 i3wm.color2 #f0f0f0
+set_from_resource $color0 i3wm.color3 #f0f0f0
+set_from_resource $color4 i3wm.color4 #f0f0f0
+set_from_resource $color5 i3wm.color5 #f0f0f0
+set_from_resource $color6 i3wm.color6 #f0f0f0
+set_from_resource $color7 i3wm.color7 #f0f0f0
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $color1 $color1 $color7 $color7   $color4
+client.focused_inactive $color1 $color1 $color7 $color7   $color4
+client.unfocused        $color1 $color1 $color7 $color7   $color4
+client.urgent           $color1 $color1 $color7 $color7   $color4
+client.placeholder      $color1 $color1 $color7 $color7   $color4
+client.background       $color5
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec --no-startup-id  brightnessctl set +5%
@@ -218,11 +225,10 @@ bindsym $mod+shift+p mode "$mode_system"
 #}
 
 exec --no-startup-id ${HOME}/.config/i3/multiMonitor.sh
-#exec --no-startup-id grobi --config ${HOME}/.config/grobi/config --interval 30 watch
-exec --no-startup-id ${HOME}/.config/polybar/launch.sh
-exec --no-startup-id compton --daemon --config ${HOME}/.config/compton/config
+exec --no-startup-id ${HOME}/.config/polybar/polybar.sh
+exec --no-startup-id picom -b --config ${HOME}/.config/picom/config
 exec --no-startup-id dunst -config ${HOME}/.config/dunst/dunstrc
-exec --no-startup-id wal --theme sexy-rasi -q
+exec --no-startup-id wal -q --theme sexy-hund
 exec --no-startup-id xrdb -merge ${HOME}/.Xresources ${HOME}/.cache/wal/colors.Xresources
 exec --no-startup-id feh --bg-fill $wallpaper --no-fehbg --bg-fill
 exec --no-startup-id ${HOME}/.config/redshift/launch.sh
