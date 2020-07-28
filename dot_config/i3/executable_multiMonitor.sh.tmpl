@@ -75,7 +75,7 @@ log() {
 
 
 # main
-if [[ isHdmiPresent == true ]]; then
+if [[ isHdmiPresent -eq "true" ]]; then
   log "HDMI monitor detected, setting it as primary..."
 {{- if eq .chezmoi.hostname "FR-VI-190802-01" }}
   setPrimary "HDMI-1"
