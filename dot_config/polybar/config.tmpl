@@ -11,7 +11,7 @@ monitor = ${env:MONITOR:eDP-1}
 wm-restack = i3
 width = 100%
 height = 35
-radius = 3
+radius = 5
 bottom = false
 fixed-center = true
 background = ${colors.background}
@@ -23,7 +23,7 @@ border-color = ${colors.primary}
 padding-left = 0
 padding-right = 0
 
-font-0 = Fira Code:style=Regular:size=10:antialias=true;1
+font-0 = Fira Code:style=Regular:size=10:antialias=true;0
 font-1 = Iosevka:style=bold:size=11:antialias=true;0
 font-2 = Font Awesome 5 Free Solid:pixelsize=12:antialias=true;1
 font-3 = Font Awesome 5 Brands:size=12:antialias=true;1
@@ -67,7 +67,6 @@ include-file = ~/.config/polybar/modules/xbacklight.ini
 include-file = ~/.config/polybar/modules/xbacklight-acpi.ini
 include-file = ~/.config/polybar/modules/xkeyboard.ini
 include-file = ~/.config/polybar/modules/xwindow.ini
-
 
 [module/sep]
 type = custom/text

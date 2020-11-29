@@ -29,7 +29,7 @@ alias la='ls -A'
 alias less='batcat --color always --decorations always'
 alias ll='ls -alF'
 alias meteo='curl -s https://wttr.in/Lyon'
-alias myip='curl -s https://api.ipify.org; echo;'
+alias myip='curl -s -H "accept: application/json" ifconfig.co | jq .; echo;'
 alias pingtcp='nping'
 alias pip='pip3'
 alias skynet='ansible-playbook'
@@ -41,7 +41,7 @@ amqt() {
 }
 
 # ecdsa key
-genecdsa() {
+crtgenkey() {
   openssl ecparam -name prime256v1 -genkey -out $1;
 }
 # csr req
@@ -50,25 +50,25 @@ genecdsa() {
 # "/C=US/ST=NY/L=NYC/O=Alphabet/OU=Google/
 # CN=*.google.com/subjectAltName=DNS.1=google.com/
 # emailAddress=infra@google.com"
-gencsr() {
+crtgencsr() {
   openssl req -new -nodes -sha256 -key $1.key -out $2.csr;
 }
 
 # x509 ecdsa self-signed cert with sha256 mac
-gencrt() {
+crtgen() {
  genecdsa selfkey.pem && \
  openssl req -x509 -days 1095 -nodes \
   -sha256 -new -key selfkey.pem -out selfcert.pem;
 }
 
 # csr req details
-infocsr() { openssl req -noout -text -in $1; }
+csrinfo() { openssl req -noout -text -in $1; }
 
 # ecdsa key details
-infoeck() { openssl ec -in $1 -text -noout; }
+ecinfo() { openssl ec -in $1 -text -noout; }
 
 # x509 cert details
-infocrt() { openssl x509 -in $1 -noout -text; }
+crtinfo() { openssl x509 -in $1 -noout -text; }
 
 # web stream download
 tvdl() {
@@ -236,6 +236,7 @@ nmcliWifiConnect () {
   nmcli con up ${1}
 }
 
+# aws
 ecrLogin() {
   $(aws ecr get-login \
     --no-include-email \
@@ -244,6 +245,14 @@ ecrLogin() {
    )
 }
 
+ec2List() {
+aws ec2 describe-instances \
+  --filters Name=tag-key,Values=Name \
+  --query 'Reservations[*].Instances[*].{Instance:InstanceId,AZ:Placement.AvailabilityZone,Name:Tags[?Key==`Name`]|[0].Value}' \
+  --output table
+}
+
+# ebooks
 syncEbooks() {
   local _backend=gdrive:documentation/Calibre/
   local _source=~/Documents/ebook/Calibre/

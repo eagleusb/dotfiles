@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/env bash
 
 set -e
 
@@ -48,6 +48,7 @@ setLeftOf() {
 }
 
 isHdmiPresent() {
+  #  1: +HDMI-2 1920/698x1080/393+1366+0  HDMI-2
   local PATTERN_HDMI='\s+\+(\*)?HDMI\-2\s'
   if [[ $(getCurrentMonitor | grep -coE "${PATTERN_HDMI}") == 1 ]]; then
     return true
@@ -82,10 +83,10 @@ if [[ isHdmiPresent -eq "true" ]]; then
   setLeftOf "HDMI-1" "eDP-1"
   setDpi "HDMI-1" "181"
 {{- else }}
-  setPrimary "HDMI-2"
-  setLeftOf "HDMI-2" "eDP-1"
-  setDpi "HDMI-2" "136"
-  setRefreshRate "HDMI-2" "120" "1920x1080"
+  setPrimary "HDMI2"
+  setLeftOf "HDMI2" "eDP1"
+  setDpi "HDMI2" "136"
+  setRefreshRate "HDMI2" "120" "1920x1080"
 {{- end }}
 else
   log "HDMI monitor not detected, nothing to do..."

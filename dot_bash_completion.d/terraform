@@ -1,1 +1,1 @@
-complete -C /home/groot/.local/bin/terraform terraform
+complete -C ~/.local/bin/terraform terraform

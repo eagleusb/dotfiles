@@ -1,4 +1,4 @@
-{
+    {
     "breadcrumbs.enabled": true,
     "files.autoSave": "onFocusChange",
     "files.defaultLanguage": "Markdown",
@@ -7,9 +7,8 @@
     "files.trimTrailingWhitespace": true,
     "editor.cursorSmoothCaretAnimation": true,
     "editor.cursorStyle": "block",
-    "editor.fontFamily": "Fira Code Retina, Fira Code",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 12,
+    "editor.fontFamily": "JuliaMono, Fira Code, Fira Code Retina",
+    "editor.fontLigatures": "'zero', 'ss03', 'ss05', 'ss08'",
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
     "editor.minimap.enabled": true,
@@ -29,7 +28,6 @@
     "telemetry.enableTelemetry": false,
     "workbench.colorTheme": "SynthWave '84",
     "workbench.editor.tabSizing": "shrink",
-    "workbench.iconTheme": "vscode-icons",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.statusBar.visible": true,
     "workbench.tips.enabled": false,
@@ -37,24 +35,12 @@
     "workbench.colorCustomizations": {
         "editorIndentGuide.activeBackground": "#a6ff00"
     },
-    "projectManager.git.maxDepthRecursion": 8,
-{{- if eq .chezmoi.hostname "FR-VI-190802-01" }}
     "projectManager.git.baseFolders": [
-        "/home/groot/Documents/code/navya",
+        "/home/p00/Documents/code",
+        "/home/p00/Documents/navya/code",
+        "/home/p00/Documents/superprod/code"
     ],
-{{- else }}
-    "projectManager.git.baseFolders": [
-        "/home/groot/Documents/code",
-    ],
-{{- end }}
     "projectManager.groupList": true,
-    "projectManager.any.ignoredFolders": [
-        "node_modules",
-        "out",
-        "test",
-        "tests",
-        ".terraform",
-    ],
     "terminal.external.linuxExec": "kitty",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontFamily": "Fira Code, Fira Code Retina",
@@ -66,7 +52,9 @@
     "git.detectSubmodulesLimit": 30,
     "git.promptToSaveFilesBeforeCommit": "always",
     "[git-commit]": {
-        "editor.rulers": [72]
+        "editor.rulers": [
+            72
+        ]
     },
     "prettier.singleQuote": true,
     "prettier.printWidth": 100,
@@ -77,40 +65,64 @@
     "javascript.preferences.importModuleSpecifier": "relative",
     "python.autoComplete.addBrackets": true,
     "python.jediEnabled": false,
-    "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
         "--line-length 100"
     ],
     "python.linting.banditEnabled": true,
     "yaml.format.enable": true,
-    "yaml.schemas": {},
     "files.associations": {
-        "**/defaults/*.yml": "ansible",
-        "**/handlers/*.yml": "ansible",
-        "**/meta/*.yml": "ansible",
-        "**/tasks/*.yml": "ansible",
-        "**/test*/*.yml": "ansible",
-        "**/vars/*.yml": "ansible",
+        "**/*.yml": "ansible",
     },
     "markdown.preview.fontFamily": "Fira Code Retina",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "terraform.indexing": {
+        "enabled": false,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.lintConfig": ".tflint.hcl",
     "terraform.languageServer": {
         "external": true,
         "args": [
             "serve"
         ]
     },
+    "terraform.telemetry.enabled": false,
     "go.autocompleteUnimportedPackages": true,
     "go.useCodeSnippetsOnFunctionSuggest": true,
     "go.useLanguageServer": true,
-{{- if eq .chezmoi.hostname "FR-VI-190802-01" }}
-    "go.toolsGopath": "/home/groot/go",
-{{- end }}
+    "go.toolsGopath": "/home/p00/go",
     "update.mode": "none",
     "extensions.showRecommendationsOnlyOnDemand": true,
-    "vs-kubernetes": {
-        "vs-kubernetes.minikube-path.linux": "/home/groot/.vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    "editor.fontSize": 12,
+    "python.languageServer": "Pylance",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     },
+    "projectManager.any.ignoredFolders": [
+        "node_modules",
+        "out",
+        "typings",
+        "test",
+        "cache",
+        ".terraform"
+    ],
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modifications",
+    "vsicons.dontShowNewVersionMessage": true,
+    "python.analysis.completeFunctionParens": true,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.preferredDarkColorTheme": "SynthWave '84",
+    "jupyter.addGotoCodeLenses": false,
+    "jupyter.allowInput": false,
+    "jupyter.allowLiveShare": false,
+    "jupyter.disableJupyterAutoStart": true,
+    "jupyter.enabled": false,
+
 }

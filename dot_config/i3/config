@@ -11,7 +11,7 @@ set $laptop     "1"
 set $terminal   "2"
 set $browser    "3"
 set $code       "4"
-set $screens    "HDMI-2 eDP-1"
+set $screens    "HDMI2 eDP1"
 set $locker     "i3lock -efti ${HOME}/.config/wallpapers/triangle-1920x1080.png"
 set $suspend    "i3lock -efti ${HOME}/.config/wallpapers/triangle-1920x1080.png && systemctl suspend"
 set $wallpaper  "${HOME}/.config/wallpapers/porsche.jpg"
@@ -226,7 +226,7 @@ bindsym $mod+shift+p mode "$mode_system"
 
 exec --no-startup-id ${HOME}/.config/i3/multiMonitor.sh
 exec --no-startup-id ${HOME}/.config/polybar/polybar.sh
-exec --no-startup-id picom -b --config ${HOME}/.config/picom/config
+#exec --no-startup-id picom -b --config ${HOME}/.config/picom/config
 exec --no-startup-id dunst -config ${HOME}/.config/dunst/dunstrc
 exec --no-startup-id wal -q --theme sexy-hund
 exec --no-startup-id xrdb -merge ${HOME}/.Xresources ${HOME}/.cache/wal/colors.Xresources
