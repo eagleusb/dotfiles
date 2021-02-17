@@ -9,6 +9,7 @@ esbenp.prettier-vscode
 golang.go
 hashicorp.terraform
 mitchdenny.ecdc
+ms-azuretools.vscode-docker
 ms-python.python
 ms-python.vscode-pylance
 ms-toolsai.jupyter
@@ -22,5 +23,5 @@ redhat.vscode-yaml
 RobbOwen.synthwave-vscode
 run-at-scale.terraform-doc-snippets
 vscode-icons-team.vscode-icons
-vscoss.vscode-ansible
+Wattenberger.footsteps
 wingrunr21.vscode-ruby

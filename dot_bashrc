@@ -144,7 +144,8 @@ export ANSIBLE_COLOR_CHANGED="yellow" \
   ANSIBLE_COLOR_WARN="purple"
 
 ### BuildKit
-export DOCKER_BUILDKIT=1
+export DOCKER_BUILDKIT=1 \
+DOCKER_CLI_EXPERIMENTAL=enabled
 
 ### PATH
 PATH="${PATH}:${HOME}/.local/bin"

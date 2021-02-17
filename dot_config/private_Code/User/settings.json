@@ -38,7 +38,8 @@
     "projectManager.git.baseFolders": [
         "/home/p00/Documents/code",
         "/home/p00/Documents/navya/code",
-        "/home/p00/Documents/superprod/code"
+        "/home/p00/Documents/superprod/code",
+        "/home/p00/Documents/dougs/code"
     ],
     "projectManager.groupList": true,
     "terminal.external.linuxExec": "kitty",
@@ -59,7 +60,6 @@
     "prettier.singleQuote": true,
     "prettier.printWidth": 100,
     "prettier.trailingComma": "es5",
-    "npm.enableScriptExplorer": true,
     "javascript.referencesCodeLens.enabled": true,
     "javascript.preferences.quoteStyle": "single",
     "javascript.preferences.importModuleSpecifier": "relative",
@@ -70,9 +70,7 @@
     ],
     "python.linting.banditEnabled": true,
     "yaml.format.enable": true,
-    "files.associations": {
-        "**/*.yml": "ansible",
-    },
+    "files.associations": {},
     "markdown.preview.fontFamily": "Fira Code Retina",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -99,7 +97,6 @@
     "go.useLanguageServer": true,
     "go.toolsGopath": "/home/p00/go",
     "update.mode": "none",
-    "extensions.showRecommendationsOnlyOnDemand": true,
     "editor.fontSize": 12,
     "python.languageServer": "Pylance",
     "[javascript]": {

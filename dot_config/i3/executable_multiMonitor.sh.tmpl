@@ -47,6 +47,16 @@ setLeftOf() {
   /usr/bin/xrandr --output ${1} --left-of ${2}
 }
 
+setWallpaper() {
+  local _wallpaper=${HOME}/.config/wallpapers/porsche.jpg
+  /usr/bin/feh --bg-fill ${_wallpaper} --no-fehbg --bg-fill
+}
+
+setPolybar() {
+  local _signal=USR1
+  /usr/bin/pkill --signal USR1 polybar
+}
+
 isHdmiPresent() {
   #  1: +HDMI-2 1920/698x1080/393+1366+0  HDMI-2
   local PATTERN_HDMI='\s+\+(\*)?HDMI\-2\s'
@@ -87,6 +97,8 @@ if [[ isHdmiPresent -eq "true" ]]; then
   setLeftOf "HDMI2" "eDP1"
   setDpi "HDMI2" "136"
   setRefreshRate "HDMI2" "120" "1920x1080"
+  setWallpaper
+  setPolybar
 {{- end }}
 else
   log "HDMI monitor not detected, nothing to do..."
