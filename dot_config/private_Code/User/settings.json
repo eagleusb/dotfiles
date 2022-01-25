@@ -1,4 +1,4 @@
-    {
+{
     "breadcrumbs.enabled": true,
     "files.autoSave": "onFocusChange",
     "files.defaultLanguage": "Markdown",
@@ -23,9 +23,11 @@
     "editor.rulers": [
         100
     ],
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "modifications",
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
     "explorer.autoReveal": false,
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
     "workbench.colorTheme": "SynthWave '84",
     "workbench.editor.tabSizing": "shrink",
     "workbench.startupEditor": "newUntitledFile",
@@ -36,10 +38,7 @@
         "editorIndentGuide.activeBackground": "#a6ff00"
     },
     "projectManager.git.baseFolders": [
-        "/home/p00/Documents/code",
-        "/home/p00/Documents/navya/code",
-        "/home/p00/Documents/superprod/code",
-        "/home/p00/Documents/dougs/code"
+        "/home/p00/Documents/bereal/code"
     ],
     "projectManager.groupList": true,
     "terminal.external.linuxExec": "kitty",
@@ -57,41 +56,27 @@
             72
         ]
     },
-    "prettier.singleQuote": true,
-    "prettier.printWidth": 100,
-    "prettier.trailingComma": "es5",
     "javascript.referencesCodeLens.enabled": true,
     "javascript.preferences.quoteStyle": "single",
     "javascript.preferences.importModuleSpecifier": "relative",
-    "python.autoComplete.addBrackets": true,
-    "python.jediEnabled": false,
     "python.formatting.blackArgs": [
         "--line-length 100"
     ],
     "python.linting.banditEnabled": true,
     "yaml.format.enable": true,
-    "files.associations": {},
+    "files.associations": {
+        "*.hcl": "terraform"
+    },
     "markdown.preview.fontFamily": "Fira Code Retina",
     "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "terraform.indexing": {
-        "enabled": false,
-        "liveIndexing": false,
-        "delay": 500,
-        "exclude": [
-            ".terraform/**/*",
-            "**/.terraform/**/*"
-        ]
-    },
-    "terraform.lintConfig": ".tflint.hcl",
     "terraform.languageServer": {
         "external": true,
         "args": [
             "serve"
         ]
     },
-    "terraform.telemetry.enabled": false,
     "go.autocompleteUnimportedPackages": true,
     "go.useCodeSnippetsOnFunctionSuggest": true,
     "go.useLanguageServer": true,
@@ -110,16 +95,16 @@
         "cache",
         ".terraform"
     ],
-    "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "modifications",
-    "vsicons.dontShowNewVersionMessage": true,
     "python.analysis.completeFunctionParens": true,
-    "workbench.iconTheme": "vscode-icons",
     "workbench.preferredDarkColorTheme": "SynthWave '84",
-    "jupyter.addGotoCodeLenses": false,
-    "jupyter.allowInput": false,
-    "jupyter.allowLiveShare": false,
-    "jupyter.disableJupyterAutoStart": true,
-    "jupyter.enabled": false,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "redhat.telemetry.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "security.workspace.trust.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "workbench.enableExperiments": false,
+    "workbench.iconTheme": "city-lights-icons-vsc",
 
 }

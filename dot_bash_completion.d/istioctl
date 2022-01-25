@@ -1,6 +1,6 @@
-# bash completion V2 for helm                                 -*- shell-script -*-
+# bash completion V2 for istioctl                             -*- shell-script -*-
 
-__helm_debug()
+__istioctl_debug()
 {
     if [[ -n ${BASH_COMP_DEBUG_FILE:-} ]]; then
         echo "$*" >> "${BASH_COMP_DEBUG_FILE}"
@@ -9,41 +9,41 @@ __helm_debug()
 
 # Macs have bash3 for which the bash-completion package doesn't include
 # _init_completion. This is a minimal version of that function.
-__helm_init_completion()
+__istioctl_init_completion()
 {
     COMPREPLY=()
     _get_comp_words_by_ref "$@" cur prev words cword
 }
 
-# This function calls the helm program to obtain the completion
+# This function calls the istioctl program to obtain the completion
 # results and the directive.  It fills the 'out' and 'directive' vars.
-__helm_get_completion_results() {
+__istioctl_get_completion_results() {
     local requestComp lastParam lastChar args
 
     # Prepare the command to request completions for the program.
-    # Calling ${words[0]} instead of directly helm allows to handle aliases
+    # Calling ${words[0]} instead of directly istioctl allows to handle aliases
     args=("${words[@]:1}")
     requestComp="${words[0]} __complete ${args[*]}"
 
     lastParam=${words[$((${#words[@]}-1))]}
     lastChar=${lastParam:$((${#lastParam}-1)):1}
-    __helm_debug "lastParam ${lastParam}, lastChar ${lastChar}"
+    __istioctl_debug "lastParam ${lastParam}, lastChar ${lastChar}"
 
     if [ -z "${cur}" ] && [ "${lastChar}" != "=" ]; then
         # If the last parameter is complete (there is a space following it)
         # We add an extra empty parameter so we can indicate this to the go method.
-        __helm_debug "Adding extra empty parameter"
+        __istioctl_debug "Adding extra empty parameter"
         requestComp="${requestComp} ''"
     fi
 
-    # When completing a flag with an = (e.g., helm -n=<TAB>)
+    # When completing a flag with an = (e.g., istioctl -n=<TAB>)
     # bash focuses on the part after the =, so we need to remove
     # the flag part from $cur
     if [[ "${cur}" == -*=* ]]; then
         cur="${cur#*=}"
     fi
 
-    __helm_debug "Calling ${requestComp}"
+    __istioctl_debug "Calling ${requestComp}"
     # Use eval to handle any environment variables and such
     out=$(eval "${requestComp}" 2>/dev/null)
 
@@ -55,11 +55,11 @@ __helm_get_completion_results() {
         # There is not directive specified
         directive=0
     fi
-    __helm_debug "The completion directive is: ${directive}"
-    __helm_debug "The completions are: ${out[*]}"
+    __istioctl_debug "The completion directive is: ${directive}"
+    __istioctl_debug "The completions are: ${out[*]}"
 }
 
-__helm_process_completion_results() {
+__istioctl_process_completion_results() {
     local shellCompDirectiveError=1
     local shellCompDirectiveNoSpace=2
     local shellCompDirectiveNoFileComp=4
@@ -68,23 +68,23 @@ __helm_process_completion_results() {
 
     if [ $((directive & shellCompDirectiveError)) -ne 0 ]; then
         # Error code.  No completion.
-        __helm_debug "Received error from custom completion go code"
+        __istioctl_debug "Received error from custom completion go code"
         return
     else
         if [ $((directive & shellCompDirectiveNoSpace)) -ne 0 ]; then
             if [[ $(type -t compopt) = "builtin" ]]; then
-                __helm_debug "Activating no space"
+                __istioctl_debug "Activating no space"
                 compopt -o nospace
             else
-                __helm_debug "No space directive not supported in this version of bash"
+                __istioctl_debug "No space directive not supported in this version of bash"
             fi
         fi
         if [ $((directive & shellCompDirectiveNoFileComp)) -ne 0 ]; then
             if [[ $(type -t compopt) = "builtin" ]]; then
-                __helm_debug "Activating no file completion"
+                __istioctl_debug "Activating no file completion"
                 compopt +o default
             else
-                __helm_debug "No file completion directive not supported in this version of bash"
+                __istioctl_debug "No file completion directive not supported in this version of bash"
             fi
         fi
     fi
@@ -100,7 +100,7 @@ __helm_process_completion_results() {
         done
 
         filteringCmd="_filedir $fullFilter"
-        __helm_debug "File filtering command: $filteringCmd"
+        __istioctl_debug "File filtering command: $filteringCmd"
         $filteringCmd
     elif [ $((directive & shellCompDirectiveFilterDirs)) -ne 0 ]; then
         # File completion for directories only
@@ -109,21 +109,21 @@ __helm_process_completion_results() {
         local subdir
         subdir=$(printf "%s" "${out[0]}")
         if [ -n "$subdir" ]; then
-            __helm_debug "Listing directories in $subdir"
+            __istioctl_debug "Listing directories in $subdir"
             pushd "$subdir" >/dev/null 2>&1 && _filedir -d && popd >/dev/null 2>&1 || return
         else
-            __helm_debug "Listing directories in ."
+            __istioctl_debug "Listing directories in ."
             _filedir -d
         fi
     else
-        __helm_handle_standard_completion_case
+        __istioctl_handle_standard_completion_case
     fi
 
-    __helm_handle_special_char "$cur" :
-    __helm_handle_special_char "$cur" =
+    __istioctl_handle_special_char "$cur" :
+    __istioctl_handle_special_char "$cur" =
 }
 
-__helm_handle_standard_completion_case() {
+__istioctl_handle_standard_completion_case() {
     local tab comp
     tab=$(printf '\t')
 
@@ -145,9 +145,9 @@ __helm_handle_standard_completion_case() {
             continue
         fi
 
-        __helm_debug "Original comp: $comp"
-        comp="$(__helm_format_comp_descriptions "$comp" "$longest")"
-        __helm_debug "Final comp: $comp"
+        __istioctl_debug "Original comp: $comp"
+        comp="$(__istioctl_format_comp_descriptions "$comp" "$longest")"
+        __istioctl_debug "Final comp: $comp"
         completions+=("$comp")
     done < <(printf "%s\n" "${out[@]}")
 
@@ -157,15 +157,15 @@ __helm_handle_standard_completion_case() {
 
     # If there is a single completion left, remove the description text
     if [ ${#COMPREPLY[*]} -eq 1 ]; then
-        __helm_debug "COMPREPLY[0]: ${COMPREPLY[0]}"
+        __istioctl_debug "COMPREPLY[0]: ${COMPREPLY[0]}"
         comp="${COMPREPLY[0]%% *}"
-        __helm_debug "Removed description from single completion, which is now: ${comp}"
+        __istioctl_debug "Removed description from single completion, which is now: ${comp}"
         COMPREPLY=()
         COMPREPLY+=("$comp")
     fi
 }
 
-__helm_handle_special_char()
+__istioctl_handle_special_char()
 {
     local comp="$1"
     local char=$2
@@ -178,7 +178,7 @@ __helm_handle_special_char()
     fi
 }
 
-__helm_format_comp_descriptions()
+__istioctl_format_comp_descriptions()
 {
     local tab
     tab=$(printf '\t')
@@ -221,7 +221,7 @@ __helm_format_comp_descriptions()
     printf "%q" "${comp}"
 }
 
-__start_helm()
+__start_istioctl()
 {
     local cur prev words cword split
 
@@ -232,28 +232,28 @@ __start_helm()
     if declare -F _init_completion >/dev/null 2>&1; then
         _init_completion -n "=:" || return
     else
-        __helm_init_completion -n "=:" || return
+        __istioctl_init_completion -n "=:" || return
     fi
 
-    __helm_debug
-    __helm_debug "========= starting completion logic =========="
-    __helm_debug "cur is ${cur}, words[*] is ${words[*]}, #words[@] is ${#words[@]}, cword is $cword"
+    __istioctl_debug
+    __istioctl_debug "========= starting completion logic =========="
+    __istioctl_debug "cur is ${cur}, words[*] is ${words[*]}, #words[@] is ${#words[@]}, cword is $cword"
 
     # The user could have moved the cursor backwards on the command-line.
     # We need to trigger completion from the $cword location, so we need
     # to truncate the command-line ($words) up to the $cword location.
     words=("${words[@]:0:$cword+1}")
-    __helm_debug "Truncated words[*]: ${words[*]},"
+    __istioctl_debug "Truncated words[*]: ${words[*]},"
 
     local out directive
-    __helm_get_completion_results
-    __helm_process_completion_results
+    __istioctl_get_completion_results
+    __istioctl_process_completion_results
 }
 
 if [[ $(type -t compopt) = "builtin" ]]; then
-    complete -o default -F __start_helm helm
+    complete -o default -F __start_istioctl istioctl
 else
-    complete -o default -o nospace -F __start_helm helm
+    complete -o default -o nospace -F __start_istioctl istioctl
 fi
 
 # ex: ts=4 sw=4 et filetype=sh

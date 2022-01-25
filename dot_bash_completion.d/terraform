@@ -1,1 +1,1 @@
-complete -C /usr/bin/terraform terraform
+complete -C /home/p00/.local/bin/terraform terraform
