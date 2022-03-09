@@ -15,18 +15,18 @@
 
 # tilix vte
 if [[ "$TILIX_ID" ]] || [[ "$VTE_VERSION" ]]; then
-  source /etc/profile.d/vte.sh
+  source /etc/profile.d/vte-2.91.sh
 fi
 
 # aliases
-alias cat='bat --plain --paging never'
+alias cat='batcat --plain --paging never'
 alias dotadd='chezmoi add'
 alias dotdir='cd ~/.local/share/chezmoi'
 alias kubelog='stern'
 alias kubelogs='kubelog'
 alias l='ls -CF'
 alias la='ls -A'
-alias less='bat --color always --decorations always'
+alias less='batcat --color always --decorations always'
 alias ll='ls -alF'
 alias meteo='curl -s https://wttr.in/Lyon'
 alias myip='curl -s -H "accept: application/json" ifconfig.co | jq .; echo;'
@@ -34,6 +34,7 @@ alias pingtcp='nping'
 alias pip='pip3'
 alias skynet='ansible-playbook'
 alias pgrep='pgrep -laf'
+alias k='kubectl'
 
 # functions
 amqt() {
@@ -272,4 +273,23 @@ syncEbooks() {
     (*)
     echo "invalid choice, must be yY or nN";;
   esac
+}
+
+kubeFailedPods() {
+kubectl get po \
+  --field-selector=status.phase=Failed \
+  -o custom-columns=CONTAINER:.metadata.name,NODE:.spec.nodeName,REASON:.status.message \
+  --all-namespaces
+}
+
+sopsEncrypt() {
+  type sops &>/dev/null || { echo 'sops not installed, quitting'; return; }
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
+  sops -i -e --verbose ${1}
+}
+
+sopsDecrypt() {
+  type sops &>/dev/null || { echo 'sops not installed, quitting'; return; }
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
+  sops -i -d --verbose ${1}
 }
