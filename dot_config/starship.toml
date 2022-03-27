@@ -1,0 +1,18 @@
+[line_break]
+disabled = false
+
+[time]
+disabled = false
+
+[username]
+style_user = "white bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[kubernetes]
+disabled = false
+
+[kubernetes.context_aliases]
+"gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster"
+
