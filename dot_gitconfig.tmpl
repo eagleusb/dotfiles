@@ -1,28 +1,28 @@
 {{- if eq .chezmoi.hostname "eagleusb" -}}
 [user]
-	email 			= git@eagleusb.com
-	name				= eagleusb
-	signingKey	= 860CB5668E43A76D7AAEE43812218A7BF1E27DD9
+	email		= git@eagleusb.com
+	name		= eagleusb
+	signingKey	= 824A5AB11D73DC3947F25D1891D179E02A64E836
 {{- else -}}
 [user]
-	email				= git@eagleusb.com
-	name				= eagleusb
+	email		= git@eagleusb.com
+	name		= eagleusb
 	signingKey	= 261A9BBA20205A3EFDEBAF26A293DEC498A799F3
 {{- end }}
 
 [alias]
 	ad				= add --all
-	added			= difftool --cached
-	author		= commit --amend --author
+	added				= difftool --cached
+	author				= commit --amend --author
 	br				= branch -a
-	branches	= branch -a
+	branches			= branch -a
 	ca				= commit -a
 	cm				= commit -m
 	co				= checkout
 	dc				= difftool --cached
 	di				= difftool
 	ds				= difftool --staged
-	hist			= log --graph --abbrev-commit --date=auto:human --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	hist				= log --graph --abbrev-commit --date=auto:human --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	lg				= log --oneline --graph --decorate
 	ls				= ls-files
 	lsi				= ls-files --others --i --exclude-standard
@@ -32,30 +32,30 @@
 	rba				= rebase --abort
 	rbc				= rebase --continue
 	rbi				= rebase -i
-	remotes		= remote -v
+	remotes				= remote -v
 	st				= status
-	subinit		= submodule update --init --recursive
-	subpull		= submodule foreach git pull
-	tags			= tag -l
+	subinit				= submodule update --init --recursive
+	subpull				= submodule foreach git pull
+	tags				= tag -l
 
 [help]
 	browser		= firefox
 	format		= man
 
 [color]
-	ui				= always
+	ui		= always
 
 [core]
 	editor		= vim
 
 [diff]
-	tool			= icdiff
+	tool		= icdiff
 
 [difftool]
 	prompt		= false
 
 [difftool "icdiff"]
-	cmd				= icdiff --no-bold --line-numbers --highlight $LOCAL $REMOTE
+	cmd		= icdiff --no-bold --line-numbers --highlight $LOCAL $REMOTE
 
 [pager]
 	difftool	= true
@@ -65,10 +65,10 @@
 
 [rebase]
 	autosquash	= true
-	stat				= true
+	stat		= true
 
 [filter "lfs"]
-	clean			= git-lfs clean -- %f
+	clean		= git-lfs clean -- %f
 	smudge		= git-lfs smudge -- %f
 	process		= git-lfs filter-process
 	required	= true
@@ -81,4 +81,4 @@
 
 [pull]
 	rebase		= false
-	ff				= only
+	ff		= only
