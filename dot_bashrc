@@ -12,7 +12,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+HISTSIZE=-1
 HISTFILESIZE=-1
 HISTTIMEFORMAT="%F %T "
 
@@ -147,6 +147,9 @@ export ANSIBLE_COLOR_CHANGED="yellow" \
 export DOCKER_BUILDKIT=1 \
 DOCKER_CLI_EXPERIMENTAL=enabled
 
+### gcloud
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 ### PATH
 PATH="${PATH}:${HOME}/.local/bin"
 PATH="${PATH}:${HOME}/go/bin"
@@ -159,6 +162,18 @@ PATH="${PATH}:/usr/lib/go/bin"
 export PATH="${PATH}"
 
 ### defaults
-export EDITOR="vim" VISUAL="code"
+export EDITOR="micro" VISUAL="code"
 
+### starship
+eval "$(starship init bash)"
 
+### gcp
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+### batcat
+export BAT_THEME=1337
+
+### zoxide
+export _ZO_ECHO=1 
+
+eval "$(zoxide init bash --cmd cd)"

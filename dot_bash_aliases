@@ -22,7 +22,7 @@ fi
 alias cat='batcat --plain --paging never'
 alias dotadd='chezmoi add'
 alias dotdir='cd ~/.local/share/chezmoi'
-alias kubelog='stern'
+alias kubelog='kubectl stern'
 alias kubelogs='kubelog'
 alias l='ls -CF'
 alias la='ls -A'
@@ -35,6 +35,9 @@ alias pip='pip3'
 alias skynet='ansible-playbook'
 alias pgrep='pgrep -laf'
 alias k='kubectl'
+alias kube='kubectl'
+alias vim='micro'
+alias vi='micro'
 
 # functions
 amqt() {
@@ -43,7 +46,7 @@ amqt() {
 
 # ecdsa key
 crtgenkey() {
-  openssl ecparam -name prime256v1 -genkey -out $1;
+  openssl ecparam -name prime256v1 -genkey -out "$1";
 }
 # csr req
 # optional subjectAltName if needed
@@ -52,7 +55,7 @@ crtgenkey() {
 # CN=*.google.com/subjectAltName=DNS.1=google.com/
 # emailAddress=infra@google.com"
 crtgencsr() {
-  openssl req -new -nodes -sha256 -key $1.key -out $2.csr;
+  openssl req -new -nodes -sha256 -key "$1.key" -out "$2.csr";
 }
 
 # x509 ecdsa self-signed cert with sha256 mac
@@ -63,13 +66,13 @@ crtgen() {
 }
 
 # csr req details
-csrinfo() { openssl req -noout -text -in $1; }
+csrinfo() { openssl req -noout -text -in "$1"; }
 
 # ecdsa key details
-ecinfo() { openssl ec -in $1 -text -noout; }
+ecinfo() { openssl ec -in "$1" -text -noout; }
 
 # x509 cert details
-crtinfo() { openssl x509 -in $1 -noout -text; }
+crtinfo() { openssl x509 -in "$1" -noout -text; }
 
 # web stream download
 tvdl() {
@@ -275,11 +278,48 @@ syncEbooks() {
   esac
 }
 
+kubeGetPod() {
+ [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
+ kubectl get po \
+  $1 --output yaml | batcat --theme Nord --language yaml
+}
+
 kubeFailedPods() {
 kubectl get po \
   --field-selector=status.phase=Failed \
-  -o custom-columns=CONTAINER:.metadata.name,NODE:.spec.nodeName,REASON:.status.message \
+  -o custom-columns=CONTAINER:.metadata.name,NODE:.spec.nodeName,REASON:.status.message
+}
+
+kubePendingPods() {
+kubectl get po \
+  --field-selector=status.phase=Pending \
+  --output custom-columns=CONTAINER:.metadata.name,NODE:.spec.nodeName,PHASE:.status.phase,REASON:.status.message \
   --all-namespaces
+}
+
+kubeGenerateYaml() {
+kinds=(clusterrole
+clusterrolebinding
+configmap
+cronjob
+deployment
+ingress
+job
+namespace
+poddisruptionbudget
+priorityclass
+quota
+role
+rolebinding
+secret
+service
+serviceaccount
+token)
+
+[[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (kind) allowed'; return;}
+[[ ${kinds[@]} =~ "$1" ]] || { echo "Kind error, must be one of ${kinds[@]}"; return; }
+
+kubectl create $1 cyberpunkYaml --image=uberImage --namespace=cryptoNamespace --dry-run=client --output=yaml
 }
 
 sopsEncrypt() {
@@ -292,4 +332,14 @@ sopsDecrypt() {
   type sops &>/dev/null || { echo 'sops not installed, quitting'; return; }
   [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
   sops -i -d --verbose ${1}
+}
+
+codeStart() {
+  local _server_id=9f9af7d0-a7d2-4677-8215-1c2e6ee25b3b
+  scw instance server start $_server_id --wait
+}
+
+codeStop() {
+  local _server_id=9f9af7d0-a7d2-4677-8215-1c2e6ee25b3b
+  scw instance server stop $_server_id --wait
 }
