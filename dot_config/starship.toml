@@ -86,6 +86,16 @@ style = 'bold blue'
 "gke_.*_(?P<var_cluster>[\\w-]+)" = "gke-$var_cluster"
 
 [gcloud]
+disabled = true
 symbol = ''
 format = 'on $symbol [\($project\)]($style) '
+
+[aws]
+disabled = false
+symbol = ''
+format = 'on $symbol [\($profile@$regions\)]($style) '
+
+[aws.region_aliases]
+us-west-2 = 'usw2'
+
 
