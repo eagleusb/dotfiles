@@ -10,6 +10,7 @@
         argocd
         awscli2
         aws-iam-authenticator
+        chezmoi
         cilium-cli
         curlie
         # discord
@@ -19,6 +20,7 @@
         # go-task
         google-cloud-sdk
         grpcurl
+        gum
         kubernetes-helm
         htop
         httpie
@@ -43,6 +45,7 @@
         spotifyd
         starship
         steam
+        vcluster
         yq-go
         zellij
         zoxide
@@ -54,6 +57,7 @@
         bazel
         bazelisk
         # cyber
+        evans
         go
         gore
         helm-ls
@@ -74,6 +78,7 @@
         tfsec
         trivy
         # vscode
+        werf
       ];
     };
     webPackages = pkgs.buildEnv {
