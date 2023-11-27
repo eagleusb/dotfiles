@@ -104,7 +104,7 @@ fi
 # Custom
 
 ## load user bash-completion scripts
-for completion in ~/.bash_completion.d/*; do
+for completion in ~/.bash_completion.d/* ~/.nix-profile/share/bash-completion/completions/*; do
   [[ -f "${completion}" ]] && . ${completion}
 done
 
@@ -177,3 +177,13 @@ export BAT_THEME=1337
 export _ZO_ECHO=1 
 
 eval "$(zoxide init bash --cmd cd)"
+
+### mclfy
+export MCFLY_FUZZY=0
+export MCFLY_RESULTS=8
+export MCFLY_INTERFACE_VIEW=BOTTOM
+export MCFLY_RESULTS_SORT=RANK
+export MCFLY_PROMPT="❯"
+
+eval "$(mcfly init bash)"
+eval "$(mcfly-fzf init bash)"

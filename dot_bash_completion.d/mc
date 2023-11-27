@@ -1,0 +1,2 @@
+complete -C /home/p00/.local/bin/mc mc
+

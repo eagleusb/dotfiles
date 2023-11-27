@@ -5,17 +5,15 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": true,
-    "editor.cursorSmoothCaretAnimation": true,
+    "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorStyle": "block",
-    "editor.fontFamily": "JuliaMono, Fira Code, Fira Code Retina",
+    "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": "'zero', 'ss03', 'ss05', 'ss08'",
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
     "editor.minimap.enabled": true,
     "editor.minimap.renderCharacters": false,
-    "editor.minimap.side": "left",
     "editor.renderControlCharacters": true,
-    "editor.renderWhitespace": "boundary",
     "editor.scrollBeyondLastLine": false,
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
@@ -24,27 +22,24 @@
         100
     ],
     "editor.formatOnSave": true,
-    "editor.formatOnSaveMode": "modifications",
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": "active",
     "explorer.autoReveal": false,
-    "workbench.colorTheme": "SynthWave '84",
+    "workbench.colorTheme": "Dracula",
     "workbench.editor.tabSizing": "shrink",
     "workbench.startupEditor": "newUntitledFile",
-    "workbench.statusBar.visible": true,
     "workbench.tips.enabled": false,
     "workbench.tree.renderIndentGuides": "always",
     "workbench.colorCustomizations": {
-        "editorIndentGuide.activeBackground": "#a6ff00"
+        "editorIndentGuide.activeBackground1": "#a6ff00"
     },
     "projectManager.git.baseFolders": [
-        "/home/p00/Documents/bereal/code"
+        "/home/p00/Documents/tenten/code"
     ],
     "projectManager.groupList": true,
-    "terminal.external.linuxExec": "kitty",
+    "terminal.external.linuxExec": "alacritty",
     "terminal.integrated.cursorBlinking": true,
-    "terminal.integrated.fontFamily": "Fira Code, Fira Code Retina",
-    "terminal.explorerKind": "external",
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
     "git.autofetch": true,
     "git.autofetchPeriod": 300,
     "git.enableCommitSigning": true,
@@ -53,58 +48,106 @@
     "git.promptToSaveFilesBeforeCommit": "always",
     "[git-commit]": {
         "editor.rulers": [
-            72
+            100
         ]
     },
     "javascript.referencesCodeLens.enabled": true,
     "javascript.preferences.quoteStyle": "single",
     "javascript.preferences.importModuleSpecifier": "relative",
-    "python.formatting.blackArgs": [
-        "--line-length 100"
-    ],
-    "python.linting.banditEnabled": true,
     "yaml.format.enable": true,
     "files.associations": {
-        "*.hcl": "terraform"
+        "*.tftpl": "terraform",
     },
     "markdown.preview.fontFamily": "Fira Code Retina",
     "[json]": {
         "editor.defaultFormatter": "vscode.json-language-features"
     },
-    "terraform.languageServer": {
-        "external": true,
-        "args": [
-            "serve"
-        ]
-    },
-    "go.autocompleteUnimportedPackages": true,
-    "go.useCodeSnippetsOnFunctionSuggest": true,
     "go.useLanguageServer": true,
     "go.toolsGopath": "/home/p00/go",
     "update.mode": "none",
-    "editor.fontSize": 12,
     "python.languageServer": "Pylance",
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "projectManager.any.ignoredFolders": [
+        ".npm",
+        ".terraform",
+        "cache",
         "node_modules",
         "out",
-        "typings",
         "test",
-        "cache",
-        ".terraform"
+        "typings",
     ],
     "python.analysis.completeFunctionParens": true,
-    "workbench.preferredDarkColorTheme": "SynthWave '84",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
+    "workbench.preferredDarkColorTheme": "Dracula",
     "redhat.telemetry.enabled": false,
     "security.workspace.trust.untrustedFiles": "open",
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
     "workbench.enableExperiments": false,
-    "workbench.iconTheme": "city-lights-icons-vsc",
-
+    "workbench.iconTheme": "city-lights-icons-vsc-light",
+    "projectManager.any.baseFolders": [
+        "~/Documents/tenten/code/"
+    ],
+    "workbench.preferredLightColorTheme": "Solarized Light",
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.autoClosingQuotes": "beforeWhitespace",
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "vs-kubernetes": {
+        "vs-kubernetes.crd-code-completion": "disabled",
+        "vscode-kubernetes.minikube-path.linux": "/home/p00/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube",
+        "vscode-kubernetes.helm-path.linux": "/home/p00/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vscode-kubernetes.kubectl-path.linux": "/home/p00/.local/state/vs-kubernetes/tools/kubectl/kubectl"
+    },
+    "editor.suggest.filterGraceful": true,
+    "editor.inlineSuggest.enabled": true,
+    "remote.SSH.remoteServerListenOnSocket": true,
+    "remote.SSH.remotePlatform": {
+        "code": "linux"
+    },
+    "workbench.tree.indent": 10,
+    "terraform.languageServer.enable": true,
+    "terraform.experimentalFeatures.validateOnSave": false,
+    "terraform.experimentalFeatures.prefillRequiredFields": true,
+    "terraform.languageServer.args": [
+        "serve",
+        "-req-concurrency=32"
+    ],
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.dragAndDrop": false,
+    "editor.experimentalWhitespaceRendering": "font",
+    "editor.renderWhitespace": "boundary",
+    "editor.suggest.preview": true,
+    "footsteps.doHighlightCurrentlyFocusedChunk": true,
+    "footsteps.doHighlightEmptyLines": false,
+    "footsteps.highlightColor": "rgb(190, 60, 255)",
+    "footsteps.highlightColorMaxOpacity": 0.15,
+    "footsteps.maxNumberOfChangesToHighlight": 2,
+    "footsteps.maxNumberOfChangesToRemember": 5,
+    "footsteps.minDistanceFromCursorToHighlight": 5,
+    "git.confirmSync": false,
+    "git.openRepositoryInParentFolders": "never",
+    "github.gitProtocol": "ssh",
+    "githubPullRequests.pullBranch": "never",
+    "githubPullRequests.pushBranch": "always",
+    "terminal.explorerKind": "external",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.defaultLocation": "editor",
+    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.hideOnStartup": "whenEmpty",
+    "terminal.integrated.minimumContrastRatio": 7,
+    "terminal.integrated.persistentSessionReviveProcess": "never",
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.sourceControlRepositoriesKind": "external",
+    "window.zoomLevel": 0.8,
+    "workbench.editor.empty.hint": "hidden",
+    "task.problemMatchers.neverPrompt": {
+        "shell": true
+    },
+    "githubPullRequests.createOnPublishBranch": "never",
+    "githubPullRequests.postCreate": "none",
+    "githubPullRequests.pullRequestDescription": "none",
+    "go.toolsManagement.autoUpdate": true,
 }

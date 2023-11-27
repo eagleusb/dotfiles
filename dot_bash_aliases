@@ -2,17 +2,6 @@
 # keychain --eval --lockwait 45 --quick \
 # ~/Documents/bunker/pwet
 
-# kubectl bash_completion
-# source <(kubectl completion bash)
-
-# govc / vsphere
-#. ~/Documents/bunker/.govc
-
-# tmux
-# if not running interactively, do not do anything
-#[[ $- != *i* ]] && return
-#[[ -z "$TMUX" ]] && exec tmux -2 -u
-
 # tilix vte
 if [[ "$TILIX_ID" ]] || [[ "$VTE_VERSION" ]]; then
   source /etc/profile.d/vte-2.91.sh
@@ -22,16 +11,17 @@ fi
 alias cat='batcat --plain --paging never'
 alias dotadd='chezmoi add'
 alias dotdir='cd ~/.local/share/chezmoi'
-alias kubelog='kubectl stern'
+alias kubelog='kubectl stern --color always --exclude-container ".*istio.*" --tail 100 --max-log-requests 500'
 alias kubelogs='kubelog'
 alias l='ls -CF'
 alias la='ls -A'
 alias less='batcat --color always --decorations always'
 alias ll='ls -alF'
 alias meteo='curl -s https://wttr.in/Lyon'
-alias myip='curl -s -H "accept: application/json" ifconfig.co | jq .; echo;'
+alias myip='dig -4 txt +short o-o.myaddr.l.google.com @ns1.google.com'
 alias pingtcp='nping'
 alias pip='pip3'
+alias grep='rg'
 alias skynet='ansible-playbook'
 alias pgrep='pgrep -laf'
 alias k='kubectl'
@@ -244,7 +234,7 @@ nmcliWifiConnect () {
 ecrLogin() {
   $(aws ecr get-login \
     --no-include-email \
-    --region eu-west-1 \
+    --region us-west-2 \
     --profile common
    )
 }
@@ -278,10 +268,35 @@ syncEbooks() {
   esac
 }
 
+# kubernetes
+kubeEvents() {
+	[[ ${#} == 0 ]] || { echo 'Syntax error, no argument expected'; return; }
+	viddy -n 5 kubectl get events --sort-by=lastTimestamp
+}
+
+kubeDebugPod() {
+ [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (pod name) allowed'; return; }
+ local _debug_image="268380563144.dkr.ecr.us-west-2.amazonaws.com/tenten-debug"
+ kubectl debug pod/"$1" --stdin --tty --image="$_debug_image" -- bash
+}
+
+kubeDebugNode() {
+ [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (node name) allowed'; return; }
+ local _debug_image="268380563144.dkr.ecr.us-west-2.amazonaws.com/tenten-debug"
+ kubectl debug node/"$1" --stdin --tty --image="$_debug_image" -- bash
+}
+
 kubeGetPod() {
  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
  kubectl get po \
-  $1 --output yaml | batcat --theme Nord --language yaml
+  "$1" --output yaml | batcat --theme Nord --language yaml
+}
+
+kubeDeleteAllPods() {
+ [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (namespace) allowed'; return; }	
+ kubectl get po \
+  --namespace "$1" --output custom-columns=POD:.metadata.name --no-headers | \
+  xargs -I{} -P50 kubectl --namespace "$1" delete po {}
 }
 
 kubeFailedPods() {
@@ -317,21 +332,35 @@ serviceaccount
 token)
 
 [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (kind) allowed'; return;}
-[[ ${kinds[@]} =~ "$1" ]] || { echo "Kind error, must be one of ${kinds[@]}"; return; }
+[[ ${kinds[*]} =~ ${1} ]] || { echo "Kind error, must be one of ${kinds[*]}"; return; }
 
-kubectl create $1 cyberpunkYaml --image=uberImage --namespace=cryptoNamespace --dry-run=client --output=yaml
+kubectl create "$1" cyberpunkYaml --image=uberImage --namespace=cryptoNamespace --dry-run=client --output=yaml
+}
+
+function ciliumAllEndpoints { 
+	kubectl get cep --all-namespaces -o json | jq -r '.items[].metadata | .namespace + "/" + .name'; 
+}
+
+function ciliumAllPods { 
+	kubectl get pods --all-namespaces -o json | \
+	jq -r '.items[] | select((.status.phase=="Running" or .status.phase=="Pending") and (.spec.hostNetwork==true | not)) | .metadata | .namespace + "/" + .name'; 
+}
+	
+ciliumNotManagedPods() {
+	echo "Skipping pods with host networking enabled or with status not in Running or Pending phase..."
+	sort <(ciliumAllEndpoints) <(ciliumAllPods) | uniq -u
 }
 
 sopsEncrypt() {
   type sops &>/dev/null || { echo 'sops not installed, quitting'; return; }
   [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
-  sops -i -e --verbose ${1}
+  sops -i -e --verbose "$1"
 }
 
 sopsDecrypt() {
   type sops &>/dev/null || { echo 'sops not installed, quitting'; return; }
   [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
-  sops -i -d --verbose ${1}
+  sops -i -d --verbose "$1"
 }
 
 codeStart() {
@@ -342,4 +371,9 @@ codeStart() {
 codeStop() {
   local _server_id=9f9af7d0-a7d2-4677-8215-1c2e6ee25b3b
   scw instance server stop $_server_id --wait
+}
+
+curlDebugCdn() {
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (url) allowed'; return;}
+	curl -o/dev/null -vIH 'X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state' "$1"
 }
