@@ -8,14 +8,14 @@ if [[ "$TILIX_ID" ]] || [[ "$VTE_VERSION" ]]; then
 fi
 
 # aliases
-alias cat='batcat --plain --paging never'
+alias cat='bat --plain --no-pager'
 alias dotadd='chezmoi add'
 alias dotdir='cd ~/.local/share/chezmoi'
 alias kubelog='kubectl stern --color always --exclude-container ".*istio.*" --tail 100 --max-log-requests 500'
 alias kubelogs='kubelog'
 alias l='ls -CF'
 alias la='ls -A'
-alias less='batcat --color always --decorations always'
+alias less='bat --color always --decorations always'
 alias ll='ls -alF'
 alias meteo='curl -s https://wttr.in/Lyon'
 alias myip='dig -4 txt +short o-o.myaddr.l.google.com @ns1.google.com'
@@ -289,7 +289,7 @@ kubeDebugNode() {
 kubeGetPod() {
  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
  kubectl get po \
-  "$1" --output yaml | batcat --theme Nord --language yaml
+  "$1" --output yaml | bat --theme Nord --language yaml
 }
 
 kubeDeleteAllPods() {
