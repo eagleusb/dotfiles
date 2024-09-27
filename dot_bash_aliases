@@ -8,6 +8,7 @@ if [[ "$TILIX_ID" ]] || [[ "$VTE_VERSION" ]]; then
 fi
 
 # aliases
+alias bazel='bazelisk'
 alias cat='bat --plain --no-pager'
 alias dotadd='chezmoi add'
 alias dotdir='cd ~/.local/share/chezmoi'
@@ -232,18 +233,25 @@ nmcliWifiConnect () {
 
 # aws
 ecrLogin() {
-  $(aws ecr get-login \
+  eval "$(aws ecr get-login \
     --no-include-email \
     --region us-west-2 \
     --profile common
-   )
+   )"
 }
 
 ec2List() {
-aws ec2 describe-instances \
-  --filters Name=tag-key,Values=Name \
-  --query 'Reservations[*].Instances[*].{Instance:InstanceId,AZ:Placement.AvailabilityZone,Name:Tags[?Key==`Name`]|[0].Value}' \
-  --output table
+  aws ec2 describe-instances \
+    --filters Name=tag-key,Values=Name \
+    --query 'Reservations[*].Instances[*].{Instance:InstanceId,AZ:Placement.AvailabilityZone,Name:Tags[?Key==`Name`]|[0].Value}' \
+    --output table
+}
+
+eksListAddons() {
+  aws eks describe-addon-versions \
+    --kubernetes-version 1.29 \
+    --query 'addons[].{Name: addonName, Owner: owner Publisher: publisher, Type: type, latest: addonVersions[0].addonVersion}' \
+    --output table
 }
 
 # ebooks
@@ -255,61 +263,83 @@ syncEbooks() {
   rclone --fast-list copy --progress \
     ${_source} ${_backend} --dry-run
 
-  read -ep "Launch the copy ? [Y/n]"
+  read -n 1 -rep "Launch the copy ? [Y/n]" _reply
 
-  case ${REPLY:-Y} in
+  case ${_reply:-Y} in
     ("y"|"Y")
-    rclone --bwlimit ${_bwlimit} --fast-list --transfers 4 --update \
-      copy --progress ${_source} ${_backend};;
+      rclone --bwlimit ${_bwlimit} --fast-list --transfers 4 --update \
+        copy --progress ${_source} ${_backend}
+      ;;
     ("n"|"N")
-    echo "canceling, doing nothing...";;
+      echo "canceling, doing nothing..."
+      ;;
     (*)
-    echo "invalid choice, must be yY or nN";;
+      echo "invalid choice, must be yY or nN"
+      ;;
   esac
 }
 
 # kubernetes
 kubeEvents() {
-	[[ ${#} == 0 ]] || { echo 'Syntax error, no argument expected'; return; }
-	viddy -n 5 kubectl get events --sort-by=lastTimestamp
+  [[ ${#} == 0 ]] || { echo 'Syntax error, no argument expected'; return; }
+  viddy -n 5 kubectl get events --sort-by=lastTimestamp
 }
 
 kubeDebugPod() {
- [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (pod name) allowed'; return; }
- local _debug_image="268380563144.dkr.ecr.us-west-2.amazonaws.com/tenten-debug"
- kubectl debug pod/"$1" --stdin --tty --image="$_debug_image" -- bash
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (pod name) allowed'; return; }
+  local _debug_image="268380563144.dkr.ecr.us-west-2.amazonaws.com/tenten-debug"
+  kubectl debug pod/"$1" --stdin --tty --image="$_debug_image" --container=debug --profile=sysadmin -- bash
+}
+
+kubeDebugIstioProxy() {
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (pod name) allowed'; return; }
+  local _debug_image="268380563144.dkr.ecr.us-west-2.amazonaws.com/tenten-debug"
+  kubectl debug pod/"$1" --stdin --tty --image="$_debug_image" --container=debug --target=istio-proxy --profile=sysadmin -- bash
 }
 
 kubeDebugNode() {
- [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (node name) allowed'; return; }
- local _debug_image="268380563144.dkr.ecr.us-west-2.amazonaws.com/tenten-debug"
- kubectl debug node/"$1" --stdin --tty --image="$_debug_image" -- bash
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (node name) allowed'; return; }
+  local _debug_image="268380563144.dkr.ecr.us-west-2.amazonaws.com/tenten-debug"
+  kubectl debug node/"$1" --stdin --tty --image="$_debug_image" --container=debug --profile=sysadmin -- bash
 }
 
 kubeGetPod() {
- [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
- kubectl get po \
-  "$1" --output yaml | bat --theme Nord --language yaml
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (pod name) allowed'; return; }
+  kubectl get po \
+    "$1" --output yaml | bat --theme Nord --language yaml
 }
 
 kubeDeleteAllPods() {
- [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (namespace) allowed'; return; }	
- kubectl get po \
-  --namespace "$1" --output custom-columns=POD:.metadata.name --no-headers | \
-  xargs -I{} -P50 kubectl --namespace "$1" delete po {}
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (namespace) allowed'; return; }
+
+  read -n 1 -rep "Are you sure to delete all pods in $1 namespace ? [y/N]" _reply
+  case ${_reply:-N} in
+    ("y"|"Y")
+      kubectl get po \
+        --namespace "$1" --output custom-columns=POD:.metadata.name --no-headers | \
+        xargs -I{} -P50 -- echo kubectl --namespace "$1" delete po {}
+      ;;
+    ("n"|"N")
+      echo "canceling, doing nothing..."
+      ;;
+    (*)
+      echo "invalid choice, must be yY or nN"
+      ;;
+  esac
+
 }
 
 kubeFailedPods() {
-kubectl get po \
-  --field-selector=status.phase=Failed \
-  -o custom-columns=CONTAINER:.metadata.name,NODE:.spec.nodeName,REASON:.status.message
+  kubectl get po \
+    --field-selector=status.phase=Failed \
+    -o custom-columns=CONTAINER:.metadata.name,NODE:.spec.nodeName,REASON:.status.message
 }
 
 kubePendingPods() {
-kubectl get po \
-  --field-selector=status.phase=Pending \
-  --output custom-columns=CONTAINER:.metadata.name,NODE:.spec.nodeName,PHASE:.status.phase,REASON:.status.message \
-  --all-namespaces
+  kubectl get po \
+    --field-selector=status.phase=Pending \
+    --output custom-columns=CONTAINER:.metadata.name,NODE:.spec.nodeName,PHASE:.status.phase,REASON:.status.message \
+    --all-namespaces
 }
 
 kubeGenerateYaml() {
@@ -331,24 +361,34 @@ service
 serviceaccount
 token)
 
-[[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (kind) allowed'; return;}
-[[ ${kinds[*]} =~ ${1} ]] || { echo "Kind error, must be one of ${kinds[*]}"; return; }
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (kind) allowed'; return;}
+  [[ ${kinds[*]} =~ ${1} ]] || { echo "Kind error, must be one of ${kinds[*]}"; return; }
 
-kubectl create "$1" cyberpunkYaml --image=uberImage --namespace=cryptoNamespace --dry-run=client --output=yaml
+  kubectl create "$1" cyberpunkYaml --image=uberImage --namespace=cryptoNamespace --dry-run=client --output=yaml
 }
 
-function ciliumAllEndpoints { 
-	kubectl get cep --all-namespaces -o json | jq -r '.items[].metadata | .namespace + "/" + .name'; 
+kubePodsPerNodeLabel() {
+  [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (node label key=value) allowed'; return;}
+
+  echo "Getting all pods located on nodes with $1 label"
+
+  kubectl get no -l "$1" -ojsonpath='{.items[*].metadata.name}' | \
+    xargs -P1 -I## -d' ' \
+    -- kubectl get po --all-namespaces -ojsonpath='Kubernetes Node: "##"{"\n"}{range .items[?(@.spec.nodeName=="##")]}{"\t"}{.metadata.name} (node: {.spec.nodeName}) {"\n"} {end}{"\n"}'
 }
 
-function ciliumAllPods { 
-	kubectl get pods --all-namespaces -o json | \
-	jq -r '.items[] | select((.status.phase=="Running" or .status.phase=="Pending") and (.spec.hostNetwork==true | not)) | .metadata | .namespace + "/" + .name'; 
+function ciliumAllEndpoints {
+  kubectl get cep --all-namespaces -ojson | jq -r '.items[].metadata | .namespace + "/" + .name';
 }
-	
+
+function ciliumAllPods {
+  kubectl get pods --all-namespaces -ojson | \
+    jq -r '.items[] | select((.status.phase=="Running" or .status.phase=="Pending") and (.spec.hostNetwork==true | not)) | .metadata | .namespace + "/" + .name';
+}
+
 ciliumNotManagedPods() {
-	echo "Skipping pods with host networking enabled or with status not in Running or Pending phase..."
-	sort <(ciliumAllEndpoints) <(ciliumAllPods) | uniq -u
+  echo "Skipping pods with host networking enabled or with status not in Running or Pending phase..."
+  sort <(ciliumAllEndpoints) <(ciliumAllPods) | uniq -u
 }
 
 sopsEncrypt() {
@@ -375,5 +415,5 @@ codeStop() {
 
 curlDebugCdn() {
   [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (url) allowed'; return;}
-	curl -o/dev/null -vIH 'X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state' "$1"
+  curl -o/dev/null -vIH 'X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state' "$1"
 }
