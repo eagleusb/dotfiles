@@ -7,32 +7,51 @@
       name = "core-packages";
       paths = [
         # alacritty
+        apko
         argocd
         awscli2
         aws-iam-authenticator
         aws-vault
+        bat
+        bore-cli
+        buildkit
+        containerd
         chezmoi
         cilium-cli
+        click
+        clickhouse
+        cni-plugins
+        coreutils-prefixed
+        cosign
         curlie
+        crun
         # discord
+        direnv
         dive
         docker-compose
         eksctl
         eks-node-viewer
+        envoy
         fzf
-        # go-task
-        google-cloud-sdk
+        ghz
+        git
+        go-task
+        grafana-dash-n-grab
         grafana-loki
         grpcurl
         gum
         kubernetes-helm
         handbrake
+        hey
         htop
         httpie
+        httpx
         hubble
+        hurl
         hyperfine
         istioctl
         # kitty
+        just
         k9s
         krew
         kubeconform
@@ -50,30 +69,41 @@
         lf
         mage
         mcfly
+        melange
+        micro
         minio-client
         minisign
+        mise
+        nerdctl
         natscli
         nats-top
         nnn
         nushell
         packer
+        podman
         popeye
         pywal
+        rclone
         ripgrep
         regclient
-        replibyte
+        # replibyte
         scaleway-cli
         skaffold
         # slack
         sops
         # spotify
-        spotifyd
+        # spotifyd
         starship
         stern
+        usql
+        vegeta
+        vhs
         vcluster
         viddy
         wtf
+        xh
         yq-go
+        # yubikey-manager
         zellij
         zoxide
       ];
@@ -86,30 +116,35 @@
         bazel-buildtools
         bazelisk
         buildpack
-        cargo
+        bun
+        # cargo
         # cyber
         chart-testing
         dart
+        # deno
         evans
+        fnm
         go
         gore
         goreleaser
         helm-ls
         helm-docs
         hugo
+        icdiff
         kube-linter
-        nodejs
-        opentofu
+        # nodejs
+        # opentofu
         pulumi
         risor
-        rustc
+        # rustc
         shellcheck
-        terraform
+        tenv
+        # terraform
         terraform-docs
         terraform-ls
         terraformer
         terraforming
-        terragrunt
+        # terragrunt
         terrascan
         tfk8s
         tflint
