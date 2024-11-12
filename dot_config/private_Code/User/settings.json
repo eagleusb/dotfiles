@@ -7,7 +7,7 @@
     "files.trimTrailingWhitespace": true,
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.cursorStyle": "block",
-    "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "FiraCode Nerd Font, JuliaMono",
     "editor.fontLigatures": "'zero', 'ss03', 'ss05', 'ss08'",
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
@@ -25,7 +25,6 @@
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": "active",
     "explorer.autoReveal": false,
-    "workbench.colorTheme": "Dracula",
     "workbench.editor.tabSizing": "shrink",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.tips.enabled": false,
@@ -34,10 +33,11 @@
         "editorIndentGuide.activeBackground1": "#a6ff00"
     },
     "projectManager.git.baseFolders": [
-        "/home/p00/Documents/tenten/code"
+        "/home/p00/Documents/tenten/code",
+        "/home/p00/Documents/code"
     ],
     "projectManager.groupList": true,
-    "terminal.external.linuxExec": "alacritty",
+    "terminal.external.linuxExec": "/usr/bin/alacritty",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontFamily": "FiraCode Nerd Font",
     "git.autofetch": true,
@@ -85,7 +85,6 @@
     "security.workspace.trust.enabled": false,
     "telemetry.telemetryLevel": "off",
     "workbench.enableExperiments": false,
-    "workbench.iconTheme": "city-lights-icons-vsc-light",
     "projectManager.any.baseFolders": [
         "~/Documents/tenten/code/"
     ],
@@ -141,7 +140,6 @@
     "terminal.integrated.scrollback": 10000,
     "terminal.integrated.smoothScrolling": true,
     "terminal.sourceControlRepositoriesKind": "external",
-    "window.zoomLevel": 0.8,
     "workbench.editor.empty.hint": "hidden",
     "task.problemMatchers.neverPrompt": {
         "shell": true
@@ -150,4 +148,22 @@
     "githubPullRequests.postCreate": "none",
     "githubPullRequests.pullRequestDescription": "none",
     "go.toolsManagement.autoUpdate": true,
+    "vscode-kubernetes.log-viewer.follow": true,
+    "bazel.enableCodeLens": true,
+    "workbench.colorTheme": "GitHub Dark Default",
+    "githubPullRequests.terminalLinksHandler": "github",
+    "codeium.aggressiveShutdown": true,
+    "codeium.searchMaxWorkspaceFileCount": 1500,
+    "[typescript]": {
+        "editor.defaultFormatter": "denoland.vscode-deno"
+    },
+    "terraform.languageServer.terraform.path": "/home/p00/.nix-profile/bin/tofu",
+    "continue.telemetryEnabled": false,
+    "continue.enableTabAutocomplete": false,
+    "editor.autoClosingComments": "beforeWhitespace",
+    "window.menuBarVisibility": "compact",
+    "window.zoomPerWindow": false,
+    "window.zoomLevel": 2,
+    "window.newWindowProfile": "Default",
+    "projectManager.git.maxDepthRecursion": 2,
 }
