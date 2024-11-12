@@ -107,3 +107,16 @@ export ANDROID_NDK_HOME="${HOME}/Android/Sdk/ndk/r25c/"
 
 ### gpg
 export GPG_TTY=$(tty)
+
+### node / fnm
+eval "$(fnm env)"
+
+### direnv
+eval "$(direnv hook bash)"
+
+### vertexai
+export GOOGLE_APPLICATION_CREDENTIALS=~/Documents/bunker/skynet-441218-ded6b587cbb4.json
+
+### qt scaling
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export QT_ENABLE_HIGHDPI_SCALING=1

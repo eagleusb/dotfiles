@@ -377,6 +377,16 @@ kubePodsPerNodeLabel() {
     -- kubectl get po --all-namespaces -ojsonpath='Kubernetes Node: "##"{"\n"}{range .items[?(@.spec.nodeName=="##")]}{"\t"}{.metadata.name} (node: {.spec.nodeName}) {"\n"} {end}{"\n"}'
 }
 
+kubePodsPerNodeName() {
+  [[ ${#} -ge 1 && ${#} -le 10 ]] || { echo 'Syntax error, a maximum of 10 node names is allowed'; return;}
+
+  echo "Getting all pods located on nodes named $@"
+
+  echo -n "$@" | \
+    xargs -P1 -I## -d' ' \
+    -- kubectl get po --all-namespaces -ojsonpath='Kubernetes Node: "##"{"\n"}{range .items[?(@.spec.nodeName=="##")]}{"\t"}{.metadata.name} (node: {.spec.nodeName}) {"\n"} {end}{"\n"}'
+}
+
 function ciliumAllEndpoints {
   kubectl get cep --all-namespaces -ojson | jq -r '.items[].metadata | .namespace + "/" + .name';
 }
