@@ -12,8 +12,8 @@ alias bazel='bazelisk'
 alias cat='bat --plain --no-pager'
 alias dotadd='chezmoi add'
 alias dotdir='cd ~/.local/share/chezmoi'
-alias kubelog='kubectl stern --color always --exclude-container ".*istio.*" --tail 100 --max-log-requests 500'
-alias kubelogs='kubelog'
+alias kubelog='kubeLog'
+alias kubelogs='kubeLog'
 alias l='ls -CF'
 alias la='ls -A'
 alias less='bat --color always --decorations always'
@@ -385,6 +385,19 @@ kubePodsPerNodeName() {
   echo -n "$@" | \
     xargs -P1 -I## -d' ' \
     -- kubectl get po --all-namespaces -ojsonpath='Kubernetes Node: "##"{"\n"}{range .items[?(@.spec.nodeName=="##")]}{"\t"}{.metadata.name} (node: {.spec.nodeName}) {"\n"} {end}{"\n"}'
+}
+
+kubeLog() {
+  kubectl stern \
+    "${1}" \
+    --color always \
+    --highlight 'err' \
+    --since 30m \
+    --tail 25 \
+    --max-log-requests 100 \
+    --timestamps short \
+    --diff-container \
+    --all-namespaces
 }
 
 function ciliumAllEndpoints {
