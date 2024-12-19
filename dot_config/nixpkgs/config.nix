@@ -26,6 +26,7 @@
         curlie
         crun
         # discord
+        difftastic
         direnv
         dive
         docker-compose
@@ -49,6 +50,7 @@
         hubble
         hurl
         hyperfine
+        ingress2gateway
         istioctl
         # kitty
         just
@@ -134,8 +136,10 @@
         kube-linter
         # nodejs
         # opentofu
-        pulumi
+        poetry
+        # pulumi
         risor
+        ruff
         # rustc
         shellcheck
         tenv
@@ -150,6 +154,7 @@
         tflint
         tfsec
         trivy
+        uv
         via
         # vscode
         werf
