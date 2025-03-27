@@ -5,3 +5,11 @@
 --fail-with-body
 --location
 --verbose
+--progress-bar
+--show-headers
+--tcp-fastopen
+--tcp-nodelay
+--tlsv1.2
+--parallel
+--parallel-immediate
+--write-out "\ncontent-type: %{content_type}\nhttp_code: %{http_code}\nhttp-vers: %{http_version}\nverb: %{method}\nremote: %{remote_ip}\ntime: %{time_appconnect} (tls %{time_connect}) (lookup %{time_namelookup}) (redir %{time_redirect}) (TTFB %{time_starttransfer}) (total %{time_total})"
