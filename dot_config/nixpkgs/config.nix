@@ -34,9 +34,11 @@
         eks-node-viewer
         envoy
         fzf
+        # ghostty
         ghz
         git
         go-task
+        gping
         grafana-dash-n-grab
         grafana-loki
         grpcurl
@@ -72,6 +74,7 @@
         mage
         mcfly
         melange
+        memtier-benchmark
         micro
         minio-client
         minisign
@@ -97,7 +100,9 @@
         # spotifyd
         starship
         stern
+        typst
         usql
+        valkey
         vegeta
         vhs
         vcluster
@@ -136,12 +141,14 @@
         kube-linter
         # nodejs
         # opentofu
+        opentelemetry-collector-builder
         poetry
         # pulumi
         risor
         ruff
         # rustc
         shellcheck
+        temporal-cli
         tenv
         # terraform
         terraform-docs
