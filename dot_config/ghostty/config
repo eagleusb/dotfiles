@@ -1,0 +1,31 @@
+# ghostty +list-fonts
+font-family = "FiraCode Nerd Font Mono"
+font-feature = +zero +ss03 +ss05 +liga
+font-size = 14.0
+window-inherit-font-size = false
+wait-after-command = true
+scrollback-limit = 65536
+
+# ghostty +list-themes
+theme = "Apple System Colors"
+
+# cursor
+cursor-style = "block"
+cursor-style-blink = true
+mouse-hide-while-typing = true
+
+# tab
+#split-divider-color = #RRGGBB
+
+# ghostty +list-actions
+#keybind =
+
+# size
+window-height = 1024
+window-width = 600
+window-save-state = default
+
+# copy pasta
+copy-on-select = clipboard
+clipboard-trim-trailing-spaces = true
+clipboard-paste-protection = true
