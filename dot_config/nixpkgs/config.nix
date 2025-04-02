@@ -127,10 +127,12 @@
         # cargo
         # cyber
         chart-testing
+        d2
         dart
         # deno
         evans
         fnm
+        git-cliff
         go
         gore
         goreleaser
@@ -139,6 +141,7 @@
         hugo
         icdiff
         kube-linter
+        lefthook
         # nodejs
         # opentofu
         opentelemetry-collector-builder
