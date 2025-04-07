@@ -1,2 +1,2 @@
-complete -C /home/p00/.local/bin/mc mc
+complete -C /${HOME}/.nix-profile/bin/mc mc
 

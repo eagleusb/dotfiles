@@ -120,3 +120,7 @@ export GOOGLE_APPLICATION_CREDENTIALS=~/Documents/bunker/skynet-441218-ded6b587c
 ### qt scaling
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export QT_ENABLE_HIGHDPI_SCALING=1
+
+### zypper // download and new media backend
+export ZYPP_CURL2=1
+export ZYPP_PCK_PRELOAD=1
