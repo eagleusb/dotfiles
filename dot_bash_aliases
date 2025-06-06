@@ -440,3 +440,16 @@ curlDebugCdn() {
   [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (url) allowed'; return;}
   curl -o/dev/null -vIH 'X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state' "$1"
 }
+
+bcryptHash() {
+  case ${1} in
+  "")
+    local _uuid=$(uuidgen --random)
+    python3 -c "import bcrypt; print('$_uuid' + ': ' + bcrypt.hashpw(b'$_uuid', bcrypt.gensalt(12)).decode('utf-8'))"
+    ;;
+  *)
+    [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (string) allowed'; return;}
+    python3 -c "import bcrypt; print('$1' + ': ' + bcrypt.hashpw(b'$1', bcrypt.gensalt(12)).decode('utf-8'))"
+    ;;
+esac
+}

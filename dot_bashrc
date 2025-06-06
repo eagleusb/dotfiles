@@ -88,7 +88,7 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export BAT_THEME=1337
 
 ### zoxide
-export _ZO_ECHO=1
+export _ZO_ECHO=1 _ZO_DOCTOR=0
 eval "$(zoxide init bash --cmd cd)"
 
 ### mclfy
