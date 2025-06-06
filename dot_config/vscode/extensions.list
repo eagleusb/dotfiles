@@ -13,6 +13,7 @@ github.github-vscode-theme
 github.vscode-github-actions
 github.vscode-pull-request-github
 golang.go
+google.geminicodeassist
 grafana.grafana-vscode
 hashicorp.hcl
 hashicorp.terraform
@@ -24,9 +25,11 @@ ms-python.isort
 ms-python.python
 ms-python.vscode-pylance
 ms-vscode.makefile-tools
+nefrob.vscode-just-syntax
 pbkit.vscode-pbkit
 redhat.vscode-commons
 redhat.vscode-yaml
 rust-lang.rust-analyzer
+terrastruct.d2
 timonwong.shellcheck
 wattenberger.footsteps

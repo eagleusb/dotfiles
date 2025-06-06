@@ -3,5 +3,41 @@
   {
     "key": "ctrl+v",
     "command": "-editor.action.clipboardPasteAction"
+  },
+  {
+    "key": "alt+a",
+    "command": "-continue.applyCodeFromChat"
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "-continue.debugTerminal"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-continue.focusContinueInput"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "-continue.focusEdit"
+  },
+  {
+    "key": "ctrl+k ctrl+m",
+    "command": "-continue.toggleFullScreen",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+backspace",
+    "command": "-continue.rejectDiff",
+    "when": "continue.diffVisible"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "-cloudcode.duetAI.showinEditor",
+    "when": "authLoggedIn && config.geminicodeassist.enable && editorTextFocus && shouldRegisterInEditorCommand && !inGeminiDiffView && !isInDiffEditor"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "-cloudcode.duetAI.generateCode",
+    "when": "authLoggedIn && config.geminicodeassist.enable && editorTextFocus && !inGeminiDiffView && !isInDiffEditor"
   }
 ]

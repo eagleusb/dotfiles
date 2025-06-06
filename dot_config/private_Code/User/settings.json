@@ -1,7 +1,6 @@
 {
     "keyboard.dispatch": "keyCode",
     "breadcrumbs.enabled": true,
-    "files.autoSave": "onFocusChange",
     "files.defaultLanguage": "Markdown",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
@@ -63,7 +62,7 @@
     ],
     "projectManager.git.maxDepthRecursion": 2,
     "projectManager.groupList": true,
-    "terminal.external.linuxExec": "/usr/bin/alacritty",
+    "terminal.external.linuxExec": "/usr/bin/ghostty",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontFamily": "FiraCode Nerd Font",
     "git.autofetch": true,
@@ -108,12 +107,13 @@
         "vscode-kubernetes.kubectl-path.linux": "/home/p00/.local/state/vs-kubernetes/tools/kubectl/kubectl"
     },
     "workbench.tree.indent": 10,
+    "terraform.languageServer.terraform.path": "/home/p00/.nix-profile/bin/tofu",
     "terraform.languageServer.enable": true,
     "terraform.experimentalFeatures.validateOnSave": false,
     "terraform.experimentalFeatures.prefillRequiredFields": true,
     "terraform.languageServer.args": [
         "serve",
-        "-req-concurrency=32"
+        "-req-concurrency=8"
     ],
     "diffEditor.hideUnchangedRegions.enabled": true,
     "footsteps.doHighlightCurrentlyFocusedChunk": true,
@@ -153,10 +153,6 @@
     "[typescript]": {
         "editor.defaultFormatter": "denoland.vscode-deno"
     },
-    "terraform.languageServer.terraform.path": "/home/p00/.nix-profile/bin/tofu",
-    "continue.telemetryEnabled": false,
-    "continue.enableTabAutocomplete": false,
-    "window.menuBarVisibility": "compact",
     "window.zoomPerWindow": false,
     "window.newWindowProfile": "Default",
     "[jsonc]": {
@@ -167,5 +163,18 @@
     "[yaml]": {
         "editor.defaultFormatter": "denoland.vscode-deno"
     },
-    "window.zoomLevel": 1,
+    "task.allowAutomaticTasks": "on",
+    "continue.showInlineTip": false,
+    "continue.telemetryEnabled": false,
+    "continue.disableQuickFix": true,
+    "continue.pauseTabAutocompleteOnBattery": true,
+    "continue.enableTabAutocomplete": true,
+    "geminicodeassist.codeGenerationPaneViewEnabled": true,
+    "geminicodeassist.enableTelemetry": false,
+    "geminicodeassist.enable": true,
+    "D2.previewLayout": "elk",
+    "D2.previewSketch": false,
+    "window.zoomLevel": 1.5,
+    "geminicodeassist.inlineSuggestions.enableAuto": true,
+    "makefile.configureOnOpen": false,
 }
