@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=Deezer
+GenericName=Online music streaming service
+Comment=Listen and download all your favorite music
+StartupNotify=true
+Icon=dev.aunetx.deezer
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=run.sh --file-forwarding --ozone-platform=wayland dev.aunetx.deezer @@u %U @@
+Terminal=false
+MimeType=x-scheme-handler/deezer;
+Categories=Audio;Music;Player;AudioVideo;
+Keywords=Music;Player;Streaming;Online;
+StartupWMClass=Deezer
+X-GNOME-UsesNotifications=true
+X-Flatpak-Tags=proprietary;
+X-Flatpak=dev.aunetx.deezer
