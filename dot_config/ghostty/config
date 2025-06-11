@@ -2,9 +2,8 @@
 font-family = "FiraCode Nerd Font Mono"
 font-feature = +zero +ss03 +ss05 +liga
 font-size = 14.0
-window-inherit-font-size = false
 wait-after-command = true
-scrollback-limit = 65536
+scrollback-limit = 10485760
 
 # ghostty +list-themes
 theme = "Apple System Colors"
@@ -24,6 +23,10 @@ mouse-hide-while-typing = true
 window-height = 1024
 window-width = 600
 window-save-state = default
+window-inherit-font-size = false
+window-inherit-working-directory = false
+window-subtitle = working-directory
+working-directory = home
 
 # copy pasta
 copy-on-select = clipboard
