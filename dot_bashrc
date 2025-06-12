@@ -124,3 +124,9 @@ export QT_ENABLE_HIGHDPI_SCALING=1
 ### zypper // download and new media backend
 export ZYPP_CURL2=1
 export ZYPP_PCK_PRELOAD=1
+
+### vaapi driver
+export LIBVA_DRIVER_NAME=iHD
+
+### vdpau driver
+export VDPAU_DRIVER=nvidia
