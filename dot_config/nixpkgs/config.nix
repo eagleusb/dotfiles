@@ -14,13 +14,15 @@
         aws-vault
         bat
         bore-cli
-        buildkit
-        containerd
+        # buildkit
+        # containerd
+        bottom
         chezmoi
         cilium-cli
         click
         clickhouse
         cni-plugins
+        conky
         coreutils-prefixed
         cosign
         curlie
@@ -102,11 +104,12 @@
         stern
         typst
         usql
-        valkey
+        # valkey
         vegeta
         vhs
         vcluster
         viddy
+        wallust
         wtf
         xh
         yq-go

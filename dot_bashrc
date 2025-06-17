@@ -21,11 +21,11 @@ for completion in ~/.bash_completion.d/* ~/.nix-profile/share/bash-completion/co
   [[ -f "${completion}" ]] && . ${completion}
 done
 
-## pywal load
-bat -pp ~/.cache/wal/sequences
-
 ## globstar
 shopt -s globstar
+
+## wallust
+bat -pp ~/.cache/wallust/sequences
 
 ## environment variables
 
