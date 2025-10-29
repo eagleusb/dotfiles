@@ -1,0 +1,172 @@
+version = 1
+
+[install]
+# alacritty.pkg-path = "alacritty"
+# buildkit.pkg-path = "buildkit"
+# containerd.pkg-path = "containerd"
+# cosign.pkg-path = "cosign"
+# discord.pkg-path = "discord"
+# envoy.pkg-path = "envoy"
+# ghostty.pkg-path = "ghostty"
+# grafana-loki.pkg-path = "grafana-loki"
+# kitty.pkg-path = "kitty"
+# lact.pkg-path = "lact"
+# replibyte.pkg-path = "replibyte"
+# slack.pkg-path = "slack"
+# spotify.pkg-path = "spotify"
+# spotifyd.pkg-path = "spotifyd"
+# valkey.pkg-path = "valkey"
+# yubikey-manager.pkg-path = "yubikey-manager"
+
+# corePackages
+apko = { pkg-path = "apko", pkg-group = "corePackages" }
+argocd = { pkg-path = "argocd", pkg-group = "corePackages" }
+aws-iam-authenticator = { pkg-path = "aws-iam-authenticator", pkg-group = "corePackages" }
+aws-vault = { pkg-path = "aws-vault", pkg-group = "corePackages" }
+awscli2 = { pkg-path = "awscli2", pkg-group = "corePackages" }
+bat = { pkg-path = "bat", pkg-group = "corePackages" }
+bore-cli = { pkg-path = "bore-cli", pkg-group = "corePackages" }
+bottom = { pkg-path = "bottom", pkg-group = "corePackages" }
+chezmoi = { pkg-path = "chezmoi", pkg-group = "corePackages" }
+cilium-cli = { pkg-path = "cilium-cli", pkg-group = "corePackages" }
+click = { pkg-path = "click", systems = ["x86_64-darwin", "x86_64-linux"], pkg-group = "corePackages" }
+clickhouse-cli = { pkg-path = "clickhouse-cli", pkg-group = "corePackages" }
+conky = { pkg-path = "conky", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "corePackages" }
+coreutils-prefixed = { pkg-path = "coreutils-prefixed", pkg-group = "corePackages" }
+crun = { pkg-path = "crun", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "corePackages" }
+curlie = { pkg-path = "curlie", pkg-group = "corePackages" }
+difftastic = { pkg-path = "difftastic", pkg-group = "corePackages" }
+direnv = { pkg-path = "direnv", pkg-group = "corePackages" }
+dive = { pkg-path = "dive", pkg-group = "corePackages" }
+eks-node-viewer = { pkg-path = "eks-node-viewer", pkg-group = "corePackages" }
+eksctl = { pkg-path = "eksctl", pkg-group = "corePackages" }
+fzf = { pkg-path = "fzf", pkg-group = "corePackages" }
+ghz = { pkg-path = "ghz", pkg-group = "corePackages" }
+git = { pkg-path = "git", pkg-group = "corePackages" }
+go-task = { pkg-path = "go-task", pkg-group = "corePackages" }
+gping = { pkg-path = "gping", pkg-group = "corePackages" }
+grafana-dash-n-grab = { pkg-path = "grafana-dash-n-grab", pkg-group = "corePackages" }
+grpcurl = { pkg-path = "grpcurl", pkg-group = "corePackages" }
+gum = { pkg-path = "gum", pkg-group = "corePackages" }
+hey = { pkg-path = "hey", pkg-group = "corePackages" }
+htop = { pkg-path = "htop", pkg-group = "corePackages" }
+httpie = { pkg-path = "httpie", pkg-group = "corePackages" }
+httpx = { pkg-path = "httpx", pkg-group = "corePackages" }
+hubble = { pkg-path = "hubble", pkg-group = "corePackages" }
+hurl = { pkg-path = "hurl", pkg-group = "corePackages" }
+hyperfine = { pkg-path = "hyperfine", pkg-group = "corePackages" }
+ingress2gateway = { pkg-path = "ingress2gateway", pkg-group = "corePackages" }
+istioctl = { pkg-path = "istioctl", pkg-group = "corePackages" }
+just = { pkg-path = "just", pkg-group = "corePackages" }
+k6 = { pkg-path = "k6", pkg-group = "corePackages" }
+k9s = { pkg-path = "k9s", pkg-group = "corePackages" }
+krew = { pkg-path = "krew", pkg-group = "corePackages" }
+kubeconform = { pkg-path = "kubeconform", pkg-group = "corePackages" }
+kubectl = { pkg-path = "kubectl", pkg-group = "corePackages" }
+kubectl-explore = { pkg-path = "kubectl-explore", pkg-group = "corePackages" }
+kubectl-gadget = { pkg-path = "kubectl-gadget", pkg-group = "corePackages" }
+kubectl-klock = { pkg-path = "kubectl-klock", pkg-group = "corePackages" }
+kubectx = { pkg-path = "kubectx", pkg-group = "corePackages" }
+kubernetes-helm = { pkg-path = "kubernetes-helm", pkg-group = "corePackages" }
+kubernetes-helm-diff = { pkg-path = "kubernetes-helmPlugins.helm-diff", pkg-group = "corePackages" }
+kubernetes-helm-secrets = { pkg-path = "kubernetes-helmPlugins.helm-secrets", pkg-group = "corePackages" }
+kubescape = { pkg-path = "kubescape", pkg-group = "corePackages" }
+kubie = { pkg-path = "kubie", pkg-group = "corePackages" }
+kustomize = { pkg-path = "kustomize", pkg-group = "corePackages" }
+kubeval = { pkg-path = "kubeval", pkg-group = "corePackages" }
+lf = { pkg-path = "lf", pkg-group = "corePackages" }
+mage = { pkg-path = "mage", pkg-group = "corePackages" }
+mcfly = { pkg-path = "mcfly", pkg-group = "corePackages" }
+melange = { pkg-path = "melange", pkg-group = "corePackages" }
+memtier-benchmark = { pkg-path = "memtier-benchmark", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "corePackages" }
+micro = { pkg-path = "micro", pkg-group = "corePackages" }
+minio-client = { pkg-path = "minio-client", pkg-group = "corePackages" }
+minisign = { pkg-path = "minisign", pkg-group = "corePackages" }
+mise = { pkg-path = "mise", pkg-group = "corePackages" }
+nats-top = { pkg-path = "nats-top", pkg-group = "corePackages" }
+natscli = { pkg-path = "natscli", pkg-group = "corePackages" }
+nerdctl = { pkg-path = "nerdctl", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "corePackages" }
+nnn = { pkg-path = "nnn", pkg-group = "corePackages" }
+nushell = { pkg-path = "nushell", pkg-group = "corePackages" }
+packer = { pkg-path = "packer", pkg-group = "corePackages" }
+pgcli = { pkg-path = "pgcli", pkg-group = "corePackages" }
+pgmetrics = { pkg-path = "pgmetrics", pkg-group = "corePackages" }
+podman = { pkg-path = "podman", pkg-group = "corePackages" }
+popeye = { pkg-path = "popeye", pkg-group = "corePackages" }
+rclone = { pkg-path = "rclone", pkg-group = "corePackages" }
+regclient = { pkg-path = "regclient", pkg-group = "corePackages" }
+ripgrep = { pkg-path = "ripgrep", pkg-group = "corePackages" }
+scaleway-cli = { pkg-path = "scaleway-cli", pkg-group = "corePackages" }
+skaffold = { pkg-path = "skaffold", pkg-group = "corePackages" }
+sops = { pkg-path = "sops", pkg-group = "corePackages" }
+starship = { pkg-path = "starship", pkg-group = "corePackages" }
+stern = { pkg-path = "stern", pkg-group = "corePackages" }
+timescaledb-parallel-copy = { pkg-path = "timescaledb-parallel-copy", pkg-group = "corePackages" }
+timescaledb-tune = { pkg-path = "timescaledb-tune", pkg-group = "corePackages" }
+typst = { pkg-path = "typst", pkg-group = "corePackages" }
+usql = { pkg-path = "usql", pkg-group = "corePackages" }
+vcluster = { pkg-path = "vcluster", pkg-group = "corePackages" }
+vegeta = { pkg-path = "vegeta", pkg-group = "corePackages" }
+vhs = { pkg-path = "vhs", pkg-group = "corePackages" }
+viddy = { pkg-path = "viddy", pkg-group = "corePackages" }
+wallust = { pkg-path = "wallust", pkg-group = "corePackages" }
+wtf = { pkg-path = "wtf", pkg-group = "corePackages" }
+xh = { pkg-path = "xh", pkg-group = "corePackages" }
+xk6 = { pkg-path = "xk6", pkg-group = "corePackages" }
+yq-go = { pkg-path = "yq-go", pkg-group = "corePackages" }
+zellij = { pkg-path = "zellij", pkg-group = "corePackages" }
+zoxide = { pkg-path = "zoxide", pkg-group = "corePackages" }
+
+# devPackages
+# cyber.pkg-path = "cyber"
+# opentofu.pkg-path = "opentofu"
+# rustc.pkg-path = "rustc"
+# terraform.pkg-path = "terraform"
+# terragrunt.pkg-path = "terragrunt"
+# vscode.pkg-path = "vscode"
+act = { pkg-path = "act", pkg-group = "devPackages" }
+bazel = { pkg-path = "bazel", pkg-group = "devPackages" }
+bazel-buildtools = { pkg-path = "bazel-buildtools", pkg-group = "devPackages" }
+bazelisk = { pkg-path = "bazelisk", pkg-group = "devPackages" }
+buildpack = { pkg-path = "buildpack", pkg-group = "devPackages" }
+bun = { pkg-path = "bun", pkg-group = "devPackages" }
+cargo = { pkg-path = "cargo", pkg-group = "devPackages" }
+chart-testing = { pkg-path = "chart-testing", pkg-group = "devPackages" }
+d2 = { pkg-path = "d2", pkg-group = "devPackages" }
+dart = { pkg-path = "dart", pkg-group = "devPackages" }
+deno = { pkg-path = "deno", pkg-group = "devPackages" }
+evans = { pkg-path = "evans", pkg-group = "devPackages" }
+flyctl = { pkg-path = "flyctl", pkg-group = "devPackages" }
+fnm = { pkg-path = "fnm", pkg-group = "devPackages" }
+git-cliff = { pkg-path = "git-cliff", pkg-group = "devPackages" }
+go = { pkg-path = "go", pkg-group = "devPackages" }
+gore = { pkg-path = "gore", pkg-group = "devPackages" }
+goreleaser = { pkg-path = "goreleaser", pkg-group = "devPackages" }
+helix = { pkg-path = "helix", pkg-group = "devPackages" }
+helm-docs = { pkg-path = "helm-docs", pkg-group = "devPackages" }
+helm-ls = { pkg-path = "helm-ls", pkg-group = "devPackages" }
+hugo = { pkg-path = "hugo", pkg-group = "devPackages" }
+icdiff = { pkg-path = "icdiff", pkg-group = "devPackages" }
+kube-linter = { pkg-path = "kube-linter", pkg-group = "devPackages" }
+lefthook = { pkg-path = "lefthook", pkg-group = "devPackages" }
+nodejs = { pkg-path = "nodejs_24", pkg-group = "devPackages" }
+opentelemetry-collector-builder = { pkg-path = "opentelemetry-collector-builder", pkg-group = "devPackages" }
+poetry = { pkg-path = "poetry", pkg-group = "devPackages" }
+pulumi = { pkg-path = "pulumi", pkg-group = "devPackages" }
+risor = { pkg-path = "risor", pkg-group = "devPackages" }
+ruff = { pkg-path = "ruff", pkg-group = "devPackages" }
+shellcheck = { pkg-path = "shellcheck", pkg-group = "devPackages" }
+temporal-cli = { pkg-path = "temporal-cli", pkg-group = "devPackages" }
+tenv = { pkg-path = "tenv", pkg-group = "devPackages" }
+terraform-docs = { pkg-path = "terraform-docs", pkg-group = "devPackages" }
+terraform-ls = { pkg-path = "terraform-ls", pkg-group = "devPackages" }
+terraformer = { pkg-path = "terraformer", pkg-group = "devPackages" }
+terraforming = { pkg-path = "terraforming", pkg-group = "devPackages" }
+terrascan = { pkg-path = "terrascan", pkg-group = "devPackages" }
+tfk8s = { pkg-path = "tfk8s", pkg-group = "devPackages" }
+tflint = { pkg-path = "tflint", pkg-group = "devPackages" }
+tfsec = { pkg-path = "tfsec", pkg-group = "devPackages" }
+trivy = { pkg-path = "trivy", pkg-group = "devPackages" }
+uv = { pkg-path = "uv", pkg-group = "devPackages" }
+via = { pkg-path = "via", systems = ["x86_64-linux"], pkg-group = "devPackages" }
+werf = { pkg-path = "werf", pkg-group = "devPackages" }
