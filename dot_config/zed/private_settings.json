@@ -1,0 +1,87 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "ui_font_weight": 500.0,
+  "icon_theme": "Colored Zed Icons Theme Dark",
+  "buffer_line_height": "comfortable",
+  "ui_font_family": "Hermit",
+  "terminal": {
+    "font_family": "FiraCode Nerd Font",
+    "blinking": "on",
+    "copy_on_select": true,
+    "max_scroll_history_lines": 10000,
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "project_panel": {
+    "auto_reveal_entries": false,
+  },
+  "base_keymap": "VSCode",
+  "agent": {
+    "enable_feedback": false,
+    "enabled": false,
+    "button": false,
+    "model_parameters": [],
+  },
+  "minimap": {
+    "show": "auto",
+  },
+  "cursor_shape": "block",
+  "cursor_blink": true,
+  "autosave": "on_focus_change",
+  "buffer_font_weight": 500.0,
+  "buffer_font_fallbacks": ["JuliaMono"],
+  "buffer_font_family": "Fira Code",
+  "buffer_font_features": {},
+  "file_types": {
+    "terraform": ["*.tftpl"],
+    "hcl": ["*.hcl"],
+  },
+  "colorize_brackets": true,
+  "auto_indent_on_paste": true,
+  "use_on_type_format": true,
+  "show_whitespaces": "boundary",
+  "show_edit_predictions": true,
+  "ensure_final_newline_on_save": true,
+  "wrap_guides": [110],
+  "preferred_line_length": 110,
+  "soft_wrap": "editor_width",
+  "tab_size": 2,
+  "ui_font_size": 18.0,
+  "buffer_font_size": 16.0,
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "New Darcula Darker",
+  },
+  "edit_predictions_disabled_in": ["comment"],
+  "languages": {},
+  "language_models": {
+    "openai_compatible": {
+      "z.ai": {
+        "available_models": [
+          {
+            "name": "GLM-4.7",
+            "display_name": "GLM 4.7",
+            "max_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "prompt_cache_key": true,
+              "parallel_tool_calls": false,
+            },
+          },
+        ],
+        "api_url": "https://api.z.ai/api/coding/paas/v4",
+      },
+    },
+  },
+}
