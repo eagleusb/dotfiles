@@ -1,3 +1,5 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
 [░▒▓](#a3aed2)\
 [  $username](bg:#a3aed2 fg:#090c0c)\
@@ -88,7 +90,7 @@ show_always = true
 
 [kubernetes]
 disabled = false
-format = '$symbol[$context/$namespace]($style) '
+format = '$symbol [\($context/$namespace\)]($style) '
 style = 'bold blue'
 
 [[kubernetes.contexts]]
@@ -118,9 +120,14 @@ us-west-2 = 'usw2'
 
 [direnv]
 disabled = false
-format = '$symbol[$loaded/$allowed]($style) '
+format = '$symbol [$rc_path \($loaded/$allowed\)]($style) '
 style = 'bold blue'
-symbol = ' '
+symbol = ''
+detect_files = ['.envrc', '.env', '.direnv']
+allowed_msg = 'a'
+not_allowed_msg = 'na'
+denied_msg = 'd'
+loaded_msg = 'l'
 
 [terraform]
 disabled = false

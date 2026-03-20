@@ -1,0 +1,193 @@
+schema-version = "1.10.0"
+
+[install]
+# alacritty.pkg-path = "alacritty"
+# buildkit.pkg-path = "buildkit"
+# containerd.pkg-path = "containerd"
+# cosign.pkg-path = "cosign"
+# cyber.pkg-path = "cyber"
+# discord.pkg-path = "discord"
+# envoy.pkg-path = "envoy"
+# ghostty.pkg-path = "ghostty"
+# grafana-loki.pkg-path = "grafana-loki"
+# kitty.pkg-path = "kitty"
+# lact.pkg-path = "lact"
+# opentofu.pkg-path = "opentofu"
+# replibyte.pkg-path = "replibyte"
+# slack.pkg-path = "slack"
+# spotify.pkg-path = "spotify"
+# spotifyd.pkg-path = "spotifyd"
+# terraform.pkg-path = "terraform"
+# terragrunt.pkg-path = "terragrunt"
+# valkey.pkg-path = "valkey"
+# vscode.pkg-path = "vscode"
+# yubikey-manager.pkg-path = "yubikey-manager"
+
+#ai
+goose = { pkg-path = "goose-cli", pkg-group = "ai" }
+
+# cloud
+aws-iam-authenticator = { pkg-path = "aws-iam-authenticator", pkg-group = "cloud" }
+aws-vault = { pkg-path = "aws-vault", pkg-group = "cloud" }
+awscli2 = { pkg-path = "awscli2", pkg-group = "cloud" , outputs = "all" }
+eks-node-viewer = { pkg-path = "eks-node-viewer", pkg-group = "cloud" }
+eksctl = { pkg-path = "eksctl", pkg-group = "cloud" }
+flyctl = { pkg-path = "flyctl", pkg-group = "cloud" }
+minio-client = { pkg-path = "minio-client", pkg-group = "cloud" }
+packer = { pkg-path = "packer", pkg-group = "cloud" }
+rclone = { pkg-path = "rclone", pkg-group = "cloud" }
+scaleway-cli = { pkg-path = "scaleway-cli", pkg-group = "cloud" }
+
+# automation
+act = { pkg-path = "act", pkg-group = "automation" }
+buildpack = { pkg-path = "buildpack", pkg-group = "automation" }
+chezmoi = { pkg-path = "chezmoi", pkg-group = "automation" }
+go-task = { pkg-path = "go-task", pkg-group = "automation" }
+just = { pkg-path = "just", pkg-group = "automation" , outputs = "all" }
+mage = { pkg-path = "mage", pkg-group = "automation" }
+mise = { pkg-path = "mise", pkg-group = "automation" }
+pulumi = { pkg-path = "pulumi", pkg-group = "automation" }
+pulumi-aws-native = { pkg-path = "pulumiPackages.pulumi-aws-native", pkg-group = "automation" }
+pulumi-command = { pkg-path = "pulumiPackages.pulumi-command", pkg-group = "automation" }
+pulumi-go = { pkg-path = "pulumiPackages.pulumi-go", pkg-group = "automation" }
+pulumi-hcloud = { pkg-path = "pulumiPackages.pulumi-hcloud", pkg-group = "automation" }
+pulumi-nodejs = { pkg-path = "pulumiPackages.pulumi-nodejs", pkg-group = "automation" }
+pulumi-random = { pkg-path = "pulumiPackages.pulumi-random", pkg-group = "automation" }
+temporal-cli = { pkg-path = "temporal-cli", pkg-group = "automation" }
+terraforming = { pkg-path = "terraforming", pkg-group = "automation" }
+terraformer = { pkg-path = "terraformer", pkg-group = "automation" }
+terraform-docs = { pkg-path = "terraform-docs", pkg-group = "automation" }
+terraform-ls = { pkg-path = "terraform-ls", pkg-group = "automation" }
+terrascan = { pkg-path = "terrascan", pkg-group = "automation" }
+tenv = { pkg-path = "tenv", pkg-group = "automation" }
+tfk8s = { pkg-path = "tfk8s", pkg-group = "automation" }
+tflint = { pkg-path = "tflint", pkg-group = "automation" }
+tfsec = { pkg-path = "tfsec", pkg-group = "automation" }
+
+# devel
+bazel = { pkg-path = "bazel", pkg-group = "devel" }
+bazel-buildtools = { pkg-path = "bazel-buildtools", pkg-group = "devel" }
+bazelisk = { pkg-path = "bazelisk", pkg-group = "devel" }
+biome = { pkg-path = "biome", pkg-group = "devel" }
+bun = { pkg-path = "bun", pkg-group = "devel" }
+chart-testing = { pkg-path = "chart-testing", pkg-group = "devel" }
+d2 = { pkg-path = "d2", pkg-group = "devel" }
+dart = { pkg-path = "dart", pkg-group = "devel" }
+deno = { pkg-path = "deno", pkg-group = "devel" }
+dvc = { pkg-path = "dvc", pkg-group = "devel" , outputs = "all" }
+evans = { pkg-path = "evans", pkg-group = "devel" }
+fnm = { pkg-path = "fnm", pkg-group = "devel" }
+git = { pkg-path = "git", pkg-group = "devel" , outputs = "all" }
+git-cliff = { pkg-path = "git-cliff", pkg-group = "devel" }
+git-lfs = { pkg-path = "git-lfs", pkg-group = "devel" }
+go = { pkg-path = "go", pkg-group = "devel" }
+gore = { pkg-path = "gore", pkg-group = "devel" }
+goreleaser = { pkg-path = "goreleaser", pkg-group = "devel" }
+helm-docs = { pkg-path = "helm-docs", pkg-group = "devel" }
+helm-ls = { pkg-path = "helm-ls", pkg-group = "devel" }
+hugo = { pkg-path = "hugo", pkg-group = "devel" }
+icdiff = { pkg-path = "icdiff", pkg-group = "devel" , outputs = "all" }
+kube-linter = { pkg-path = "kube-linter", pkg-group = "devel" }
+lefthook = { pkg-path = "lefthook", pkg-group = "devel" }
+nodejs = { pkg-path = "nodejs_24", pkg-group = "devel" }
+opentelemetry-collector-builder = { pkg-path = "opentelemetry-collector-builder", pkg-group = "devel" }
+poetry = { pkg-path = "poetry", pkg-group = "devel" , outputs = "all" }
+prettier = { pkg-path = "prettier", pkg-group = "devel" }
+risor = { pkg-path = "risor", pkg-group = "devel" }
+ruff = { pkg-path = "ruff", pkg-group = "devel" }
+rustup = { pkg-path = "rustup", pkg-group = "devel" }
+shellcheck = { pkg-path = "shellcheck", pkg-group = "devel" , outputs = "all" }
+shfmt = { pkg-path = "shfmt", pkg-group = "devel" }
+typst = { pkg-path = "typst", pkg-group = "devel" }
+uv = { pkg-path = "uv", pkg-group = "devel" }
+via = { pkg-path = "via", systems = ["x86_64-linux"], pkg-group = "devel" }
+werf = { pkg-path = "werf", pkg-group = "devel" }
+
+# terminal
+bat = { pkg-path = "bat", pkg-group = "terminal" }
+bottom = { pkg-path = "bottom", pkg-group = "terminal" }
+bore-cli = { pkg-path = "bore-cli", pkg-group = "terminal" }
+conky = { pkg-path = "conky", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "terminal" }
+curlie = { pkg-path = "curlie", pkg-group = "terminal" }
+difftastic = { pkg-path = "difftastic", pkg-group = "terminal" }
+direnv = { pkg-path = "direnv", pkg-group = "terminal" }
+dive = { pkg-path = "dive", pkg-group = "terminal" }
+espanso = { pkg-path = "espanso", pkg-group = "terminal" }
+fzf = { pkg-path = "fzf", pkg-group = "terminal" }
+ghz = { pkg-path = "ghz", pkg-group = "terminal" }
+gping = { pkg-path = "gping", pkg-group = "terminal" }
+grpcurl = { pkg-path = "grpcurl", pkg-group = "terminal" }
+gum = { pkg-path = "gum", pkg-group = "terminal" }
+hey = { pkg-path = "hey", pkg-group = "terminal" }
+htop = { pkg-path = "htop", pkg-group = "terminal" }
+httpie = { pkg-path = "httpie", pkg-group = "terminal" , outputs = "all" }
+httpx = { pkg-path = "httpx", pkg-group = "terminal" }
+hurl = { pkg-path = "hurl", pkg-group = "terminal" }
+hyperfine = { pkg-path = "hyperfine", pkg-group = "terminal" }
+intelli-shell = { pkg-path = "intelli-shell", pkg-group = "terminal" }
+lf = { pkg-path = "lf", pkg-group = "terminal" }
+mcfly = { pkg-path = "mcfly", pkg-group = "terminal" }
+memtier-benchmark = { pkg-path = "memtier-benchmark", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "terminal" }
+micro = { pkg-path = "micro", pkg-group = "terminal" }
+minisign = { pkg-path = "minisign", pkg-group = "terminal" }
+mkcert = { pkg-path = "mkcert", pkg-group = "terminal" }
+nnn = { pkg-path = "nnn", pkg-group = "terminal" }
+nushell = { pkg-path = "nushell", pkg-group = "terminal" }
+ripgrep = { pkg-path = "ripgrep", pkg-group = "terminal" }
+sops = { pkg-path = "sops", pkg-group = "terminal" }
+starship = { pkg-path = "starship", pkg-group = "terminal" }
+usql = { pkg-path = "usql", pkg-group = "terminal" }
+viddy = { pkg-path = "viddy", pkg-group = "terminal" }
+vegeta = { pkg-path = "vegeta", pkg-group = "terminal" }
+vhs = { pkg-path = "vhs", pkg-group = "terminal" }
+wallust = { pkg-path = "wallust", pkg-group = "terminal" }
+wtf = { pkg-path = "wtf", pkg-group = "terminal" }
+xh = { pkg-path = "xh", pkg-group = "terminal" }
+xk6 = { pkg-path = "xk6", pkg-group = "terminal" }
+yq-go = { pkg-path = "yq-go", pkg-group = "terminal" }
+zellij = { pkg-path = "zellij", pkg-group = "terminal" }
+zoxide = { pkg-path = "zoxide", pkg-group = "terminal" }
+
+# kubernetes
+apko = { pkg-path = "apko", pkg-group = "kubernetes" }
+argocd = { pkg-path = "argocd", pkg-group = "kubernetes" }
+cilium-cli = { pkg-path = "cilium-cli", pkg-group = "kubernetes" }
+click = { pkg-path = "click", systems = ["x86_64-darwin", "x86_64-linux"], pkg-group = "kubernetes" }
+crun = { pkg-path = "crun", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "kubernetes" }
+grafana-dash-n-grab = { pkg-path = "grafana-dash-n-grab", pkg-group = "kubernetes" }
+hubble = { pkg-path = "hubble", pkg-group = "kubernetes" }
+ingress2gateway = { pkg-path = "ingress2gateway", pkg-group = "kubernetes" }
+istioctl = { pkg-path = "istioctl", pkg-group = "kubernetes" }
+k6 = { pkg-path = "k6", pkg-group = "kubernetes" }
+k9s = { pkg-path = "k9s", pkg-group = "kubernetes" }
+krew = { pkg-path = "krew", pkg-group = "kubernetes" }
+kubeconform = { pkg-path = "kubeconform", pkg-group = "kubernetes" }
+kubectl = { pkg-path = "kubectl", pkg-group = "kubernetes" , outputs = "all" }
+kubectl-explore = { pkg-path = "kubectl-explore", pkg-group = "kubernetes" }
+kubectl-gadget = { pkg-path = "kubectl-gadget", pkg-group = "kubernetes" }
+kubectl-klock = { pkg-path = "kubectl-klock", pkg-group = "kubernetes" }
+kubectx = { pkg-path = "kubectx", pkg-group = "kubernetes" }
+kubernetes-helm = { pkg-path = "kubernetes-helm", pkg-group = "kubernetes" }
+kubernetes-helm-diff = { pkg-path = "kubernetes-helmPlugins.helm-diff", pkg-group = "kubernetes" }
+kubernetes-helm-secrets = { pkg-path = "kubernetes-helmPlugins.helm-secrets", pkg-group = "kubernetes" }
+kubescape = { pkg-path = "kubescape", pkg-group = "kubernetes" }
+kubie = { pkg-path = "kubie", pkg-group = "kubernetes" }
+kustomize = { pkg-path = "kustomize", pkg-group = "kubernetes" }
+kubeval = { pkg-path = "kubeval", pkg-group = "kubernetes" }
+nerdctl = { pkg-path = "nerdctl", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "kubernetes" }
+podman = { pkg-path = "podman", pkg-group = "kubernetes" }
+popeye = { pkg-path = "popeye", pkg-group = "kubernetes" }
+skaffold = { pkg-path = "skaffold", pkg-group = "kubernetes" }
+stern = { pkg-path = "stern", pkg-group = "kubernetes" }
+trivy = { pkg-path = "trivy", pkg-group = "kubernetes" }
+vcluster = { pkg-path = "vcluster", pkg-group = "kubernetes" }
+
+# corePackages
+clickhouse-cli = { pkg-path = "clickhouse-cli", pkg-group = "corePackages" , outputs = "all" }
+coreutils-prefixed = { pkg-path = "coreutils-prefixed", pkg-group = "corePackages" , outputs = "all" }
+nats-top = { pkg-path = "nats-top", pkg-group = "corePackages" }
+natscli = { pkg-path = "natscli", pkg-group = "corePackages" }
+pgcli = { pkg-path = "pgcli", pkg-group = "corePackages" , outputs = "all" }
+pgmetrics = { pkg-path = "pgmetrics", pkg-group = "corePackages" }
+timescaledb-parallel-copy = { pkg-path = "timescaledb-parallel-copy", pkg-group = "corePackages" }
+timescaledb-tune = { pkg-path = "timescaledb-tune", pkg-group = "corePackages" }
