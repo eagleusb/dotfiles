@@ -30,6 +30,7 @@ alias k='kubectl'
 alias kube='kubectl'
 alias vim='micro'
 alias vi='micro'
+alias opencode='nono run --profile skynet --allow-cwd -- opencode'
 
 # functions
 amqt() {
@@ -453,4 +454,59 @@ bcryptHash() {
     python3 -c "import bcrypt; print('$1' + ': ' + bcrypt.hashpw(b'$1', bcrypt.gensalt(12)).decode('utf-8'))"
     ;;
 esac
+}
+
+llamaCppBuildAndDeploy() {
+  local _required_dir="llama.cpp"
+  local _current_dir
+  _current_dir=$(basename "$(pwd)")
+
+  if [[ "${_current_dir}" != "${_required_dir}" ]]; then
+    echo "Error: Execution directory must be '${_required_dir}'. Current: '${_current_dir}'" >&2
+    return 1
+  fi
+
+  # build
+  echo "Starting optimized build for ${_required_dir}..."
+  cmake -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DGGML_CCACHE=ON \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DGGML_CUDA=ON \
+    -DGGML_VULKAN=ON \
+    -DGGML_NATIVE=ON \
+    -DCMAKE_CUDA_ARCHITECTURES="86;89" \
+    -DGGML_CUDA_ENABLE_UNIFIED_MEMORY=1 \
+    -DLLAMA_BUILD_TESTS=OFF \
+    -DLLAMA_BUILD_EXAMPLES=ON \
+    -DLLAMA_BUILD_SERVER=ON || {
+      echo "Error: CMake configuration failed." >&2
+      return 1
+    }
+
+  local _cpu_cores
+  _cpu_cores=$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 4)
+
+  echo "Compiling with ${_cpu_cores} cores..."
+  cmake --build build --target llama-server llama-bench llama-cli llama-quantize --config Release -j "${_cpu_cores}" || {
+    echo "Error: Build failed." >&2
+    return 1
+  }
+
+  # deployment
+  local _dest_dir="${HOME}/.local/bin"
+  local _src_dir="build/bin"
+
+  echo "Deploying binaries from ${_src_dir} to ${_dest_dir}..."
+  find "${_src_dir}" -maxdepth 1 -type f -executable -exec cp -vp {} "${_dest_dir}/" \; || {
+    echo "Error: Failed to copy binaries to ${_dest_dir}" >&2
+    return 1
+  }
+
+  # cleanup
+  echo "Cleaning up build artifacts..."
+  cmake --build build --target clean || {
+    echo "Warning: Build cleanup failed, but deployment was successful." >&2
+  }
+  echo "Deployment successful. Binaries are located in: ${_dest_dir}"
 }
