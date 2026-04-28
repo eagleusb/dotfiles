@@ -165,7 +165,6 @@ PATH="${PATH}:${HOME}/.local/bin/llama"
 export PATH="${PATH}"
 
 ### LD
-LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOME}/.local/lib/ollama:${HOME}/.local/lib/ollama/cuda_v13"
 LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOME}/.local/bin/llama"
 
 export LD_LIBRARY_PATH
@@ -201,7 +200,8 @@ export ANDROID_HOME="${HOME}/Android/Sdk/"
 export ANDROID_NDK_HOME="${HOME}/Android/Sdk/ndk/r25c/"
 
 ### gpg
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 ### node / fnm
 eval "$(fnm env)"
@@ -228,6 +228,3 @@ export VDPAU_DRIVER=nvidia
 
 ### kuberc
 export KUBECTL_KUBERC=true
-
-### ollama
-export OLLAMA_LIBRARY_PATH="${HOME}/.local/lib/ollama:${HOME}/.local/lib/ollama/cuda_v13"
