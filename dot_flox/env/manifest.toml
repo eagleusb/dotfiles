@@ -1,4 +1,33 @@
-schema-version = "1.10.0"
+schema-version = "1.11.0"
+minimum-cli-version = "1.11.0"
+
+[vars]
+# llamacpp
+LLAMA_ARG_CPU_MOE = "true"
+LLAMA_ARG_CTX_CHECKPOINTS = "3"
+LLAMA_ARG_DIO = "true"
+LLAMA_ARG_KV_UNIFIED = "true"
+LLAMA_ARG_PERF = "false"
+LLAMA_ARG_SWA_FULL = "true"
+LLAMA_LOG_FILE = "/tmp/llamacpp.log"
+LLAMA_LOG_VERBOSITY = "3"
+# ollama
+OLLAMA_LIBRARY_PATH = "${HOME}/.local/lib/ollama:${HOME}/.local/lib/ollama/cuda_v13"
+
+[hook]
+on-activate = """
+    echo -e "setting $FLOX_ENV_DESCRIPTION environment...\n"
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOME}/.local/lib/ollama:${HOME}/.local/lib/ollama/cuda_v13"
+
+    export LD_LIBRARY_PATH
+"""
+
+[options]
+allow.unfree = true
+systems = [
+    "x86_64-linux",
+    "aarch64-darwin",
+]
 
 [install]
 # alacritty.pkg-path = "alacritty"
@@ -24,7 +53,10 @@ schema-version = "1.10.0"
 # yubikey-manager.pkg-path = "yubikey-manager"
 
 #ai
+codex = { pkg-path = "codex", pkg-group = "ai" }
 goose = { pkg-path = "goose-cli", pkg-group = "ai" }
+llmfit = { pkg-path = "llmfit", pkg-group = "ai" }
+# nono = { pkg-path = "nono", pkg-group = "ai" }
 
 # cloud
 aws-iam-authenticator = { pkg-path = "aws-iam-authenticator", pkg-group = "cloud" }
@@ -93,6 +125,7 @@ nodejs = { pkg-path = "nodejs_24", pkg-group = "devel" }
 opentelemetry-collector-builder = { pkg-path = "opentelemetry-collector-builder", pkg-group = "devel" }
 poetry = { pkg-path = "poetry", pkg-group = "devel" , outputs = "all" }
 prettier = { pkg-path = "prettier", pkg-group = "devel" }
+restish = { pkg-path = "restish", pkg-group = "devel" }
 risor = { pkg-path = "risor", pkg-group = "devel" }
 ruff = { pkg-path = "ruff", pkg-group = "devel" }
 rustup = { pkg-path = "rustup", pkg-group = "devel" }
@@ -102,12 +135,13 @@ typst = { pkg-path = "typst", pkg-group = "devel" }
 uv = { pkg-path = "uv", pkg-group = "devel" }
 via = { pkg-path = "via", systems = ["x86_64-linux"], pkg-group = "devel" }
 werf = { pkg-path = "werf", pkg-group = "devel" }
+zed = { pkg-path = "zed-editor", pkg-group = "devel" }
 
 # terminal
 bat = { pkg-path = "bat", pkg-group = "terminal" }
 bottom = { pkg-path = "bottom", pkg-group = "terminal" }
 bore-cli = { pkg-path = "bore-cli", pkg-group = "terminal" }
-conky = { pkg-path = "conky", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "terminal" }
+conky = { pkg-path = "conky", systems = ["x86_64-linux"], pkg-group = "terminal" }
 curlie = { pkg-path = "curlie", pkg-group = "terminal" }
 difftastic = { pkg-path = "difftastic", pkg-group = "terminal" }
 direnv = { pkg-path = "direnv", pkg-group = "terminal" }
@@ -125,9 +159,10 @@ httpx = { pkg-path = "httpx", pkg-group = "terminal" }
 hurl = { pkg-path = "hurl", pkg-group = "terminal" }
 hyperfine = { pkg-path = "hyperfine", pkg-group = "terminal" }
 intelli-shell = { pkg-path = "intelli-shell", pkg-group = "terminal" }
+jo = { pkg-path = "jo", pkg-group = "terminal" }
 lf = { pkg-path = "lf", pkg-group = "terminal" }
 mcfly = { pkg-path = "mcfly", pkg-group = "terminal" }
-memtier-benchmark = { pkg-path = "memtier-benchmark", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "terminal" }
+memtier-benchmark = { pkg-path = "memtier-benchmark", systems = ["x86_64-linux"], pkg-group = "terminal" }
 micro = { pkg-path = "micro", pkg-group = "terminal" }
 minisign = { pkg-path = "minisign", pkg-group = "terminal" }
 mkcert = { pkg-path = "mkcert", pkg-group = "terminal" }
@@ -152,8 +187,8 @@ zoxide = { pkg-path = "zoxide", pkg-group = "terminal" }
 apko = { pkg-path = "apko", pkg-group = "kubernetes" }
 argocd = { pkg-path = "argocd", pkg-group = "kubernetes" }
 cilium-cli = { pkg-path = "cilium-cli", pkg-group = "kubernetes" }
-click = { pkg-path = "click", systems = ["x86_64-darwin", "x86_64-linux"], pkg-group = "kubernetes" }
-crun = { pkg-path = "crun", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "kubernetes" }
+click = { pkg-path = "click", systems = ["x86_64-linux"], pkg-group = "kubernetes" }
+crun = { pkg-path = "crun", systems = ["x86_64-linux"], pkg-group = "kubernetes" }
 grafana-dash-n-grab = { pkg-path = "grafana-dash-n-grab", pkg-group = "kubernetes" }
 hubble = { pkg-path = "hubble", pkg-group = "kubernetes" }
 ingress2gateway = { pkg-path = "ingress2gateway", pkg-group = "kubernetes" }
@@ -174,7 +209,7 @@ kubescape = { pkg-path = "kubescape", pkg-group = "kubernetes" }
 kubie = { pkg-path = "kubie", pkg-group = "kubernetes" }
 kustomize = { pkg-path = "kustomize", pkg-group = "kubernetes" }
 kubeval = { pkg-path = "kubeval", pkg-group = "kubernetes" }
-nerdctl = { pkg-path = "nerdctl", systems = ["aarch64-linux", "x86_64-linux"], pkg-group = "kubernetes" }
+nerdctl = { pkg-path = "nerdctl", systems = ["x86_64-linux"], pkg-group = "kubernetes" }
 podman = { pkg-path = "podman", pkg-group = "kubernetes" }
 popeye = { pkg-path = "popeye", pkg-group = "kubernetes" }
 skaffold = { pkg-path = "skaffold", pkg-group = "kubernetes" }
