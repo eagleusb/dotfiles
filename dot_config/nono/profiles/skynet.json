@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "name": "skynet",
+    "version": "0.1.0",
+    "description": "T1000 skynet enforcement"
+  },
+  "extends": "opencode",
+  "policy": {
+    "add_allow_readwrite": [
+      "~/.flox/run/x86_64-linux.default.run/bin/",
+      "~/.local/lib/node_modules/",
+      "~/go/pkg/mod"
+    ]
+  },
+  "security": {
+    "groups": [
+      "go_runtime",
+      "nix_runtime",
+      "python_runtime",
+      "node_runtime",
+      "user_tools"
+    ]
+  },
+  "filesystem": {},
+  "network": {
+    "block": false
+  },
+  "workdir": {}
+}
