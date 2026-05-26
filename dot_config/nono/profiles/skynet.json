@@ -9,7 +9,10 @@
     "add_allow_readwrite": [
       "~/.flox/run/x86_64-linux.default.run/bin/",
       "~/.local/lib/node_modules/",
-      "~/go/pkg/mod"
+      "~/go/pkg/mod",
+      "~/.crush",
+      "~/.config/crush",
+      "~/.local/share/crush"
     ]
   },
   "security": {
