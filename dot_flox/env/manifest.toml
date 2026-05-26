@@ -17,9 +17,9 @@ OLLAMA_LIBRARY_PATH = "${HOME}/.local/lib/ollama:${HOME}/.local/lib/ollama/cuda_
 [hook]
 on-activate = """
     echo -e "setting $FLOX_ENV_DESCRIPTION environment...\n"
-    LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOME}/.local/lib/ollama:${HOME}/.local/lib/ollama/cuda_v13"
 
-    export LD_LIBRARY_PATH
+    # LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${HOME}/.local/lib/ollama:${HOME}/.local/lib/ollama/cuda_v13"
+    # export LD_LIBRARY_PATH
 """
 
 [options]
@@ -138,6 +138,7 @@ werf = { pkg-path = "werf", pkg-group = "devel" }
 zed = { pkg-path = "zed-editor", pkg-group = "devel" }
 
 # terminal
+age = { pkg-path = "age", pkg-group = "terminal" }
 bat = { pkg-path = "bat", pkg-group = "terminal" }
 bottom = { pkg-path = "bottom", pkg-group = "terminal" }
 bore-cli = { pkg-path = "bore-cli", pkg-group = "terminal" }
