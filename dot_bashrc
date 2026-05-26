@@ -206,6 +206,19 @@ export GPG_TTY
 ### node / fnm
 eval "$(fnm env)"
 
+## secrets
+[[ ! -f  "${HOME}/.envrc" ]] && pass-cli inject -fo "${HOME}/.envrc" <<'EOF'
+export \
+  {{pass://env/z.ai/key}}={{pass://env/z.ai/value}} \
+  {{pass://env/gh/key}}={{pass://env/gh/value}} \
+  {{pass://env/hf/key}}={{pass://env/hf/value}} \
+  {{pass://env/openrouter/key}}={{pass://env/openrouter/value}} \
+  {{pass://env/hai/key}}={{pass://env/hai/value}} \
+  {{pass://env/gh-api/key}}={{pass://env/gh-api/value}} \
+  {{pass://env/tmdb-api/key}}={{pass://env/tmdb-api/value}} \
+  {{pass://env/tmdb/key}}={{pass://env/tmdb/value}}
+EOF
+
 ### direnv
 eval "$(direnv hook bash)"
 
