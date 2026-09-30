@@ -53,10 +53,12 @@ systems = [
 # yubikey-manager.pkg-path = "yubikey-manager"
 
 #ai
-codex = { pkg-path = "codex", pkg-group = "ai" }
+# codex = { pkg-path = "flox/codex", pkg-group = "ai" }
 goose = { pkg-path = "goose-cli", pkg-group = "ai" }
 llmfit = { pkg-path = "llmfit", pkg-group = "ai" }
-# nono = { pkg-path = "nono", pkg-group = "ai" }
+# nono = { pkg-path = "agent-stacks/nono", pkg-group = "ai" }
+spec-kit = { pkg-path = "flox/spec-kit", pkg-group = "ai" }
+
 
 # cloud
 aws-iam-authenticator = { pkg-path = "aws-iam-authenticator", pkg-group = "cloud" }
@@ -72,8 +74,10 @@ scaleway-cli = { pkg-path = "scaleway-cli", pkg-group = "cloud" }
 
 # automation
 act = { pkg-path = "act", pkg-group = "automation" }
+actionlint = { pkg-path = "actionlint", pkg-group = "automation" }
 buildpack = { pkg-path = "buildpack", pkg-group = "automation" }
 chezmoi = { pkg-path = "chezmoi", pkg-group = "automation" }
+geckodriver = { pkg-path = "geckodriver", pkg-group = "automation" }
 go-task = { pkg-path = "go-task", pkg-group = "automation" }
 just = { pkg-path = "just", pkg-group = "automation" , outputs = "all" }
 mage = { pkg-path = "mage", pkg-group = "automation" }
@@ -132,7 +136,7 @@ rustup = { pkg-path = "rustup", pkg-group = "devel" }
 shellcheck = { pkg-path = "shellcheck", pkg-group = "devel" , outputs = "all" }
 shfmt = { pkg-path = "shfmt", pkg-group = "devel" }
 typst = { pkg-path = "typst", pkg-group = "devel" }
-uv = { pkg-path = "uv", pkg-group = "devel" }
+uv = { pkg-path = "flox/uv", pkg-group = "devel" }
 via = { pkg-path = "via", systems = ["x86_64-linux"], pkg-group = "devel" }
 werf = { pkg-path = "werf", pkg-group = "devel" }
 zed = { pkg-path = "zed-editor", pkg-group = "devel" }
