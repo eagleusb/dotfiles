@@ -48,15 +48,19 @@
 
 ## MCP
 
-- Prefer MDN MCP for HTML, CSS, JavaScript, Web API documentation, and browser compatibility; fall back to web search when MDN MCP is unavailable or insufficient.
-- Prefer GoDoc MCP for Go package and API documentation; fall back to web search when GoDoc MCP is unavailable or insufficient.
-- Prefer Cloudflare documentation MCP (`cloudflare-docs`) for Cloudflare product and API documentation; fall back to web search when it is unavailable or insufficient.
-- Use Context7 MCP for current library, framework, SDK, API, CLI, and cloud service documentation, even for familiar tools; prefer it over web search.
+- Treat a "preferred" MCP as the required first choice within its documented scope, not an optional alternative.
+- Discover the relevant registered MCP tools before declaring a server unavailable. Query the preferred MCP before consulting another documentation source.
+- Fall back only when the preferred MCP is unavailable, lacks the required capability, or returns insufficient relevant information. Briefly state the observed reason; convenience or familiarity is not a reason to bypass it.
+- Use MDN MCP first for HTML, CSS, JavaScript, Web API documentation, and browser compatibility.
+- Use GoDoc MCP first for Go package and API documentation.
+- Use Cloudflare documentation MCP (`cloudflare-docs`) first for Cloudflare products, APIs, SDKs, CLI usage, configuration, and troubleshooting, including Workers, Wrangler, and Agents SDK. It takes precedence over Context7.
+- Use Context7 MCP for current library, framework, SDK, API, CLI, and cloud service documentation outside the scopes above, even for familiar tools. Within those scopes, use Context7 only after the required MCP fallback condition is met. Prefer Context7 over web search.
 - Use the registered Firefox DevTools MCP (`firefox-devtools`) when inspecting or debugging pages in an existing Firefox session.
 - Use the registered Chrome DevTools MCP (`chrome-devtools`) when inspecting or debugging pages in an existing Chrome session via CDP.
 
 ### Context7
 
+- Follow the MCP source precedence above; this workflow does not override a domain-specific MCP requirement.
 - Use for API syntax, configuration, migrations, library-specific debugging, setup, and CLI usage.
 - Skip for refactoring, scripts from scratch, business logic debugging, code review, and general programming concepts.
 

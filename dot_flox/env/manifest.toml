@@ -132,7 +132,6 @@ prettier = { pkg-path = "prettier", pkg-group = "devel" }
 restish = { pkg-path = "restish", pkg-group = "devel" }
 risor = { pkg-path = "risor", pkg-group = "devel" }
 ruff = { pkg-path = "ruff", pkg-group = "devel" }
-rustup = { pkg-path = "rustup", pkg-group = "devel" }
 shellcheck = { pkg-path = "shellcheck", pkg-group = "devel" , outputs = "all" }
 shfmt = { pkg-path = "shfmt", pkg-group = "devel" }
 typst = { pkg-path = "typst", pkg-group = "devel" }
