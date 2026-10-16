@@ -6,7 +6,7 @@ The Declarative API transforms standard HTML `<form>` elements into WebMCP tools
 
 *   `toolname`: Unique name for the tool.
 *   `tooldescription`: Purpose of the tool.
-*   `toolautosubmit`: (Optional) If present, the agent can submit the form without waiting for user interaction. 
+*   `toolautosubmit`: (Optional) If present, the agent can submit the form without waiting for user interaction.
 *   `toolparamdescription`: (Optional) Provides a way to define a property description within the JSON Schema.
     *   **Resolution Order**: The browser uses `toolparamdescription` if present. In its absence, it uses the `textContent` of the associated `<label>` (skipping labelable descendants). If no label exists, it falls back to the `aria-description`.
     *   **Grouping (Fieldsets)**: To attach a description to a group of related elements (like `<input type="radio">` buttons), place `toolparamdescription` on the nearest parent `<fieldset>` element so it applies to the parameter group as a whole.
@@ -14,15 +14,15 @@ The Declarative API transforms standard HTML `<form>` elements into WebMCP tools
 ### Example
 
 ```html
-<form toolname="search-cars" 
-      tooldescription="Perform a car make/model search" 
+<form toolname="search-cars"
+      tooldescription="Perform a car make/model search"
       toolautosubmit>
   <label for="make">Vehicle Make</label>
   <input type="text" id="make" name="make" required>
-  
+
   <label for="model">Vehicle Model</label>
   <input type="text" id="model" name="model" toolparamdescription="e.g., 330i, F-150" required>
-  
+
   <button type="submit">Search</button>
 </form>
 ```
@@ -62,15 +62,22 @@ document.querySelector('form').addEventListener('submit', (event) => {
 
 ## Lifecycle Events
 
-The window emits events when agents start or stop interacting with a tool:
+`document.modelContext` emits events when agents start or stop interacting with a tool: `toolactivated` fires when tool execution starts, and `toolcancel` fires when it is canceled.
 
 ```javascript
-window.addEventListener('toolactivated', ({ toolName }) => {
-  console.log(`Tool "${toolName}" was activated by the agent.`);
+// Starting in Chrome 156, these events are dispatched on `document.modelContext`.
+// Older versions dispatch them on `window`. Feature-detect the event handler
+// property to pick the right target for backward compatibility.
+const targetFor = (type, listener, options) =>
+  (`on${type}` in (document.modelContext ?? {}) ? document.modelContext : window)
+    .addEventListener(type, listener, options);
+
+targetFor('toolactivated', ({ toolName }) => {
+  console.log(`Tool "${toolName}" started execution.`);
 });
 
-window.addEventListener('toolcancel', ({ toolName }) => {
-  console.log(`Tool "${toolName}" interaction was cancelled.`);
+targetFor('toolcancel', ({ toolName }) => {
+  console.log(`Tool "${toolName}" execution is cancelled.`);
 });
 ```
 

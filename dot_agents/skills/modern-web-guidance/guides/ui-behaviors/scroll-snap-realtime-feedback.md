@@ -55,7 +55,7 @@ container.addEventListener('scrollsnapchange', (event) => {
 When the page loads, the scroll position might be restored by the browser (e.g., via history traversal or an anchor link). Neither `scrollsnapchange` nor `scroll` events will fire automatically. Run a one-off geometric check to sync the UI with the initial scroll position.
 
 ```javascript
-// Note: For item.offsetLeft to be relative to the container, 
+// Note: For item.offsetLeft to be relative to the container,
 // the container MUST be the offsetParent (e.g., `position: relative`).
 const findClosestItemIndex = () => {
   // Center-distance assumes scroll-snap-align: center on items.
@@ -95,7 +95,7 @@ if (document.readyState === 'complete') {
 ```
 
 ### Fallback strategies
-Scroll snap events has limited availability.
+Browser support for Scroll snap events: Limited availability.
 Supported by: Chrome 129 (Sep 2024) and Edge 129 (Sep 2024).
 Unsupported in: Firefox and Safari.
 

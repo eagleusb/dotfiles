@@ -31,12 +31,12 @@ Instead of manual `top`/`left` offsets, use `position-area` to place the target 
 
 ```css
 .panel {
-  /* 
-     Position the panel below the anchor (block-end), 
+  /*
+     Position the panel below the anchor (block-end),
      aligned to the start of the anchor and spanning to its end (span-inline-end).
   */
   position-area: block-end span-inline-end;
-  
+
   /* Reset insets to allow the grid to take control */
   inset: auto;
 }
@@ -52,11 +52,12 @@ To prevent the panel from being cut off at the edge of the screen, define "try t
 
 ```css
 .panel {
-  /* 
+  /*
      If the panel overflows the bottom, flip it to the top (flip-block).
      If it overflows the inline edges, flip it horizontally (flip-inline).
+     If it overflows both (e.g., in a corner), flip on both axes (flip-block flip-inline).
   */
-  position-try-fallbacks: flip-block, flip-inline;
+  position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
 }
 ```
 
@@ -100,13 +101,13 @@ Without a bundler, import from a CDN inside a `<script type="module">`:
 
 Alternatively, for a legacy fallback without a polyfill, use `position: fixed` and manually calculate coordinates via `getBoundingClientRect()` or rely on default positioning with `inset: auto` if that's acceptable for the use case.
 
-Anchor positioning has limited availability.
+Browser support for Anchor positioning: Limited availability.
 Supported by: Safari 27.
 Unsupported in: Chrome, Edge, and Firefox.
 
 To support browsers without anchor positioning, you must set a reasonable position. By default popovers are centered in the middle of the screen, which may work for your use case.
 
-For some use cases, you may be able to use the `@oddbird/css-anchor-positioning` polyfill, which adds support for some anchor positioning use cases. It does not support implicit anchors, so you MUST add anchor names to the trigger. Additionally, `position-area` is not supported on popovers by the polyfill, so you MUST use `anchor()` on the desired insets. 
+For some use cases, you may be able to use the `@oddbird/css-anchor-positioning` polyfill, which adds support for some anchor positioning use cases. It does not support implicit anchors, so you MUST add anchor names to the trigger. Additionally, `position-area` is not supported on popovers by the polyfill, so you MUST use `anchor()` on the desired insets.
 
 ```html
 <!-- MANDATORY: Conditionally install the anchor positioning polyfill -->
@@ -121,7 +122,7 @@ For some use cases, you may be able to use the `@oddbird/css-anchor-positioning`
 .panel {
   /* Mandatory: use explicit anchor name */
   position-anchor: --kebab-anchor;
-  /* Mandatory: use insets rather that position-area for positioning */
+  /* Mandatory: use insets rather than position-area for positioning */
   bottom: auto;
   right: auto;
   top: anchor(bottom);

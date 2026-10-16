@@ -31,7 +31,7 @@ const isoDate = Temporal.Now.plainDateISO();
 
 // 3. Convert to Hebrew calendar if supported
 const calendarId = 'hebrew';
-const targetDate = isCalendarSupported(calendarId) 
+const targetDate = isCalendarSupported(calendarId)
   ? isoDate.withCalendar(calendarId)
   : isoDate; // Fallback to ISO if not supported
 
@@ -77,7 +77,7 @@ const localizedDisplay = targetDate.toLocaleString('en-u-ca-hebrew', {
 
 ## Fallback Strategy
 
-Temporal has limited availability.
+Browser support for Temporal: Limited availability.
 Supported by: Chrome 144 (Jan 2026), Edge 144 (Jan 2026), and Firefox 139 (May 2025).
 Unsupported in: Safari.
 
@@ -93,7 +93,7 @@ async function getTemporal() {
   if (typeof Temporal !== 'undefined') {
     return Temporal;
   }
-  
+
   try {
     // Load polyfill dynamically from CDN
     const module = await import('https://esm.sh/@js-temporal/polyfill');

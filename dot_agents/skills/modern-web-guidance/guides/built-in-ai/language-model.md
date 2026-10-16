@@ -348,7 +348,7 @@ This optimizes responsiveness and efficient use of local compute.
 
 ## 6. Fallback strategies
 
-LanguageModel has limited availability.
+Browser support for LanguageModel: Limited availability.
 Supported by: Chrome 148 (May 2026).
 Unsupported in: Edge, Firefox, and Safari.
 
@@ -365,4 +365,4 @@ if ('LanguageModel' in self) {
 If the Prompt API is unsupported or availability checks return 'unavailable', you must gracefully fall back:
 
 * Remote API Fallback: Redirect the detection request to a server endpoint or a cloud API (such as the Vertex AI Gemini API).
-* Local API Fallback: Redirect the detection request to a local endpoint, for example, using Transformers.js. 
+* Local API Fallback: Redirect the detection request to a local endpoint, for example, using Transformers.js.

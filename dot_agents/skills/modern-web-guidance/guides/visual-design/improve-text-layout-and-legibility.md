@@ -8,7 +8,7 @@ The `text-wrap: pretty` CSS property allows you to improve the typographic quali
 
 ## Implementation
 
-### 1. **Identify text elements**: 
+### 1. **Identify text elements**:
 
 For `text-wrap: balance`, select short text blocks like headings and table headers. Avoid elements that have visible boxes such as borders or backgrounds, as this can create unexpected visually empty areas in the layout.
 
@@ -27,7 +27,7 @@ For `text-wrap: pretty`, select elements potentially containing long runs of tex
 | **Line Constraints** | Up to 6–10 lines (algorithm limit) | Best for 3 to many lines | No limit |
 | **Perf Cost** | **High**: Binary search algorithm | **Medium**: Look-back algorithm | **Low**: Standard greedy algorithm |
 
-### 2. **Apply the chosen wrapping**: 
+### 2. **Apply the chosen wrapping**:
 
 Apply `text-wrap: balance` specifically to short, multi-line elements such as headings (`h1`-`h6`), subheadings, or pullquotes.
 
@@ -68,7 +68,7 @@ p, blockquote, li, .pretty-text {
 Baseline status for text-wrap: balance: Newly available. It's been Baseline since 2024-05-13.
 Supported by: Chrome 114 (May 2023), Edge 114 (Jun 2023), Firefox 121 (Dec 2023), and Safari 17.5 (May 2024).
 
-text-wrap: pretty has limited availability.
+Browser support for text-wrap: pretty: Limited availability.
 Supported by: Chrome 117 (Sep 2023), Edge 117 (Sep 2023), and Safari 26 (Sep 2025).
 Unsupported in: Firefox.
 

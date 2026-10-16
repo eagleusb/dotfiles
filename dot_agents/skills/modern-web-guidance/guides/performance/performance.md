@@ -2,7 +2,7 @@
 
 ## Critical Rendering Path (CRP) Optimization
 
-The Critical Rendering Path dictates how quickly the browser converts HTML, CSS, and JavaScript into painted pixels. 
+The Critical Rendering Path dictates how quickly the browser converts HTML, CSS, and JavaScript into painted pixels.
 
 ### DOs
 *   **DO inline critical CSS**: Extract styles necessary for above-the-fold content and inject them directly into the HTML `<head>`. Defer the rest of the stylesheet.
@@ -67,11 +67,11 @@ LCP measures the time required to render the largest visible text or image block
 **HTML: LCP Image Optimization**
 ```html
 <!-- Standard LCP Image -->
-<img 
-  src="/images/hero.webp" 
-  alt="Hero Product" 
-  fetchpriority="high" 
-  width="1200" 
+<img
+  src="/images/hero.webp"
+  alt="Hero Product"
+  fetchpriority="high"
+  width="1200"
   height="600"
 >
 
@@ -84,7 +84,7 @@ LCP measures the time required to render the largest visible text or image block
 
 ## Interaction to Next Paint (INP) & Main Thread Unblocking
 
-INP measures the latency of all interactive events across the page's lifecycle. Poor INP is caused by long-running JavaScript tasks blocking the main thread. 
+INP measures the latency of all interactive events across the page's lifecycle. Poor INP is caused by long-running JavaScript tasks blocking the main thread.
 
 ### DOs
 *   **DO break up long tasks**: Any JavaScript execution exceeding 50ms should be split. Yield to the main thread frequently so the browser can process pending user inputs.
@@ -113,7 +113,7 @@ async function yieldToMain() {
 async function processLargeList(items) {
   for (let i = 0; i < items.length; i++) {
     processItem(items[i]);
-    
+
     // Yield every 50 iterations to allow rendering/interaction
     if (i % 50 === 0) {
       await yieldToMain();
@@ -152,6 +152,7 @@ Rendering involves Layout, Style, Paint, and Compositing calculations. CSS Conta
 ### DOs
 *   **DO use `content-visibility: auto` on off-screen sections on large, complex pages**: Instruct the browser to skip layout and paint calculations for entire subtrees until they approach the viewport.
 *   **DO pair `content-visibility` with `contain-intrinsic-size`**: Prevent layout shifts and scrollbar jumping by providing a placeholder height/width for unrendered containers.
+*   **DO derive `contain-intrinsic-size` from the content**: When setting `contain-intrinsic-size` use the `auto` keyword and a value that's derived from what is known about the contents (i.e. text size, spacing, size of graphics, character count). Preferably use units such as `rem`, `lh`, `cap`, or `ch` that match values used for the elements within the contents rather than `px`. If the content for items in a group is not consistently sized, then use an average size.
 *   **DO apply explicit CSS containment (`contain`)**: For isolated UI components (like modals or widgets), use `contain: layout style paint` to prevent internal changes from triggering page-wide reflows.
 
 ### DON'Ts
@@ -168,6 +169,18 @@ Rendering involves Layout, Style, Paint, and Compositing calculations. CSS Conta
 .article-list-item {
   content-visibility: auto;
   contain-intrinsic-size: auto 600px; /* Provides a 600px placeholder */
+}
+
+.row {
+  --row-gap: .4rem;
+  --title-height: 1lh;
+  --description-height: 0.85lh;
+
+  display: grid;
+  row-gap: var(--row-gap);
+  content-visibility: auto;
+  /* The sum of the title height, row gap, and description height should be the size of the contents when skipped for rendering. */
+  contain-intrinsic-block-size: auto calc(var(--title-height) + var(--row-gap) + var(--description-height));
 }
 
 /* Scope a complex widget to prevent layout thrashing */
@@ -205,12 +218,12 @@ Images typically represent the largest payload on a given web page. Optimization
   <!-- Modern Formats with Source Negotiation -->
   <source type="image/avif" srcset="hero-400w.avif 400w, hero-800w.avif 800w" sizes="(max-width: 600px) 100vw, 50vw">
   <source type="image/webp" srcset="hero-400w.webp 400w, hero-800w.webp 800w" sizes="(max-width: 600px) 100vw, 50vw">
-  
+
   <!-- Fallback + Dimensions + Priority for Above-The-Fold -->
-  <img 
-    src="hero-800w.jpg" 
-    alt="Descriptive text" 
-    width="800" 
+  <img
+    src="hero-800w.jpg"
+    alt="Descriptive text"
+    width="800"
     height="600"
     fetchpriority="high"
     loading="eager"
@@ -218,10 +231,10 @@ Images typically represent the largest payload on a given web page. Optimization
 </picture>
 
 <!-- Below-The-Fold Image -->
-<img 
-    src="footer-icon.png" 
-    alt="Footer Logo" 
-    width="100" 
+<img
+    src="footer-icon.png"
+    alt="Footer Logo"
+    width="100"
     height="100"
     loading="lazy"
 >
@@ -333,11 +346,11 @@ Video payloads are among the heaviest assets. Optimization focuses on reducing b
 
 **HTML: Accessible and Dynamic Video Loader**
 ```html
-<video 
-  controls 
-  width="1200" 
+<video
+  controls
+  width="1200"
   height="675"
-  poster="/images/video-poster.webp" 
+  poster="/images/video-poster.webp"
   preload="none"
   loading="lazy"
 >

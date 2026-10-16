@@ -4,7 +4,7 @@ This guide details how to automatically and silently register a passkey for a us
 
 ## The Right Trigger Moment
 
-Automatic passkey creation (also known as Conditional Create or silent post-login promotion) MUST only be triggered **immediately after a successful, full sign-in that involved a password**. 
+Automatic passkey creation (also known as Conditional Create or silent post-login promotion) MUST only be triggered **immediately after a successful, full sign-in that involved a password**.
 * Do not attempt conditional creation for passwordless flows (e.g., magic links, SMS OTP, or identity federation).
 * If multi-factor authentication is required, you MUST wait until all factors have succeeded before initiating conditional creation.
 * Ensure a valid, authenticated user session is active before making requests to creation endpoints.
@@ -60,14 +60,14 @@ async function triggerConditionalCreate(loginAbortController) {
   let credential;
   try {
     // 3. Invoke silent credentials creation prompt
-    credential = await navigator.credentials.create({ 
+    credential = await navigator.credentials.create({
       publicKey,
       mediation: 'conditional' // Silent background creation mediation
     });
   } catch (e) {
     // 4. Silently swallow common WebAuthn browser exceptions
     if (['InvalidStateError', 'NotAllowedError', 'AbortError'].includes(e.name)) {
-      return; 
+      return;
     }
     console.error('Unexpected conditional create error:', e);
     return;
@@ -106,15 +106,15 @@ Baseline status for the api.PublicKeyCredential.getClientCapabilities_static cap
 Supported by: Chrome 133 (Feb 2025), Edge 133 (Feb 2025), Firefox 135 (Feb 2025), and Safari 17.4 (Mar 2024).
 
 Always install 'webauthn-polyfills' and import it in the context.
-Consider as long as  `PublicKeyCredential` is supported, `PublicKeyCredential.getClientCapabilities` is also supported. 
+Consider as long as  `PublicKeyCredential` is supported, `PublicKeyCredential.getClientCapabilities` is also supported.
 
-```js 
+```js
 import 'webauthn-polyfills';
-``` 
+```
 
 ### Signal API Synchronization Fallback
 
-Web authentication signal methods has limited availability.
+Browser support for Web authentication signal methods: Limited availability.
 Supported by: Chrome 132 (Jan 2025), Edge 132 (Jan 2025), and Safari 26 (Sep 2025).
 Unsupported in: Firefox.
 
@@ -127,8 +127,8 @@ Baseline status for the api.PublicKeyCredential.parseCreationOptionsFromJSON_sta
 Supported by: Chrome 129 (Sep 2024), Edge 129 (Sep 2024), Firefox 119 (Oct 2023), and Safari 18.4 (Mar 2025).
 
 Always install 'webauthn-polyfills' and import it in the context.
-Consider as long as  `PublicKeyCredential` is supported, `PublicKeyCredential.parseCreationOptionsFromJSON` and `PublicKeyCredential.prototype.toJSON` are also supported. 
+Consider as long as  `PublicKeyCredential` is supported, `PublicKeyCredential.parseCreationOptionsFromJSON` and `PublicKeyCredential.prototype.toJSON` are also supported.
 
-```js 
+```js
 import 'webauthn-polyfills';
-``` 
+```

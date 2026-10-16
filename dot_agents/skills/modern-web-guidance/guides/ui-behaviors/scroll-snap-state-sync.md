@@ -9,7 +9,7 @@ The container must have `scroll-snap-type` defined, and have children with `scro
 
 ```css
 main {
-    /* Enable scroll snapping on the container */  
+    /* Enable scroll snapping on the container */
   scroll-snap-type: y proximity;
   overflow-y: auto;
 }
@@ -41,7 +41,7 @@ const links = document.querySelectorAll('nav a');
 main.addEventListener('scrollsnapchange', (event) => {
   // Use snapTargetBlock for vertical or snapTargetInline for horizontal
   const snappedHeader = event.snapTargetBlock;
-  
+
   if (snappedHeader) {
     setSelectedParagraph(snappedHeader.id);
   }
@@ -60,7 +60,7 @@ In addition, be careful when using the `mandatory` value for `scroll-snap-type`,
 
 ## Fallback strategies
 
-Scroll snap events has limited availability.
+Browser support for Scroll snap events: Limited availability.
 Supported by: Chrome 129 (Sep 2024) and Edge 129 (Sep 2024).
 Unsupported in: Firefox and Safari.
 

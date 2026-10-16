@@ -15,20 +15,20 @@ MANDATORY: Use `performance.getEntriesByType('visibility-state')` to access the 
 function getVisibilityInfo() {
   // Retrieve VisibilityStateEntry members:
   const entries = performance.getEntriesByType('visibility-state');
-  
+
   if (entries.length > 0) {
     const firstEntry = entries[0];
-    
+
     // If the first performance entry for visibility is 'hidden',
     // the page was loaded in the background.
     const initiallyBackgrounded = firstEntry.name === 'hidden';
-    
-    // Find the precise, high-resolution timestamp of when the page 
+
+    // Find the precise, high-resolution timestamp of when the page
     // was first backgrounded.
     let timeBackgrounded = null;
     for (const entry of entries) {
       if (entry.name === 'hidden') {
-        // entry.startTime is used because it provides the exact browser 
+        // entry.startTime is used because it provides the exact browser
         // timestamp of the visibility change, which is required for precision
         timeBackgrounded = entry.startTime;
         break;
@@ -45,7 +45,7 @@ function getVisibilityInfo() {
 
 ### Fallback strategies
 
-Page visibility state performance entries has limited availability.
+Browser support for Page visibility state performance entries: Limited availability.
 Supported by: Chrome 115 (Jul 2023) and Edge 115 (Jul 2023).
 Unsupported in: Firefox and Safari.
 
@@ -60,18 +60,18 @@ For unsupported environments, you may fall back to checking the `document.visibi
  */
 function getFallbackVisibilityInfo() {
   // Check the state exactly when this script executes.
-  // This will fail to detect an initial background state if the user 
+  // This will fail to detect an initial background state if the user
   // foregrounded the page before this script executed.
   let initiallyBackgrounded = document.visibilityState === 'hidden';
-  
+
   // If it's hidden now, we approximate that it was hidden from load (time 0).
   let timeBackgrounded = initiallyBackgrounded ? 0 : null;
 
   // Listen for future visibility changes to capture if it is backgrounded later.
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden' && timeBackgrounded === null) {
-      // performance.now() is used here as a fallback, but it only gives 
-      // us the time the event listener fired, not the precise internal 
+      // performance.now() is used here as a fallback, but it only gives
+      // us the time the event listener fired, not the precise internal
       // browser time the visibility actually changed.
       timeBackgrounded = performance.now();
     }

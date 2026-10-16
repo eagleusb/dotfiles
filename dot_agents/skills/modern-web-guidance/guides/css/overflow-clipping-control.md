@@ -4,7 +4,7 @@ While `overflow: hidden` is a "blunt instrument" that almost always clips conten
 
 Specify exactly where clipping occurs with `overflow: clip` and `overflow-clip-margin`. You can align the boundary precisely with inner box-model edges or extend the clipping boundary beyond the element's box by a specified offset (a safety margin). This modern approach is highly performant and eliminates the legacy requirement of adding extra wrapper containers with custom padding and negative margins just to let visual effects (like prominent child element shadows) render unclipped.
 
-Replaced elements (`<img>`, `<video>`, `<canvas>`, etc.) default to `overflow: clip` and `overflow-clip-margin: content-box`, giving you control to cleanly contain images that use `object-fit` or `border-radius`. 
+Replaced elements (`<img>`, `<video>`, `<canvas>`, etc.) default to `overflow: clip` and `overflow-clip-margin: content-box`, giving you control to cleanly contain images that use `object-fit` or `border-radius`.
 
 ## How to Implement
 
@@ -108,7 +108,7 @@ The following examples demonstrate dynamic container layout controls, showcasing
 Baseline status for overflow: clip: Widely available. It's been Baseline since 2022-09-12.
 Supported by: Chrome 90 (Apr 2021), Edge 90 (Apr 2021), Firefox 81 (Sep 2020), and Safari 16 (Sep 2022).
 
-overflow-clip-margin has limited availability.
+Browser support for overflow-clip-margin: Limited availability.
 Supported by: Firefox 148 (Feb 2026).
 Unsupported in: Chrome, Edge, and Safari.
 
@@ -138,7 +138,7 @@ For target environments lacking native support for `overflow: clip` or `overflow
  * 1. Block Container Nested Curves Fallback
  * Keeps base level 1 fallback clipping roughly at the inner padding box.
  */
-.demo-container-fallback {  
+.demo-container-fallback {
   /* Level 1 Fallback: clip child roughly at padding box */
   overflow: hidden;
 }
@@ -159,7 +159,7 @@ For target environments lacking native support for `overflow: clip` or `overflow
  * 2. Child Element Shadow Bleed Fallback
  * Base fallback clips content using overflow: hidden, abruptly truncating child element shadows.
  */
-.demo-safety-parent {  
+.demo-safety-parent {
   /* Level 1 Fallback */
   overflow: hidden;
 }

@@ -39,7 +39,7 @@ Use the `@container` rule to apply styles when the container reaches a certain s
     flex-direction: row;
     align-items: center;
   }
-  
+
   .card-image {
     width: 150px;
     height: 150px;
@@ -67,7 +67,7 @@ You can also use container queries to hide or show extra details when there is m
 
 ### Fallback strategies
 
-Baseline status for Container queries: Widely available. It's been Baseline since 2023-02-14.
+Baseline status for Container queries (size): Widely available. It's been Baseline since 2023-02-14.
 Supported by: Chrome 105 (Sep 2022), Edge 105 (Sep 2022), Firefox 110 (Feb 2023), and Safari 16 (Sep 2022).
 
 For browsers that do not support container queries, the best approach is to use a safe default layout (like the stacked vertical layout) and progressively enhance it using media queries if the general screen size allows it.
@@ -94,7 +94,7 @@ For browsers that do not support container queries, the best approach is to use 
       flex-direction: column;
     }
   }
-  
+
   @container (min-width: 400px) {
     .card {
       flex-direction: row;

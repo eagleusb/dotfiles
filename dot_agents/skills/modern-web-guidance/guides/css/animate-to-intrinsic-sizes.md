@@ -24,7 +24,7 @@ You can apply this pattern to any container (like a "Show More" section or a nav
   /* 1. Define a fixed initial size (or 0) and hide overflow */
   block-size: 100px;
   overflow: hidden;
-  
+
   /* 2. Transition the sizing property */
   transition: block-size 0.4s ease-out;
 }
@@ -106,11 +106,11 @@ triggerBtn?.addEventListener('click', () => {
 
 ## Fallback strategies
 
-interpolate-size has limited availability.
+Browser support for interpolate-size: Limited availability.
 Supported by: Chrome 129 (Sep 2024) and Edge 129 (Sep 2024).
 Unsupported in: Firefox and Safari.
 
-calc-size() has limited availability.
+Browser support for calc-size(): Limited availability.
 Supported by: Chrome 129 (Sep 2024) and Edge 129 (Sep 2024).
 Unsupported in: Firefox and Safari.
 

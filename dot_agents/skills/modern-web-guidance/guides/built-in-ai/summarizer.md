@@ -18,7 +18,7 @@ The Summarizer API is available starting in **Chrome and Edge 138**. It requires
 
 ### Model Download and Availability
 
-Check if the model is ready, needs downloading, or is unavailable. 
+Check if the model is ready, needs downloading, or is unavailable.
 
 **Mandatory Options Passing:** You must pass the identical configuration options object to both `Summarizer.availability(options)` and `Summarizer.create(options)`. Do NOT use the deprecated `window.ai.summarizer` API surface.
 
@@ -132,7 +132,7 @@ for await (const chunk of stream) {
 
 ## Fallback Strategy
 
-Summarizer has limited availability.
+Browser support for Summarizer: Limited availability.
 Supported by: Chrome 138 (Jun 2025) and Edge 138 (Jun 2025).
 Unsupported in: Firefox and Safari.
 

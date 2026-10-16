@@ -28,7 +28,7 @@ console.log(formatter.format(balanced));
 ### Best Practices
 
 *   **DO** use `Temporal.Duration.round()` with `largestUnit` to control the display strategy (detailed breakdown vs total count).
-*   **DO** use `Intl.DurationFormat` for localized string formatting and automatic pluralization, or fall back to manual construction if not supported. 
+*   **DO** use `Intl.DurationFormat` for localized string formatting and automatic pluralization, or fall back to manual construction if not supported.
 *   **DO NOT** rely on `Temporal.Duration.prototype.toString()` for user-facing text; it returns ISO 8601 strings (e.g., `PT1H30M`).
 *   **DO** use feature detection and a polyfill for environments lacking native support.
 
@@ -36,7 +36,7 @@ console.log(formatter.format(balanced));
 
 ### Fallbacks & browser support for Temporal
 
-Temporal has limited availability.
+Browser support for Temporal: Limited availability.
 Supported by: Chrome 144 (Jan 2026), Edge 144 (Jan 2026), and Firefox 139 (May 2025).
 Unsupported in: Safari.
 

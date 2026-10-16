@@ -6,7 +6,7 @@ The CSS `@function` at-rule allows you to encapsulate this logic into reusable, 
 
 ## The `@function` Syntax
 
-A custom function is defined using the `@function` rule followed by a dashed name and a list of parameters. The function returns a value using the `result` property. 
+A custom function is defined using the `@function` rule followed by a dashed name and a list of parameters. The function returns a value using the `result` property.
 
 ```css
 @function --my-function(--input1 <length>, --input2: default-value) returns <length> {
@@ -60,11 +60,11 @@ main {
 - **Provide Defaults:** Make your functions more robust by providing sensible default values.
 - **Keep it Simple:** Use functions for logic that is actually repeated or complex. Don't over-engineer simple property-value pairs.
 - **Use Types:** Ensure your parameters and return values are the expected types.
-- **Consider Precompiled Alternatives:** For functions that do not depend on user input, media queries or other client-side variation, consider using a CSS precompiler to avoid doing unnecessary work on the client. 
+- **Consider Precompiled Alternatives:** For functions that do not depend on user input, media queries or other client-side variation, consider using a CSS precompiler to avoid doing unnecessary work on the client.
 
 ### Fallback strategies
 
-@function has limited availability.
+Browser support for @function: Limited availability.
 Supported by: Chrome 139 (Aug 2025) and Edge 139 (Aug 2025).
 Unsupported in: Firefox and Safari.
 

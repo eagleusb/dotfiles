@@ -19,7 +19,7 @@ newParent.moveBefore(dialogElement, null);
 
 ### Fallback strategies
 
-moveBefore() has limited availability.
+Browser support for moveBefore(): Limited availability.
 Supported by: Chrome 133 (Feb 2025), Edge 133 (Feb 2025), and Firefox 144 (Oct 2025).
 Unsupported in: Safari.
 
@@ -39,7 +39,7 @@ if ('moveBefore' in Element.prototype) {
   // Note: This WILL close <dialog>, popover, and fullscreen elements.
   const wasOpen = popoverOrDialog.hasAttribute('open') || popoverOrDialog.matches(':popover-open');
   targetParent.insertBefore(popoverOrDialog, null);
-  
+
   // Manually restore state if possible
   if (wasOpen && typeof popoverOrDialog.showModal === 'function') {
     popoverOrDialog.showModal();

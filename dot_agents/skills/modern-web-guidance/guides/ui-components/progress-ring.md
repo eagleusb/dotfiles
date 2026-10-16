@@ -97,7 +97,7 @@ You can also use a `radial-gradient` to make rounded end caps.
 
 #### Enable smooth transitions with `@property`
 
-To animate the progress ring smoothly when the value changes, register `--value` as a numeric custom property. 
+To animate the progress ring smoothly when the value changes, register `--value` as a numeric custom property.
 
 Users with motion sensitivities may find the transition between values disorienting. Respect the `prefers-reduced-motion` media query by having a 0 second (immediate) duration by default, and setting a longer time for users with no preference.
 
@@ -146,8 +146,8 @@ If `@property` is not supported, the ring will jump to the new value instantly i
 
 If the transition is absolutely necessary, you can check for `@property` support and use a `requestAnimationFrame()` loop to interpolate `--value` in older browsers.
 
-background-clip: border-area has limited availability.
-Supported by: Chrome 150, Edge 150, and Safari 18.2 (Dec 2024).
+Browser support for background-clip: border-area: Limited availability.
+Supported by: Chrome 150 (Jun 2026), Edge 150 (Jul 2026), and Safari 18.2 (Dec 2024).
 Unsupported in: Firefox.
 
 For browsers that don't yet support `background-clip: border-area`, fall back to a `mask-image` to hollow out the center of the `<progress>` element.
@@ -162,8 +162,8 @@ For browsers that don't yet support `background-clip: border-area`, fall back to
 }
 ```
 
-attr() has limited availability.
-Supported by: Chrome 133 (Feb 2025), Edge 133 (Feb 2025), and Firefox 155.
+Browser support for attr(): Limited availability.
+Supported by: Chrome 133 (Feb 2025), Edge 133 (Feb 2025), and Firefox 155 (Sep 2026).
 Unsupported in: Safari.
 
 For browsers that don't support the `attr()` CSS function for any property, use a `MutationObserver` to automatically sync the `value` attribute to the `--value` custom property.

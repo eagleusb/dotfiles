@@ -15,7 +15,7 @@ async function processLargeArray(items) {
   for (const item of items) {
     // Process the item
     processItem(item);
-    
+
     // MANDATORY: Yield to the main thread periodically to keep the UI
     // responsive. This can be done by checking if the deadline set earlier
     // has been exceeded. When it has been, yield, then reset the deadline
@@ -30,7 +30,7 @@ async function processLargeArray(items) {
 
 ### Fallback strategies
 
-Scheduler API has limited availability.
+Browser support for Scheduler API: Limited availability.
 Supported by: Chrome 129 (Sep 2024), Edge 129 (Sep 2024), and Firefox 142 (Aug 2025).
 Unsupported in: Safari.
 
@@ -45,7 +45,7 @@ async function processLargeArrayWithFallback(items) {
 
   for (const item of items) {
     processItem(item);
-    
+
     // MANDATORY: Yield to the main thread periodically to keep the UI responsive.
     if (performance.now() >= deadline) {
       // DO: Feature detect scheduler.yield

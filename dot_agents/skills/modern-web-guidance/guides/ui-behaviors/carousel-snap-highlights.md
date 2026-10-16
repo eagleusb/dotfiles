@@ -36,7 +36,7 @@ Each item in the carousel that should be tracked for snapping must be declared a
 .carousel-item {
   /* Define where the item snaps within the container */
   scroll-snap-align: center;
-  
+
   /* MANDATORY: Establish this element as a scroll-state query container */
   container-type: scroll-state;
 }
@@ -57,7 +57,7 @@ Because container queries style **descendants**, you must apply the highlight st
     color 0.4s,
     box-shadow 0.4s;
 }
-/* 
+/*
 Only show the effect for users not requesting reduced motion. Disable completely, including the color change, as it causes a flash that may be problematic.
 */
 @media (prefers-reduced-motion: no-preference) {
@@ -88,7 +88,7 @@ The `snapped` descriptor can query specific axes: `x`, `y`, `inline`, `block`, o
 
 **AVOID**: using `scroll-state` with interactive elements.
 
-Visual highlights for snapped items can improve the UX, but the snapped item is not exposed to the accessibility tree. The visual theme applied to a snapped item should not convey that the element is active or focused, and a keyboard focus ring should be highly visible and distinct from the `snapped` highlight. If the snapped item is interactive, you must use other standard accessibility practices to make it accessible.  
+Visual highlights for snapped items can improve the UX, but the snapped item is not exposed to the accessibility tree. The visual theme applied to a snapped item should not convey that the element is active or focused, and a keyboard focus ring should be highly visible and distinct from the `snapped` highlight. If the snapped item is interactive, you must use other standard accessibility practices to make it accessible.
 
 Snapping occurs due to scrolling, which does not move keyboard focus. However, keyboard focus may cause the scroll container to move, causing a change in the snapped item, which may or may not be the focused item. This will likely be a source of confusion for users and is discouraged.
 
@@ -98,7 +98,7 @@ Snapping occurs due to scrolling, which does not move keyboard focus. However, k
 
 ## Fallback strategies
 
-Container scroll-state queries has limited availability.
+Browser support for Container scroll-state queries: Limited availability.
 Supported by: Chrome 133 (Feb 2025) and Edge 133 (Feb 2025).
 Unsupported in: Firefox and Safari.
 
@@ -115,7 +115,7 @@ You can use `@supports` to provide enhancements only to supported browsers:
 
 #### JavaScript fallback
 
-If the highlight is critical for the user experience, use `IntersectionObserver` to determine the snapped item. Adjust the observed area to a thin slice in the center of the carousel by providing a `rootMargin` with a negative inline value. For example, to consider an element to be intersecting if it is in the center 2% of the carousel, set the `rootMargin` to `"0px -49%"`.  
+If the highlight is critical for the user experience, use `IntersectionObserver` to determine the snapped item. Adjust the observed area to a thin slice in the center of the carousel by providing a `rootMargin` with a negative inline value. For example, to consider an element to be intersecting if it is in the center 2% of the carousel, set the `rootMargin` to `"0px -49%"`.
 
 ```javascript
 // Optional: detect support and apply a JS-based fallback

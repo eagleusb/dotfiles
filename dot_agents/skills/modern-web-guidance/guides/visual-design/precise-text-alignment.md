@@ -32,8 +32,8 @@ Different fonts have different amounts of built-in spacing above and below the t
   padding: 10px;
   background: hotpink;
   border-radius: 10px;
-  /* 
-    Trims the top to the cap-height and 
+  /*
+    Trims the top to the cap-height and
     the bottom to the alphabetic baseline.
   */
   text-box: trim-both cap alphabetic;
@@ -48,14 +48,14 @@ When using Flexbox to align text and icons, the "ghost space" often makes the te
 .button {
   display: inline-flex;
   align-items: center;
-  gap: 8px; 
+  gap: 8px;
 }
-/* 
+/*
   text-box does NOT inherit, and must be applied directly to the text element.
 */
 .button-text{
-  /* 
-    The flex container now centers against the 
+  /*
+    The flex container now centers against the
     visible letters, not the invisible font box.
   */
   text-box: trim-both cap alphabetic;
@@ -87,7 +87,7 @@ h1 {
 
 ### Fallback strategies
 
-text-box has limited availability.
+Browser support for text-box: Limited availability.
 Supported by: Chrome 133 (Feb 2025), Edge 133 (Feb 2025), and Safari 18.2 (Dec 2024).
 Unsupported in: Firefox.
 

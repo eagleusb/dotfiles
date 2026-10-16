@@ -55,7 +55,7 @@ Here’s how to create a basic parallax effect:
     }
     ```
 
-5.  **Stagger the animations:** To make the layers move at different speeds, you can use one of two main approaches: **staggering in the keyframes**, or **staggering the `animation-range`**. 
+5.  **Stagger the animations:** To make the layers move at different speeds, you can use one of two main approaches: **staggering in the keyframes**, or **staggering the `animation-range`**.
 
     Both of these approaches can use hardcoded values, or can use the `sibling-index()`/`sibling-count()` implementation. The hardcoded values are easiest and also useful when having only a limited amount of layers. The `sibling-index()`/`sibling-count()` implementation is handy when you have many layers.
 
@@ -174,7 +174,7 @@ As for setting the `animation-range`:
 
 ## Browser support and fallback strategies
 
-Scroll-driven animations has limited availability.
+Browser support for Scroll-driven animations: Limited availability.
 Supported by: Chrome 115 (Jul 2023), Edge 115 (Jul 2023), and Safari 26 (Sep 2025).
 Unsupported in: Firefox.. Therefore, a fallback strategy is typically required.
 
@@ -213,7 +213,7 @@ if (!CSS.supports('(animation-timeline: view()) and (animation-range: entry)')) 
 
     if (scrollY >= wrapperTop - windowHeight && scrollY <= wrapperTop + wrapperHeight) {
       const scrollPercent = (scrollY - (wrapperTop - windowHeight)) / (wrapperHeight + windowHeight);
-      
+
       layers.forEach((layer, index) => {
         // This matches the effect as defined in the CSS example above.
         // Customize this further if needed.

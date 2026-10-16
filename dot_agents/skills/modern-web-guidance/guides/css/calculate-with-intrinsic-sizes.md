@@ -17,7 +17,7 @@
 .element {
   /* MANDATORY: Always provide a fallback for browsers that do not support calc-size() */
   inline-size: min-content;
-  
+
   /* DO: Use calc-size to modify an intrinsic basis with a calculation or function */
   inline-size: calc-size(min-content, size + 2rem);
 }
@@ -88,8 +88,8 @@ By default, browsers cannot interpolate between a length (e.g., `0px`) and an in
   /* MANDATORY: Fallback value for open state */
   block-size: auto;
 
-  /* 
-    DO: Use calc-size(auto, ...) to enable animation from 0 to the element's 
+  /*
+    DO: Use calc-size(auto, ...) to enable animation from 0 to the element's
     intrinsic size while doing a calculation (in this case, adding a space of 2rem).
   */
   block-size: calc-size(auto, size + 2rem);
@@ -113,9 +113,9 @@ Animations that change the size of large layout areas can be particularly disrup
 
 @media (prefers-reduced-motion: reduce) {
   .accordion-content {
-    /* 
+    /*
        EXAMPLE: Replacing disruptive layout animations with a subtle fade-in.
-       Setting the block-size instantly and transitioning opacity 
+       Setting the block-size instantly and transitioning opacity
        provides a clear state change without large-scale motion.
     */
     transition: opacity 1.5s ease;
@@ -137,7 +137,7 @@ You can use `calc-size()` with any CSS math function—such as `min()`, `max()`,
   /* MANDATORY: Always provide a fallback for browsers that do not support calc-size() */
   inline-size: fit-content;
 
-  /* 
+  /*
     DO: Establish a dynamic size based on content, while:
     1. Enforcing boundaries using CSS math functions (min, clamp, etc.)
     2. Modifying the intrinsic size with fixed or relative offsets
@@ -154,11 +154,11 @@ You can use `calc-size()` with any CSS math function—such as `min()`, `max()`,
 
 ## Fallback strategies
 
-calc-size() has limited availability.
+Browser support for calc-size(): Limited availability.
 Supported by: Chrome 129 (Sep 2024) and Edge 129 (Sep 2024).
 Unsupported in: Firefox and Safari.
 
-interpolate-size has limited availability.
+Browser support for interpolate-size: Limited availability.
 Supported by: Chrome 129 (Sep 2024) and Edge 129 (Sep 2024).
 Unsupported in: Firefox and Safari.
 
@@ -167,14 +167,14 @@ Unsupported in: Firefox and Safari.
 ```css
 .element {
   /* Fallback for browsers that don't support calc-size() */
-  inline-size: fit-content; 
+  inline-size: fit-content;
   /* Modern browsers will override the fallback */
   inline-size: calc-size(fit-content, size + 2rem);
 }
 ```
 
 ### Animation and Transition Fallbacks
-In browsers without support for `calc-size()` or `interpolate-size`, transitions involving intrinsic sizing keywords will fail to interpolate. 
+In browsers without support for `calc-size()` or `interpolate-size`, transitions involving intrinsic sizing keywords will fail to interpolate.
 
 - **Graceful Degradation**: The default fallback is an "instant jump" between states (e.g., from `0` to `auto`). This is often acceptable as the layout remains functional.
 - **Enhanced Experience**: Use `@supports` to apply complex layout logic or additional styling that only makes sense when smooth intrinsic animations are possible.

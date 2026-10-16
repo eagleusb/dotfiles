@@ -165,7 +165,7 @@ The API supports a wide range of BCP 47 language codes: Here are the languages s
 
 ## Fallback Strategy
 
-Translator has limited availability.
+Browser support for Translator: Limited availability.
 Supported by: Chrome 138 (Jun 2025) and Edge 148 (May 2026).
 Unsupported in: Firefox and Safari.
 
@@ -179,7 +179,7 @@ if ('Translator' in self) {
 }
 ```
 
-If the `Translator` API is unsupported or availability checks return `'unavailable'`, you must gracefully fall back. 
+If the `Translator` API is unsupported or availability checks return `'unavailable'`, you must gracefully fall back.
 
 Recommended options:
 1. **Remote API Fallback**: Redirect the translation request to a server endpoint or cloud remote API (such as the Vertex AI Gemini API) to deliver translation functionality.

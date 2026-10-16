@@ -21,7 +21,7 @@ const plainDate = Temporal.PlainDate.from(birthdateStr);
 
 // 2. Display the date
 // This will output "01/01/1990" (or equivalent) in any time zone
-console.log(plainDate.toLocaleString('en-GB')); 
+console.log(plainDate.toLocaleString('en-GB'));
 
 // 3. Compare with standard Date (which might drift)
 const dateObj = new Date("1990-01-01T00:00:00Z");
@@ -40,7 +40,7 @@ console.log(new Intl.DateTimeFormat('en-GB', { timeZone: 'America/New_York' }).f
 
 ### Fallbacks & browser support for Temporal
 
-Temporal has limited availability.
+Browser support for Temporal: Limited availability.
 Supported by: Chrome 144 (Jan 2026), Edge 144 (Jan 2026), and Firefox 139 (May 2025).
 Unsupported in: Safari.
 

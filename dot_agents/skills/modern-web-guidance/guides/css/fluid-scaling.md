@@ -17,7 +17,7 @@ To use container query units, you must first define a containment context on a p
   /* Define the container type. Use 'inline-size' for width-based scaling. */
   /* You can also use 'size' for both width and height, but it requires explicit sizing. */
   container-type: inline-size;
-  
+
   /* Optional: Name the container for specific targeting */
   container-name: fluid-card;
 }
@@ -58,7 +58,7 @@ To prevent sizes from becoming too small or too large, use the CSS `clamp()` fun
 
 ### Fallback strategies
 
-Baseline status for Container queries: Widely available. It's been Baseline since 2023-02-14.
+Baseline status for Container queries (size): Widely available. It's been Baseline since 2023-02-14.
 Supported by: Chrome 105 (Sep 2022), Edge 105 (Sep 2022), Firefox 110 (Feb 2023), and Safari 16 (Sep 2022).
 
 If container queries are not supported by the browser, you should provide a fallback using viewport units or standard media queries.
