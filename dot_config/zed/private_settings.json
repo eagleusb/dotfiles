@@ -1,17 +1,78 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "ui_font_weight": 500.0,
-  "icon_theme": "Colored Zed Icons Theme Dark",
+  "cli_default_open_behavior": "existing_window",
+  "proxy": "",
+  "buffer_font_size": 20.0,
+  "soft_wrap": "editor_width",
+  "cursor_animation": {
+
+  },
+  "agent_ui_font_family": "Atkinson Hyperlegible",
+  "git": {
+    "diff_base": "default_branch"
+  },
+  "semantic_tokens": "full",
+  "format_on_save": "modifications_if_available",
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "window_decorations": "client",
+  "use_system_window_tabs": false,
+  "bottom_dock_layout": "contained",
+  "debugger": {
+    "button": true
+  },
+  "title_bar": {
+    "show_onboarding_banner": true,
+    "show_branch_name": true,
+    "show_user_picture": false,
+    "show_menus": true,
+    "show_sign_in": false,
+  },
+  "status_bar": {
+    "active_encoding_button": "enabled"
+  },
+  "prettier": {
+    "allowed": false
+  },
+  "completions": {
+    "lsp_fetch_timeout_ms": 0
+  },
+  "agent_buffer_font_size": 18.0,
+  "agent_ui_font_size": 20.0,
+  "buffer_font_fallbacks": [
+    "JuliaMono"
+  ],
+  "buffer_font_family": "FiraCode Nerd Font",
+  "buffer_font_features": {},
+  "buffer_font_weight": 400.0,
   "buffer_line_height": "comfortable",
-  "ui_font_family": "Hermit",
+  "ui_font_weight": 400.0,
+  "ui_font_family": "Atkinson Hyperlegible",
+  "ui_font_size": 22.0,
+  "colorize_brackets": true,
+  "auto_indent_on_paste": true,
+  "use_on_type_format": true,
+  "show_whitespaces": "boundary",
+  "show_edit_predictions": true,
+  "ensure_final_newline_on_save": true,
+  "wrap_guides": [
+    110
+  ],
+  "preferred_line_length": 110,
+  "tab_size": 2,
+  "base_keymap": "VSCode",
+  "cursor_shape": "block",
+  "cursor_blink": true,
+  "autosave": "on_focus_change",
+  "icon_theme": "Colored Zed Icons Theme Dark",
   "terminal": {
+    "dock": "bottom",
     "font_family": "FiraCode Nerd Font",
     "blinking": "on",
     "copy_on_select": true,
@@ -22,63 +83,167 @@
     "metrics": false,
   },
   "project_panel": {
+    "dock": "left",
     "auto_reveal_entries": false,
   },
-  "base_keymap": "VSCode",
-  "agent": {
-    "enable_feedback": false,
-    "enabled": false,
-    "button": false,
-    "model_parameters": [],
-  },
   "minimap": {
-    "show": "auto",
+    "show": "always",
   },
-  "cursor_shape": "block",
-  "cursor_blink": true,
-  "autosave": "on_focus_change",
-  "buffer_font_weight": 500.0,
-  "buffer_font_fallbacks": ["JuliaMono"],
-  "buffer_font_family": "Fira Code",
-  "buffer_font_features": {},
   "file_types": {
-    "terraform": ["*.tftpl"],
-    "hcl": ["*.hcl"],
+    "terraform": [
+      "*.tftpl"
+    ],
+    "hcl": [
+      "*.hcl"
+    ],
   },
-  "colorize_brackets": true,
-  "auto_indent_on_paste": true,
-  "use_on_type_format": true,
-  "show_whitespaces": "boundary",
-  "show_edit_predictions": true,
-  "ensure_final_newline_on_save": true,
-  "wrap_guides": [110],
-  "preferred_line_length": 110,
-  "soft_wrap": "editor_width",
-  "tab_size": 2,
-  "ui_font_size": 18.0,
-  "buffer_font_size": 16.0,
   "theme": {
     "mode": "system",
     "light": "Ayu Light",
-    "dark": "New Darcula Darker",
+    "dark": "Ayu Dark",
   },
-  "edit_predictions_disabled_in": ["comment"],
-  "languages": {},
+  "inlay_hints": {
+    "show_background": true
+  },
+  "languages": {
+    "Markdown": {
+      "colorize_brackets": true,
+      "auto_indent_on_paste": true,
+      "use_on_type_format": true,
+      "show_whitespaces": "boundary",
+      "semantic_tokens": "full",
+      "ensure_final_newline_on_save": true,
+      "format_on_save": "on",
+      "wrap_guides": [
+        110
+      ],
+      "preferred_line_length": 110,
+      "soft_wrap": "editor_width",
+      "tab_size": 2,
+      "show_edit_predictions": true
+    },
+    "JSONC": {
+      "colorize_brackets": true,
+      "auto_indent_on_paste": true,
+      "use_on_type_format": true,
+      "show_whitespaces": "boundary",
+      "semantic_tokens": "full",
+      "ensure_final_newline_on_save": true,
+      "format_on_save": "on",
+      "wrap_guides": [
+        110
+      ],
+      "preferred_line_length": 110,
+      "soft_wrap": "editor_width",
+      "tab_size": 2,
+      "show_edit_predictions": true
+    },
+    "Plain Text": {
+      "colorize_brackets": true,
+      "auto_indent_on_paste": true,
+      "use_on_type_format": true,
+      "show_whitespaces": "boundary",
+      "semantic_tokens": "full",
+      "ensure_final_newline_on_save": true,
+      "format_on_save": "on",
+      "wrap_guides": [
+        110
+      ],
+      "preferred_line_length": 110,
+      "soft_wrap": "editor_width",
+      "tab_size": 2,
+      "show_edit_predictions": true
+    }
+  },
+  // ai
+  "disable_ai": false,
+  "edit_predictions": {
+    // "open_ai_compatible_api": {
+    //   "api_url": "http://localhost:8080/v1/completions",
+    //   "model": "sweepai/sweep-next-edit-1.5B",
+    //   "max_output_tokens": 64,
+    //   "prompt_format": "qwen"
+    // },
+    "disabled_globs": [
+      "**/.env"
+    ],
+    "provider": "codestral",
+    "mode": "subtle",
+    "codestral": {
+      "max_tokens": 64,
+      "model": "codestral-latest",
+    },
+  },
+  "edit_predictions_disabled_in": [
+    "comment",
+    "string",
+  ],
+  "agent_servers": {
+    "mistral-vibe": {
+      "type": "registry"
+    },
+    "pi-acp": {
+      "type": "registry"
+    },
+    "gemini": {
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    }
+  },
+  "agent": {
+    "threads_sidebar": {
+      "position": "right"
+    },
+    "max_content_width": 850.0,
+    "limit_content_width": false,
+    "enabled": true,
+    "dock": "right",
+    "enable_feedback": false,
+    "show_turn_stats": true,
+    "use_modifier_to_send": true,
+    "default_model": {
+      "provider": "z.ai",
+      "model": "glm-5.3-flash",
+    },
+    "button": true,
+    "default_profile": "minimal",
+    "model_parameters": [
+      {
+        "provider": "z.ai",
+        "temperature": 0.7,
+      },
+    ],
+  },
   "language_models": {
     "openai_compatible": {
       "z.ai": {
         "available_models": [
           {
-            "name": "GLM-4.7",
-            "display_name": "GLM 4.7",
-            "max_tokens": 200000,
+            "name": "glm-5.3-flash",
+            "display_name": "GLM 5.3 Flash",
+            "max_tokens": 65536,
             "capabilities": {
               "tools": true,
               "images": false,
               "prompt_cache_key": true,
-              "parallel_tool_calls": false,
+              "parallel_tool_calls": true,
+              "interleaved_reasoning": true,
             },
           },
+          {
+            "name": "glm-5.3",
+            "display_name": "GLM 5.3",
+            "max_tokens": 65536,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "prompt_cache_key": true,
+              "parallel_tool_calls": true,
+              "interleaved_reasoning": true,
+            },
+          }
         ],
         "api_url": "https://api.z.ai/api/coding/paas/v4",
       },
