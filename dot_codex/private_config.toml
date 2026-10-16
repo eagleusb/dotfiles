@@ -1,0 +1,457 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+# Core model selection
+model_provider = "openai"
+model = "gpt-6.1-sol"
+model_reasoning_effort = "high"
+model_verbosity = "low"
+
+# Sandbox
+sandbox_mode = "workspace-write"
+service_tier = "default"
+
+[sandbox_workspace_write]
+writable_roots = [
+  "~/.codex/",
+  "~/Documents/code/",
+  "~/.cache/flox/process/",
+  "/tmp"
+]
+network_access = true
+
+[model_providers.openaidr]
+name = "OpenAI Data Residency"
+base_url = "https://eu.api.openai.com/v1"
+wire_api = "responses"
+
+[model_providers.zai]
+name = "z.ai coding plan"
+# base_url = "https://api.z.ai/api/paas/v4"
+base_url = "https://api.z.ai/api/v1"
+wire_api = "responses"
+env_key = "ZAI_API_KEY"
+
+[model_providers.cerebras]
+name = "Cerebras"
+base_url = "https://api.cerebras.ai/v1"
+env_key = "CEREBRAS_API_KEY"
+
+[features]
+hooks = true
+# Enable Codex-generated git commits (without attribution trailers)
+codex_git_commit = true
+memories = true
+# fast_mode, multi_agent, personality, shell_snapshot, and shell_tool
+# are all stable defaults (true) in Codex 0.151+; omitted for clarity.
+
+[history]
+persistence = "save-all"
+max_bytes = 104857600 # 100 MiB
+
+[analytics]
+enabled = false
+
+[feedback]
+enabled = false
+
+[projects."/home/p00/Documents/code"]
+trust_level = "trusted"
+
+[projects."/home/p00/.codex"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-06/new-chat"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-06/trainline-plugin-app-69b16ad2c988819182d82a4649ed0449-openai-curated"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-06/gitbook-plugin-app-6a576f075ec4819196c203b7049542be-openai-curated"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-06/gitbook-plugin-app-6a576f075ec4819196c203b7049542be-openai-curated-2"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-06/gitbook-plugin-app-6a576f075ec4819196c203b7049542be-openai-curated-3"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-06/fo"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/code/resume"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-17/usi"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-18/trainline-plugin-app-69b16ad2c988819182d82a4649ed0449-openai-curated"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/Codex/2026-09-21/gi"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/code/shunted"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/code/pixelmochi.dev"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/code/mission-radar"]
+trust_level = "trusted"
+
+[projects."/home/p00/.agents"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/code/shakespeare-extension"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/code/resume-skill"]
+trust_level = "trusted"
+
+[projects."/home/p00/Documents/code/asusctl"]
+trust_level = "trusted"
+
+[tui]
+status_line = ["current-dir", "model", "reasoning", "git-branch", "pull-request-number", "branch-changes", "run-state", "approval-mode", "context-used", "context-window-size", "used-tokens", "total-input-tokens", "total-output-tokens", "task-progress", "weekly-limit", "estimated-thread-cost"]
+status_line_use_colors = true
+screen_reader_detection_done = true
+session_picker_view = "comfortable"
+
+[tui.model_availability_nux]
+gpt-6-astra = 4
+"gpt-6.1-sol" = 4
+
+[desktop]
+followUpQueueMode = "queue"
+conversationDetailMode = "STEPS_PROSE"
+ambient-suggestions-enabled = true
+appearanceTheme = "system"
+appearanceLightCodeThemeId = "linear"
+appearanceDarkCodeThemeId = "linear"
+sansFontSize = 16
+appearanceDiffMarkerStyle = "color"
+usePointerCursors = true
+localeOverride = "en-US"
+show-context-window-usage = true
+composerEnterBehavior = "cmdAlways"
+enabled-reasoning-efforts = ["low", "medium", "high", "xhigh", "ultra", "persistent", "max"]
+open-link-in-target-preference = "in-app-browser"
+codeFontSize = 16
+avatar-overlay-mascot-width-px = 97
+selected-avatar-id = "fireball"
+reduced-motion-preference = "system"
+browser-show-full-url = true
+keepRemoteControlAwakeWhilePluggedIn = false
+
+[desktop.appearanceLightChromeTheme]
+accent = "#be5ed1"
+accentSource = "custom"
+contrast = 50
+ink = "#1b1b1b"
+opaqueWindows = true
+surface = "#fcfcfd"
+
+[desktop.appearanceLightChromeTheme.fonts]
+code = '"FiraCode Nerd Font Mono"'
+content = '"Atkinson Hyperlegible"'
+ui = '"Atkinson Hyperlegible"'
+
+[desktop.appearanceLightChromeTheme.semanticColors]
+diffAdded = "#52a450"
+diffRemoved = "#c94446"
+skill = "#8160d8"
+
+[desktop.appearanceDarkChromeTheme]
+accent = "#be5ed1"
+accentSource = "custom"
+contrast = 60
+ink = "#e3e4e6"
+opaqueWindows = true
+surface = "#0f0f11"
+
+[desktop.appearanceDarkChromeTheme.fonts]
+code = '"FiraCode Nerd Font Mono"'
+content = '"Atkinson Hyperlegible"'
+ui = '"Atkinson Hyperlegible"'
+
+[desktop.appearanceDarkChromeTheme.semanticColors]
+diffAdded = "#69c967"
+diffRemoved = "#ff7e78"
+skill = "#c2a1ff"
+
+[desktop.open-in-target-preferences]
+global = "zed"
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = "/home/p00/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+source_type = "local"
+source = "/home/p00/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[marketplaces.wakatime]
+source_type = "git"
+source = "https://github.com/wakatime/codex-cli-wakatime.git"
+
+[marketplaces.shunted]
+source_type = "local"
+source = "/home/p00/Documents/code/shunted"
+
+[marketplaces.context7-marketplace]
+source_type = "git"
+source = "https://github.com/upstash/context7.git"
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."codex-cli-wakatime@wakatime"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."code-review@openai-bundled"]
+enabled = true
+
+[plugins."context7@context7-marketplace"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."shunted@shunted"]
+enabled = true
+
+[mcp_servers.godoc]
+command = "godoc-mcp"
+args = ["-transport=stdio"]
+
+[mcp_servers.github]
+command = "github-mcp-server"
+args = ["stdio", "--read-only"]
+
+[mcp_servers.github.env]
+GITHUB_LOCKDOWN_MODE = "0"
+GITHUB_PERSONAL_ACCESS_TOKEN = "${GITHUB_API_KEY}"
+
+[mcp_servers.terraform]
+command = "terraform-mcp-server"
+args = ["stdio"]
+
+[mcp_servers.terraform.env]
+ENABLE_TF_OPERATIONS = "false"
+TFE_ADDRESS = ""
+
+[mcp_servers.opentofu]
+url = "https://mcp.opentofu.org/mcp"
+
+[mcp_servers."aws-knowledge-mcp-server"]
+url = "https://knowledge-mcp.global.api.aws"
+
+[mcp_servers."aws-documentation-mcp-server"]
+command = "uvx"
+args = ["awslabs.aws-documentation-mcp-server@latest"]
+
+[mcp_servers."aws-documentation-mcp-server".env]
+FASTMCP_LOG_LEVEL = "ERROR"
+
+[mcp_servers.deepwiki]
+url = "https://mcp.deepwiki.com/mcp"
+
+[mcp_servers.mdn]
+url = "https://mcp.mdn.mozilla.net/"
+
+[mcp_servers.cloudflare-docs]
+url = "https://docs.mcp.cloudflare.com/mcp"
+
+[mcp_servers.node_repl]
+args = []
+command = "/usr/lib/chatgpt/resources/cua_node/bin/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = "/usr/lib/chatgpt/resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/usr/lib/chatgpt/resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/home/p00/.codex:/usr/lib/chatgpt/resources/cua_node/lib/node_modules"
+CODEX_HOME = "/home/p00/.codex"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab,mcpapps"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.1007.21434"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/home/p00/.codex/plugins/cache/openai-bundled/browser/26.1007.21434/scripts/browser-service.mjs"}'
+CODEX_CLI_PATH = "/usr/lib/chatgpt/resources/codex"
+
+[mcp_servers.context7]
+url = "https://mcp.context7.com/mcp"
+
+# Set CONTEXT7_API_KEY in the environment before starting Codex.
+bearer_token_env_var = "CONTEXT7_API_KEY"
+
+[mcp_servers.firefox-devtools]
+command = "firefox-devtools-mcp"
+args = ["--connect-existing"]
+
+[mcp_servers.chrome-devtools]
+command = "chrome-devtools-mcp"
+args = ["--autoConnect", "--categoryExtensions", "--no-usage-statistics", "--no-performance-crux"]
+
+[memories]
+generate_memories = true
+use_memories = true
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/hugging-face/1.0.0/skills/gradio/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/hugging-face/1.0.0/skills/trackio/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/hugging-face/1.0.0/skills/vision-trainer/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-analytics-dashboard/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-business-review/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-design-report/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-experiment-analysis/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-financial-budget/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-investment-committee-memo/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-legal-memorandum/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-market-trends-report/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-minimal-letterhead/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-calendar/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-operating-review/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-kickoff/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-project-tracker/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-sales-pipeline/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-dark-mode/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-simple-light-mode/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-strategy-memorandum/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-system-design/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-team-alignment/SKILL.md"
+enabled = false
+
+[[skills.config]]
+path = "/home/p00/.codex/plugins/cache/openai-curated-remote/openai-templates/0.1.1/skills/artifact-template-three-statement-forecast/SKILL.md"
+enabled = false
+
+[hooks.state]
+
+[hooks.state."shunted@shunted:hooks/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:c926585003cfe995a859c0506fbc5fddbff69cd0afa0549a13c08a20fadb36cf"
+enabled = true
+
+[hooks.state."codex-cli-wakatime@wakatime:hooks/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:3019b5f39b02025bd4c40a156aef99bda28389107c16b8fa6ed6bc691a3928e4"
+
+[hooks.state."codex-cli-wakatime@wakatime:hooks/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:3793f33bb324020d43751b6ce8548d7a1a2791fec8b4c76fc1dcc689f6671b7b"
+
+[hooks.state."codex-cli-wakatime@wakatime:hooks/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:84094d8aa7937a8545ef4d87ef03a0309f77bd2670fbc74560c922f3fe653dcc"
+enabled = false
+
+[hooks.state."shunted@shunted:hooks/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:51c96f15a80726117ef460a0793a5fa7446860c2e09e7fc63d895a43504be362"
+
+[apps.asdk_app_69a089a326dc8191b32a3f2553f5be2c.tools."linear.save_milestone"]
+approval_mode = "approve"
+
+[apps.asdk_app_69a089a326dc8191b32a3f2553f5be2c.tools."linear.save_issue_label"]
+approval_mode = "approve"
+
+[apps.asdk_app_69a089a326dc8191b32a3f2553f5be2c.tools."linear.save_issue"]
+approval_mode = "approve"
+
+[apps.asdk_app_69a089a326dc8191b32a3f2553f5be2c.tools."linear.save_status_update"]
+approval_mode = "approve"
+
+[apps.asdk_app_69a089a326dc8191b32a3f2553f5be2c.tools."linear.save_comment"]
+approval_mode = "approve"
+
+[apps.asdk_app_69a089a326dc8191b32a3f2553f5be2c.tools."linear.save_project"]
+approval_mode = "approve"
+
+[notice.model_migrations]
+"gpt-5.6-sol" = "gpt-6-sol"
