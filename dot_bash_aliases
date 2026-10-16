@@ -23,7 +23,6 @@ alias myip='dig txt +short o-o.myaddr.l.google.com @ns1.google.com'
 alias pingtcp='nping --traceroute --tcp-connect -p443 --delay 0ms --count 10'
 alias pip='pip3'
 alias grep='rg'
-alias skynet='ansible-playbook'
 alias top='btm --dot_marker --tree --theme nord'
 alias pgrep='pgrep -laf'
 alias k='kubectl'
@@ -72,46 +71,6 @@ tvdl() {
   youtube-dl $1 -f '[width=?640]' \
     --max-filesize 1536M --referer "http://www.arte.tv" \
     --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.166 Safari/537.36 OPR/20.0.1396.73172";
-}
-
-# fuse mount of hubic
-hubicmount() {
-  hubicfuse /mnt/hubic -o noauto_cache,sync_read,noatime,nodev,noexec;
-}
-
-# file sync with hubic
-hubicsync() {
- if [[ -d /mnt/hubic ]]; then
-  rsync -avhc --max-size=100M --inplace "${1}" "${2}"
- else
-  echo "hubicfuse unmounted. rsync impossible."
-  exit 1
- fi
-}
-
-# ansible helpers
-skynetGo() {
- if [[ -n "${1}" ]]; then
-  echo -e "\n...Starting Ansible play : ${1}\nChecking the syntax\n";
-  skynet -vv --syntax-check "${1}";
-  echo -e "\nPress a key to continue...\n";
-  read;
-  echo -e "Running Ansible play : ${1}";
-  skynet -Dv "${1}";
-  echo -e "\nDone.\n";
- fi
-}
-
-skynetTest() {
- if [[ -n "${1}" ]]; then
-  echo -e "\n...Starting Ansible play : ${1}\nChecking the syntax\n";
-  skynet -vv --syntax-check "${1}";
-  echo -e "\nPress a key to continue...\n";
-  read;
-  echo -e "Show Ansible play diff (check mode) : ${1}";
-  skynet -CD "${1}";
-  echo -e "\nDone.\n";
- fi
 }
 
 # wireguard helpers
@@ -426,16 +385,6 @@ sopsDecrypt() {
   type sops &>/dev/null || { echo 'sops not installed, quitting'; return; }
   [[ ${#} == 1 ]] || { echo 'Syntax error, only one argument (file path) allowed'; return; }
   sops -i -d --verbose "$1"
-}
-
-codeStart() {
-  local _server_id=9f9af7d0-a7d2-4677-8215-1c2e6ee25b3b
-  scw instance server start $_server_id --wait
-}
-
-codeStop() {
-  local _server_id=9f9af7d0-a7d2-4677-8215-1c2e6ee25b3b
-  scw instance server stop $_server_id --wait
 }
 
 curlDebugCdn() {

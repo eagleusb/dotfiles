@@ -161,6 +161,8 @@ PATH="${PATH}:/usr/lib/go/bin"
 PATH="${PATH}:${HOME}/.cargo/bin"
 PATH="${PATH}:${HOME}/.deno/bin"
 PATH="${PATH}:${HOME}/.local/bin/llama"
+PATH="${PATH}:${HOME}/.bun/bin"
+PATH="${PATH}:${HOME}/.bun/install/global/~/.bun/bin/"
 
 export PATH="${PATH}"
 
@@ -210,13 +212,15 @@ eval "$(fnm env)"
 [[ ! -f  "${HOME}/.envrc" ]] && pass-cli inject -fo "${HOME}/.envrc" <<'EOF'
 export \
   {{pass://env/z.ai/key}}={{pass://env/z.ai/value}} \
-  {{pass://env/gh/key}}={{pass://env/gh/value}} \
   {{pass://env/hf/key}}={{pass://env/hf/value}} \
   {{pass://env/openrouter/key}}={{pass://env/openrouter/value}} \
   {{pass://env/hai/key}}={{pass://env/hai/value}} \
   {{pass://env/gh-api/key}}={{pass://env/gh-api/value}} \
   {{pass://env/tmdb-api/key}}={{pass://env/tmdb-api/value}} \
-  {{pass://env/tmdb/key}}={{pass://env/tmdb/value}}
+  {{pass://env/tmdb/key}}={{pass://env/tmdb/value}} \
+  {{pass://env/cerebras/key}}={{pass://env/cerebras/value}} \
+  {{pass://env/vibe/key}}={{pass://env/vibe/value}} \
+  {{pass://env/ctx7/key}}={{pass://env/ctx7/value}}
 EOF
 
 ### direnv
@@ -241,3 +245,6 @@ export VDPAU_DRIVER=nvidia
 
 ### kuberc
 export KUBECTL_KUBERC=true
+
+### agents
+export DISABLE_TELEMETRY=1
